@@ -3,8 +3,8 @@
 }
 body {
   background: linear-gradient(
-      rgba(40, 40, 40, 0.75),
-      rgba(40, 40, 40, 0.75)
+      rgba(40, 40, 40, 0.82),
+      rgba(40, 40, 40, 0.82)
     ),
     url(./assets/fondo.jpg);
   background-repeat: no-repeat;
@@ -77,4 +77,8 @@ h1 {
   background-color: #5993d3;
   color: white;
 }
+ .buttonPrincipal:hover {
+    background-color: #1f3c85;
+	color: white;
+ }
 
