@@ -62,9 +62,22 @@ h1 {
 
 .tituloPrincipal {
    font-family: 'Kalam', cursive;
-   font-size: 3.5rem; /* Tamaño de fuente personalizado */
+   font-size: 3rem; /* Tamaño de fuente personalizado */
    color: #ffffff; /* Color de texto personalizado */
    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto personalizada */
+}
+
+.subtituloPrincipal {
+  font-family: 'Kalam', cursive;
+  font-size: 4.5rem; /* Tamaño de fuente personalizado */
+  color: #1f3c85; /* Color de texto personalizado */
+  text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8); /* Sombra de texto personalizada */
+}
+.subtituloPrincipal2 {
+  font-family: 'Kalam', cursive;
+  font-size: 4.5rem; /* Tamaño de fuente personalizado */
+  color: #5993d3; /* Color de texto personalizado */
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8); /* Sombra de texto personalizada */
 }
 
 .listaLogin {

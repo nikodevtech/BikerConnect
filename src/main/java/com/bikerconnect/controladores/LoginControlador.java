@@ -1,6 +1,7 @@
 package com.bikerconnect.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 //import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,13 @@ public class LoginControlador {
 	@GetMapping("/auth/iniciar-sesion")
 	public String login() {
 		return "login";
+	}
+	
+	@GetMapping("/privada/cuenta-usuario")
+	public String loginCorrecto(Model model, Authentication authentication) {
+		model.addAttribute("credencialesCorrectas", "Credenciales correctas, bienvenido");
+		model.addAttribute("nombreUsuario", authentication.getName());
+		return "cuentaDeUsuario";
 	}
 
 }

@@ -43,9 +43,9 @@ public class RegistroControlador {
 		
 		if (nuevoUsuario != null) { // Si entra a este if es que el registro se completo correctamente
 			model.addAttribute("mensajeRegistroExitoso", "Registro del nuevo usuario OK");
-			return "registro";
+			return "login";
 		} else { // De lo contrario, es que ya existe un usuario con el mismo email
-			model.addAttribute("mensajeErrorMail", "Ya existe un usuario con ese email");
+			model.addAttribute("emailYaRegistrado", "Ya existe un usuario con ese email");
 			return "registro";
 		}
 	}

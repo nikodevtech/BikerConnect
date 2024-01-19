@@ -46,6 +46,7 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			userDto.setClaveUsuario(passwordEncoder.encode(userDto.getClaveUsuario()));
 			Usuario usuarioDao = toDao.usuarioToDao(userDto);
 			usuarioDao.setFechaRegistro(Calendar.getInstance());
+			usuarioDao.setRol("ROLE_USER");
 			repositorio.save(usuarioDao);
 
 			return userDto;

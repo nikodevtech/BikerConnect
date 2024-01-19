@@ -44,29 +44,29 @@
               required           
             />
           </div>
-          <div class="mb-3">
-            <label for="password" class="form-label textoPrincipal">Contraseña</label>
+		  <div class="mb-3">
+          	<label for="password" class="form-label textoPrincipal">Contraseña</label>
             <input
-              th:field="*{claveUsuario}"
-              type="password"
-              id="password"
-              name="password"
-              class="form-control"
-              placeholder="Escribe tu contraseña"
-              required
-              oninput="revisarContraseña()"
+               th:field="*{claveUsuario}"
+               type="password"
+               id="password"
+               name="password"
+               class="form-control"
+               placeholder="Escribe tu contraseña"
+               required
+               oninput="revisarContraseña()"
             />
-          </div>
-          <div class="mb-3">
-            <label for="confirmarPassword" class="form-label textoPrincipal">Confirmar Contraseña</label>
+           </div>
+           <div class="mb-3">
+           	<label for="confirmarPassword" class="form-label textoPrincipal">Confirmar Contraseña</label>
             <input
-              type="password"
-              id="confirmarPassword"
-              name="confirmarPassword"
-              class="form-control"
-              placeholder="Repite tu contraseña"
-              required
-			  oninput="revisarContraseña()"
+               type="password"
+               id="confirmarPassword"
+               name="confirmarPassword"
+               class="form-control"
+               placeholder="Repite tu contraseña"
+               required
+               oninput="revisarContraseña()"
             />
           </div>
           <div class="mb-3">
@@ -109,8 +109,8 @@
           <div class="mensajeContrasenya mt-4 text-center " id="mensajeContrasenya"></div>
         </form>
       </div>
-      <script th:if="${not #strings.isEmpty(mensajeErrorMail)}">
-	    	mostrarNotificacion("¡Error!", "El email ya se encuentra registrado en el sistema", 'error');
+      <script th:if="${not #strings.isEmpty(emailYaRegistrado)}">
+	    	mostrarNotificacion("¡Error al crear cuenta!", "El email introducido ya se encuentra registrado en el sistema", 'error');
 	  </script>  
 </body>
 </html>
