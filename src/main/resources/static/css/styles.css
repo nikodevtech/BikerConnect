@@ -41,7 +41,6 @@ h1 {
   background: #ebf5fc;
 }
 .custom-form button {
-  text-transform: uppercase;
   letter-spacing: 0.15em;
   border: none;
   font-size: 0.875rem;
@@ -57,9 +56,17 @@ h1 {
   cursor: pointer;
 }
 .logo {
-  max-width: 200px;
+  max-width: 230px;
   height: auto;
 }
+
+.tituloPrincipal {
+   font-family: 'Kalam', cursive;
+   font-size: 3.5rem; /* Tamaño de fuente personalizado */
+   color: #ffffff; /* Color de texto personalizado */
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto personalizada */
+}
+
 .listaLogin {
   list-style-type: disc;
   color: #1f3c85;
@@ -77,8 +84,15 @@ h1 {
   background-color: #5993d3;
   color: white;
 }
- .buttonPrincipal:hover {
+.buttonPrincipal:hover {
     background-color: #1f3c85;
 	color: white;
- }
+}
+.buttonPrincipal:active {
+    background-color: white !important;
+    color: #1f3c85 !important; 
+}
+ 
+ 
+
 
