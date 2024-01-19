@@ -49,7 +49,7 @@ public class Usuario {
 	@Column(name = "cuenta_confirmada", nullable = false, columnDefinition = "boolean default false")
 	private boolean cuentaConfirmada;
 	
-	@Column(nullable = false, length = 20)
+	@Column(nullable = true, length = 20)
 	private String rol;
 	
 	@Column(nullable = true, length = 100)

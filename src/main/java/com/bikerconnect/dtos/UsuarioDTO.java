@@ -4,15 +4,14 @@ import java.util.Calendar;
 import java.util.Objects;
 
 /**
- * Clase DTO (Data Transfer Object) para pasar información entre capas 
- * para la gestión de usuarios
+ * Clase DTO (Data Transfer Object) para pasar información entre capas para la
+ * gestión de usuarios
  */
 public class UsuarioDTO {
 
-	//ATRIBUTOS
+	// ATRIBUTOS
 	private String nombreUsuario;
 	private String apellidosUsuario;
-	private String dniUsuario;
 	private String tlfUsuario;
 	private String emailUsuario;
 	private String claveUsuario;
@@ -21,13 +20,12 @@ public class UsuarioDTO {
 	private String password2;
 	private Calendar expiracionToken;
 
-	//CONSTRUCTORES
+	// CONSTRUCTORES
 	public UsuarioDTO() {
 	}
 
-	public UsuarioDTO(String dniUsuario, String nombreUsuario, String apellidosUsuario, String tlfUsuario,
-			String emailUsuario, String claveUsuario) {
-		this.dniUsuario = dniUsuario;
+	public UsuarioDTO(String nombreUsuario, String apellidosUsuario, String tlfUsuario, String emailUsuario,
+			String claveUsuario) {
 		this.nombreUsuario = nombreUsuario;
 		this.apellidosUsuario = apellidosUsuario;
 		this.tlfUsuario = tlfUsuario;
@@ -35,15 +33,7 @@ public class UsuarioDTO {
 		this.claveUsuario = claveUsuario;
 	}
 
-	//GETTERS Y SETTERS
-	public String getDniUsuario() {
-		return dniUsuario;
-	}
-
-	public void setDniUsuario(String dniUsuario) {
-		this.dniUsuario = dniUsuario;
-	}
-
+	// GETTERS Y SETTERS
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
@@ -107,7 +97,7 @@ public class UsuarioDTO {
 	public void setPassword2(String password2) {
 		this.password2 = password2;
 	}
-	
+
 	public Calendar getExpiracionToken() {
 		return expiracionToken;
 	}
@@ -116,11 +106,11 @@ public class UsuarioDTO {
 		this.expiracionToken = expiracionToken;
 	}
 
-	//METODOS
+	// METODOS
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellidosUsuario, claveUsuario, dniUsuario, emailUsuario, expiracionToken, nombreUsuario,
-				password, password2, tlfUsuario, token);
+		return Objects.hash(apellidosUsuario, claveUsuario, emailUsuario, expiracionToken, nombreUsuario, password,
+				password2, tlfUsuario, token);
 	}
 
 	@Override
@@ -133,8 +123,7 @@ public class UsuarioDTO {
 			return false;
 		UsuarioDTO other = (UsuarioDTO) obj;
 		return Objects.equals(apellidosUsuario, other.apellidosUsuario)
-				&& Objects.equals(claveUsuario, other.claveUsuario) && Objects.equals(dniUsuario, other.dniUsuario)
-				&& Objects.equals(emailUsuario, other.emailUsuario)
+				&& Objects.equals(claveUsuario, other.claveUsuario) && Objects.equals(emailUsuario, other.emailUsuario)
 				&& Objects.equals(expiracionToken, other.expiracionToken)
 				&& Objects.equals(nombreUsuario, other.nombreUsuario) && Objects.equals(password, other.password)
 				&& Objects.equals(password2, other.password2) && Objects.equals(tlfUsuario, other.tlfUsuario)
@@ -143,11 +132,9 @@ public class UsuarioDTO {
 
 	@Override
 	public String toString() {
-		return "UsuarioDTO [nombreUsuario=" + nombreUsuario + ", apellidosUsuario=" + apellidosUsuario + ", dniUsuario="
-				+ dniUsuario + ", tlfUsuario=" + tlfUsuario + ", emailUsuario=" + emailUsuario + ", claveUsuario="
-				+ claveUsuario + ", token=" + token + ", password=" + password + ", password2=" + password2
-				+ ", expiracionToken=" + expiracionToken + "]";
+		return "UsuarioDTO [nombreUsuario=" + nombreUsuario + ", apellidosUsuario=" + apellidosUsuario + ", tlfUsuario="
+				+ tlfUsuario + ", emailUsuario=" + emailUsuario + ", claveUsuario=" + claveUsuario + ", token=" + token
+				+ ", password=" + password + ", password2=" + password2 + ", expiracionToken=" + expiracionToken + "]";
 	}
-    
-	
+
 }

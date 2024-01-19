@@ -1,21 +1,24 @@
 function revisarContraseña() {
-	var contraseña = document.getElementById('claveUsuario').value;
-    var confContraseña = document.getElementById('confirmarClaveUsuario').value;
-    var mensajeContraseña = document.getElementById('mensajeContrasenya');
-
-	if (contraseña === "" && confContraseña === "") {
-		mensajeContraseña.textContent = 'No puede dejar campos vacíos';
-		document.getElementById("btnRegistro").disabled = true;//deshabilita el boton		
-	} else if (contraseña === confContraseña) {
-        mensajeContraseña.textContent = 'Las contraseñas coinciden';
-        mensajeContraseña.style.color = 'green';
-        document.getElementById("btnRegistro").disabled = false;//habilita el boton
-    } else {
-        mensajeContraseña.textContent = 'Las contraseñas no coinciden';
+    const contraseña = document.getElementById('password').value;
+    const confContraseña = document.getElementById('confirmarPassword').value;
+    const mensajeContraseña = document.getElementById('mensajeContrasenya');
+  
+   if (contraseña === "" && confContraseña === "") {
+        mensajeContraseña.innerHTML = '<span class="badge bg-danger fs-5">No puede dejar los campos contraseñas vacíos</span>';
         mensajeContraseña.style.color = 'red';
-        document.getElementById("btnRegistro").disabled = true;//deshabilita el boton
-    }
+        document.getElementById("btnRegistro").disabled = true;
+        btnRegistro.style.backgroundColor = "#959595"; 
+    }else if (contraseña === confContraseña) {
+        mensajeContraseña.innerHTML = '<span class="badge bg-success fs-5">Las contraseñas introducidas coinciden</span>';
+        document.getElementById("btnRegistro").disabled = false;
+        btnRegistro.style.backgroundColor = "#5993d3"; 
+    } else {
+        mensajeContraseña.innerHTML = '<span class="badge bg-danger fs-5">Las contraseñas introducidas no son iguales</span>';
+        document.getElementById("btnRegistro").disabled = true;
+        btnRegistro.style.backgroundColor = "#959595"; 
+    } 
 }
+
 
 function mostrarNotificacion(titulo, mensaje, tipo) {
     Swal.fire({
