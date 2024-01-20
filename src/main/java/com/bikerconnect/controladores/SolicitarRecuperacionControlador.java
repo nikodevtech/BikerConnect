@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.servicios.IUsuarioServicio;
 
-
+/**
+ * Clase que ejerce de controlador de la vista de solicitarRecuperacion para gestionar las
+ * solicitudes relacionadas con el inicio del proceso de recuperación.
+ */
 @Controller
 public class SolicitarRecuperacionControlador {
 

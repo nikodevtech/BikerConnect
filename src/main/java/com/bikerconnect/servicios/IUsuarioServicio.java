@@ -1,9 +1,7 @@
 package com.bikerconnect.servicios;
 
-import java.util.List;
 
 import com.bikerconnect.dtos.UsuarioDTO;
-import com.bikerconnect.entidades.Usuario;
 
 /**
  * Interfaz del servicio para la gestión de usuarios, donde se declaran los
@@ -39,6 +37,21 @@ public interface IUsuarioServicio {
 	 * @return true si el proceso se ha realizado correctamente, false en caso contrario
 	 */
 	public boolean modificarContraseñaConToken(UsuarioDTO usuario);
+
+	
+	/**
+	 * Metodo que controla que el usuario existe y no esta su cuenta confirmada
+	 * @param emailUsuario El email del usuario a confirmar
+	 * @return true si el proceso se ha realizado correctamente, false en caso contrario
+	 */
+	boolean confirmarCuenta(String emailUsuario);
+	
+	/**
+	 * Comprueba si el usuario existe y si su cuenta ha sido confirmada
+	 * @param email El email del usuario
+	 * @return true si el usuario existe y su cuenta ha sido confirmada, false en caso contrario
+	 */
+	public boolean estaLaCuentaConfirmada(String email);
 	
 
 

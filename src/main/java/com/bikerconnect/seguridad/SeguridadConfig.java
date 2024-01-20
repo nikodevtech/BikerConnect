@@ -66,14 +66,9 @@ public class SeguridadConfig {
      */
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf(csrf -> csrf.disable())
-            // Configura las reglas de autorización para las solicitudes HTTP.
-            .authorizeHttpRequests(auth -> 
-                auth
-                	// Permite el acceso público a ciertos recursos y direcciones de URL que no requieren autenticación.
-                    .requestMatchers("/", "/bienvenida", "/css/**", "/script/**", "/auth/**").permitAll()
-                    .anyRequest().authenticated()// Exige autenticación para cualquier otra solicitud.
+    	// Configura las reglas de autorización para las peticiones HTTP.
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/", "/bienvenida", "/css/**", "/script/**", "/auth/**").permitAll()
+                    						   .anyRequest().authenticated()// Exige autenticación para cualquier otra petición HTTP.
             )
             // Configura el proceso de inicio de sesión y la página de inicio de sesión.
             .formLogin(login -> login.loginPage("/auth/iniciar-sesion") // Establece la página de inicio de sesión personalizada.

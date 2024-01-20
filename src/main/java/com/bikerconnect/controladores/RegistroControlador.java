@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.servicios.IUsuarioServicio;
 
+/**
+ * Clase que ejerce de controlador de la vista de registro para gestionar las
+ * solicitudes relacionadas con la creacion de nuevas cuentas de usuario.
+ */
 @Controller
 public class RegistroControlador {
 	
@@ -37,14 +41,12 @@ public class RegistroControlador {
 	@PostMapping("/auth/crear-cuenta")
 	public String registrarPost(@ModelAttribute UsuarioDTO usuarioDTO, Model model) {
 		
-		System.out.println(usuarioDTO);
-
 		UsuarioDTO nuevoUsuario = usuarioServicio.registrarUsuario(usuarioDTO);
 		
 		if (nuevoUsuario != null) { // Si entra a este if es que el registro se completo correctamente
 			model.addAttribute("mensajeRegistroExitoso", "Registro del nuevo usuario OK");
 			return "login";
-		} else { // De lo contrario, es que ya existe un usuario con el mismo email
+		} else { // De lo contrario, es que ya existe un usuario con el dicho email
 			model.addAttribute("emailYaRegistrado", "Ya existe un usuario con ese email");
 			return "registro";
 		}

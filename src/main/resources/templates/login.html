@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                 <ul class="navbar-nav me-5 ms-auto">
                     <li class="nav-item me-3">
-                        <a class="nav-link fw-bold text-white" th:href="@{/auth/crear-cuenta}">Crear cuenta</a>
+                        <a class="nav-link fw-bold text-white" th:href="@{/auth/crear-cuenta}"><i class="bi bi-person-add fs-5"> Crear cuenta</i></a>
                     </li>               
                 </ul>
             </div>
@@ -63,7 +63,7 @@
         </form>
     </div>
    	<script th:if="${not #strings.isEmpty(mensajeRegistroExitoso)}">
-	    mostrarNotificacion("¡Cuenta creada con exito!", "Ahora puede iniciar sesión", 'success');
+	    mostrarNotificacion("¡Email de confirmación enviado!", "Debe confirmar su correo electrónico para poder iniciar sesión", 'info');
 	</script>
 	<script th:if="${param.error}">
 	    mostrarNotificacion("¡Credenciales incorrectas!","No se pudo iniciar sesión. Los datos introducidos no son correctos", 'error');
@@ -73,6 +73,12 @@
 	</script>
 	<script th:if="${not #strings.isEmpty(contraseñaModificadaExito)}">
 	    mostrarNotificacion("¡Contraseña modificada con exito!", "Ya puede iniciar sesión con su nueva contraseña", 'success');
+	</script>
+	<script th:if="${not #strings.isEmpty(cuentaVerificada)}">
+	    mostrarNotificacion("¡Cuenta verificada!", "La cuenta ha sido confirmada correctamente. Ya puede iniciar sesión", 'success');
+	</script>
+	<script th:if="${not #strings.isEmpty(cuentaNoVerificada)}">
+	    mostrarNotificacion("¡Debe confirmar su cuenta!","Para poder iniciar sesión, antes debe confirmar su cuenta.", 'error');
 	</script>
 </body>
 </html>

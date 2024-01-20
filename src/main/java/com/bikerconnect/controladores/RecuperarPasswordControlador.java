@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.servicios.IUsuarioServicio;
 
-
-
+/**
+ * Clase que ejerce de controlador de la vista de recuperación de contraseña (recuperar.html) para gestionar
+ * las solicitudes relacionadas con la recuperación de contraseña.
+ */
 @Controller
 public class RecuperarPasswordControlador {
 	

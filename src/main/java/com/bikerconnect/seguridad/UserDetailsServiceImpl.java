@@ -13,7 +13,7 @@ import com.bikerconnect.entidades.Usuario;
 import com.bikerconnect.repositorios.UsuarioRepositorio;
 
 /**
- * Para que spring gestione la autentiación y la autorización de la aplicación,
+ * Para delegar en spring la autenticación y la autorización de la aplicación,
  * es necesario una clase en el proyecto que implemente la interfaz UserDetailsService y
  * sobre escribir el método loadUserByUsername de la misma.
  */

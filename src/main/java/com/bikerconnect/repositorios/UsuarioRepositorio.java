@@ -26,5 +26,7 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 	 * @return el usuario buscado por el token
 	 */
 	public Usuario findByToken(String token);
+	
+
 
 }
