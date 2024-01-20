@@ -2,6 +2,7 @@ package com.bikerconnect.servicios;
 
 import java.util.Calendar;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,13 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 	
 	@Autowired
 	private IUsuarioToDao toDao;
+	
+	@Autowired
+	private IEmailServicio emailServicio;
+	
+	@Autowired
+	private IUsuarioToDto toDto;
+
 
 	
 	@Override
@@ -56,6 +64,74 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			System.out.println("[Error UsuarioServicioImpl - registrarUsuario() ]" + e.getMessage());
 		}
 		return null;
+	}
+	
+	@Override
+	public boolean iniciarProcesoRecuperacion(String emailUsuario) {
+		try {
+			Usuario usuarioExistente = repositorio.findFirstByEmail(emailUsuario);
+
+			if (usuarioExistente != null) {
+				// Generar el token y establece la fecha de expiración
+				String token = passwordEncoder.encode(RandomStringUtils.random(30));
+				Calendar fechaExpiracion = Calendar.getInstance();
+				fechaExpiracion.add(Calendar.MINUTE, 10);
+				// Actualizar el usuario con el nuevo token y la fecha de expiración
+				usuarioExistente.setToken(token);
+				usuarioExistente.setExpiracionToken(fechaExpiracion);
+
+				// Actualizar el usuario en la base de datos
+				repositorio.save(usuarioExistente);
+
+				// Enviar el correo de recuperación
+				String nombreUsuario = usuarioExistente.getNombreApellidos();
+				emailServicio.enviarEmailRecuperacion(emailUsuario, nombreUsuario, token);
+
+				return true;
+
+			} else {
+				System.out.println("[Error UsuarioServicioImpl - iniciarProcesoRecuperacion()] El usuario con email "
+						+ emailUsuario + " no existe");
+				return false;
+			}
+		} catch (IllegalArgumentException iae) {
+			System.out.println("[Error UsuarioServicioImpl - iniciarProcesoRecuperacion() ]" + iae.getMessage());
+			return false;
+		} catch (Exception e) {
+			System.out.println("[Error UsuarioServicioImpl - iniciarProcesoRecuperacion()]" + e.getMessage());
+			return false;
+		}
+	}
+	
+	@Override
+	public UsuarioDTO obtenerUsuarioPorToken(String token) {
+		Usuario usuarioExistente = repositorio.findByToken(token);
+
+		if (usuarioExistente != null) {
+			UsuarioDTO usuario = toDto.usuarioToDto(usuarioExistente);
+			return usuario;
+		} else {
+			System.out.println("No existe el usuario con el token " + token);
+			return null;
+		}
+
+	}
+	
+	@Override
+	public boolean modificarContraseñaConToken(UsuarioDTO usuario) {
+
+		Usuario usuarioExistente = repositorio.findByToken(usuario.getToken());
+
+		if (usuarioExistente != null) {
+			String nuevaContraseña = passwordEncoder.encode(usuario.getPassword());
+			usuarioExistente.setPassword(nuevaContraseña);
+			usuarioExistente.setToken(null); // Se setea a null para invalidar el token ya consumido al cambiar de password
+			repositorio.save(usuarioExistente);
+
+			return true;
+		}
+
+		return false;
 	}
 
 	

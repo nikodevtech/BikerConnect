@@ -68,5 +68,11 @@
 	<script th:if="${param.error}">
 	    mostrarNotificacion("¡Credenciales incorrectas!","No se pudo iniciar sesión. Los datos introducidos no son correctos", 'error');
 	</script>
+	<script th:if="${not #strings.isEmpty(mensajeExitoMail)}">
+	    mostrarNotificacion("¡Email de recuperación enviado!", "Revise su bandeja de entrada y sigua las instrucciones", 'info');
+	</script>
+	<script th:if="${not #strings.isEmpty(contraseñaModificadaExito)}">
+	    mostrarNotificacion("¡Contraseña modificada con exito!", "Ya puede iniciar sesión con su nueva contraseña", 'success');
+	</script>
 </body>
 </html>

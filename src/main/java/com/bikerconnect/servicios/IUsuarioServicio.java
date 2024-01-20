@@ -18,6 +18,28 @@ public interface IUsuarioServicio {
 	 */
 	public UsuarioDTO registrarUsuario(UsuarioDTO userDTO);
 	
+	/**
+	 * Inicia el proceso de recuperacion (generando token y vencimiento) con el email del usuario 
+	 * @param emailUsuario El email del usuario que quiere recuperar la contraseña
+	 * @return true si el proceso se ha iniciado correctamente, false en caso contrario
+	 */
+	public boolean iniciarProcesoRecuperacion(String emailUsuario); 
+	
+	/**
+	 * Busca un usuario por su token de recuperación.
+	 * @param token que identifica al usuario recibió un correo con la url y dicho token
+	 * @return el usuario buscado
+	 */
+	public UsuarioDTO obtenerUsuarioPorToken(String token);
+
+	
+	/**
+	 * Establece la nueva contraseña del usuario con el token
+	 * @param usuario El usuario al que se le establecera la nueva contraseña
+	 * @return true si el proceso se ha realizado correctamente, false en caso contrario
+	 */
+	public boolean modificarContraseñaConToken(UsuarioDTO usuario);
+	
 
 
 

@@ -10,6 +10,7 @@ import java.util.Objects;
 public class UsuarioDTO {
 
 	// ATRIBUTOS
+	private long id;
 	private String nombreUsuario;
 	private String apellidosUsuario;
 	private String tlfUsuario;
@@ -34,6 +35,13 @@ public class UsuarioDTO {
 	}
 
 	// GETTERS Y SETTERS
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
@@ -109,7 +117,7 @@ public class UsuarioDTO {
 	// METODOS
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellidosUsuario, claveUsuario, emailUsuario, expiracionToken, nombreUsuario, password,
+		return Objects.hash(apellidosUsuario, claveUsuario, emailUsuario, expiracionToken, id, nombreUsuario, password,
 				password2, tlfUsuario, token);
 	}
 
@@ -124,7 +132,7 @@ public class UsuarioDTO {
 		UsuarioDTO other = (UsuarioDTO) obj;
 		return Objects.equals(apellidosUsuario, other.apellidosUsuario)
 				&& Objects.equals(claveUsuario, other.claveUsuario) && Objects.equals(emailUsuario, other.emailUsuario)
-				&& Objects.equals(expiracionToken, other.expiracionToken)
+				&& Objects.equals(expiracionToken, other.expiracionToken) && id == other.id
 				&& Objects.equals(nombreUsuario, other.nombreUsuario) && Objects.equals(password, other.password)
 				&& Objects.equals(password2, other.password2) && Objects.equals(tlfUsuario, other.tlfUsuario)
 				&& Objects.equals(token, other.token);
@@ -132,9 +140,13 @@ public class UsuarioDTO {
 
 	@Override
 	public String toString() {
-		return "UsuarioDTO [nombreUsuario=" + nombreUsuario + ", apellidosUsuario=" + apellidosUsuario + ", tlfUsuario="
+		return "UsuarioDTO [id=" + id + ", nombreUsuario=" + nombreUsuario + ", apellidosUsuario=" + apellidosUsuario + ", tlfUsuario="
 				+ tlfUsuario + ", emailUsuario=" + emailUsuario + ", claveUsuario=" + claveUsuario + ", token=" + token
 				+ ", password=" + password + ", password2=" + password2 + ", expiracionToken=" + expiracionToken + "]";
 	}
+
+	
+
+
 
 }

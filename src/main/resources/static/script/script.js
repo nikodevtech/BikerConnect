@@ -5,24 +5,24 @@ function revisarContraseña() {
     const contraseñaRegex = /^(?=.*\d).{8,}$/;
 
     if (contraseña === "" && confContraseña === "") {
-        mensajeContraseña.innerHTML = '<span class="badge bg-danger fs-5">No puede dejar los campos contraseñas vacíos</span>';
+        mensajeContraseña.innerHTML = '<span class="badge bg-danger">No puede dejar los campos contraseñas vacíos</span>';
         mensajeContraseña.style.color = 'red';
         document.getElementById("btnRegistro").disabled = true;
         btnRegistro.style.backgroundColor = "#959595"; 
     } else if (contraseña === confContraseña) {
         if (contraseñaRegex.test(contraseña)) {
-            mensajeContraseña.innerHTML = '<span class="badge bg-success fs-5">Contraseña válida</span>';
+            mensajeContraseña.innerHTML = '<span class="badge bg-success">Contraseña válida</span>';
             mensajeContraseña.style.color = 'green';
             document.getElementById("btnRegistro").disabled = false;
             btnRegistro.style.backgroundColor = "#5993d3"; 
         } else {
-            mensajeContraseña.innerHTML = '<span class="badge bg-danger fs-5">La contraseña debe tener al menos 8 caracteres con 1 número</span>';
+            mensajeContraseña.innerHTML = '<span class="badge bg-danger">La contraseña debe tener al menos 8 caracteres con 1 número</span>';
             mensajeContraseña.style.color = 'red';
             document.getElementById("btnRegistro").disabled = true;
             btnRegistro.style.backgroundColor = "#959595"; 
         }
     } else {
-        mensajeContraseña.innerHTML = '<span class="badge bg-danger fs-5">Las contraseñas introducidas no son iguales</span>';
+        mensajeContraseña.innerHTML = '<span class="badge bg-danger">Las contraseñas introducidas no son iguales</span>';
         mensajeContraseña.style.color = 'red';
         document.getElementById("btnRegistro").disabled = true;
         btnRegistro.style.backgroundColor = "#959595"; 
