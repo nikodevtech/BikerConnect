@@ -39,7 +39,7 @@ public class RecuperarPasswordControlador {
 			model.addAttribute("usuarioDTO", usuario);
 		} else {
 	        model.addAttribute("usuarioDTO", new UsuarioDTO()); 
-	        model.addAttribute("mensajeErrorTokenValidez", "Token no válido o usuario no encontrado");
+	        model.addAttribute("mensajeErrorTokenValidez", "El enlace de recuperación no válido o usuario no encontrado");
 	        return "solicitarRecuperacionPassword";
 		}
         return "recuperar";
@@ -58,11 +58,11 @@ public class RecuperarPasswordControlador {
 	    UsuarioDTO usuarioExistente = usuarioServicio.obtenerUsuarioPorToken(usuarioDTO.getToken());
 	    
 	    if (usuarioExistente == null) {
-	    	model.addAttribute("mensajeErrorTokenValidez", "Token no válido");
+	    	model.addAttribute("mensajeErrorTokenValidez", "El enlace de recuperación no válido");
 	        return "solicitarRecuperacionPassword";
 	    }
 	    if (usuarioExistente.getExpiracionToken().before(Calendar.getInstance())) {
-	        model.addAttribute("mensajeErrorTokenExpirado", "El token ha expirado");
+	        model.addAttribute("mensajeErrorTokenExpirado", "El enlace de recuperación ha expirado");
 	        return "solicitarRecuperacionPassword";
 	    }
 	    

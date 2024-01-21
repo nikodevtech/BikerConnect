@@ -4,6 +4,8 @@ import java.util.Calendar;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -178,6 +180,33 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Metodo que ejecuta la creacion de un usuario administrador con su rol de administrador
+	 */
+	private void inicializarUsuarioAdmin() {		
+		// Valida si ya se creó un usuario admin
+		if (!repositorio.existsByNombreApellidos("admin")) {
+			// Si no existe, crea un nuevo usuario con rol de administrador
+			Usuario admin = new Usuario();
+			admin.setNombreApellidos("admin");
+			admin.setPassword(passwordEncoder.encode("admin"));
+			admin.setCuentaConfirmada(true);
+			admin.setEmail("admin@bikerconnect.com");
+			admin.setTelefono("-");
+			admin.setRol("ROLE_ADMIN");
+			
+			repositorio.save(admin);
+		}
+	}
+
+	/**
+	 * Metodo que automatiza la creacion de un usuario administrador que se ejecuta la primera vez que se despliega la aplicacion
+	 */
+	@EventListener(ApplicationReadyEvent.class)
+	public void onApplicationReady() {
+		inicializarUsuarioAdmin();
 	}
 
 }

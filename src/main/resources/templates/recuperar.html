@@ -39,13 +39,5 @@
             </div>
         </form>
     </div>
-    <div id="mensajeErrorToken" th:text="${mensajeErrorTokenValidez}" style="display:none;"></div>
-    <script>
-        const mensajeErrorToken = document.getElementById('mensajeErrorToken').innerText;
-
-        if (mensajeErrorToken.trim() !== '') {
-            mostrarNotificacion("¡Error!", "Token no válido o usuario no encontrado", 'error');
-        }
-    </script> 
 </body>
 </html>

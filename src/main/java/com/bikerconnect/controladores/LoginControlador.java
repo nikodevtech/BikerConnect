@@ -49,7 +49,7 @@ public class LoginControlador {
 	        model.addAttribute("nombreUsuario", authentication.getName());
 	        return "cuentaDeUsuario";
 	    } else {
-	    	 model.addAttribute("cuentaNoVerificada", "Error al confirmar la cuenta");
+	    	 model.addAttribute("cuentaNoVerificada", "Error al confirmar su email");
 	        return "login";
 	    }
 	}
@@ -68,9 +68,9 @@ public class LoginControlador {
         boolean confirmacionExitosa = usuarioServicio.confirmarCuenta(token);
 
         if (confirmacionExitosa) {
-            model.addAttribute("cuentaVerificada", "La cuenta ha sido confirmada correctamente");
+            model.addAttribute("cuentaVerificada", "Su dirección de correo ha sido confirmada correctamente");
         } else {
-            model.addAttribute("cuentaNoVerificada", "Error al confirmar la cuenta");
+            model.addAttribute("cuentaNoVerificada", "Error al confirmar su email");
         }
 
         return "login";

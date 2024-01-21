@@ -30,7 +30,7 @@ public class EmailServicioImpl implements IEmailServicio {
 
 	            helper.setFrom("nikoalvarezzapata@gmail.com");
 	            helper.setTo(emailDestino);
-	            helper.setSubject("RESTABLECER CONTRASEÑA BIKERCONNECT");
+	            helper.setSubject("Recuperación de contraseña BikerConnect");
 
 	            String urlDominio = "http://localhost:8080";
 	            String urlDeRecuperacion = String.format("%s/auth/recuperar?token=%s", urlDominio, token);
@@ -65,7 +65,7 @@ public class EmailServicioImpl implements IEmailServicio {
 
             helper.setFrom("nikoalvarezzapata@gmail.com");
             helper.setTo(emailDestino);
-            helper.setSubject("CONFIRMACIÓN DE CUENTA BIKERCONNECT");
+            helper.setSubject("Confirmación de cuenta BikerConnect");
 
             String urlDominio = "http://localhost:8080";
             String urlDeConfirmacion = String.format("%s/auth/confirmar-cuenta?token=%s", urlDominio, token);

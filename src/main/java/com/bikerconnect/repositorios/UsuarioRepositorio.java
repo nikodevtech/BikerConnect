@@ -19,13 +19,19 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 	 */
 	public Usuario findFirstByEmail(String email);
 	
-	
 	/**
 	 * Busca un usuario por su token de recuperación.
 	 * @param token de recuperacion del usuario que se le estableció cuando se inicio el proceso de recuperacion
 	 * @return el usuario buscado por el token
 	 */
 	public Usuario findByToken(String token);
+	
+	/**
+	 * Comprueba si existe un usuario con el nombre dado por parametro.
+	 * @param nombreUsuario El nombre de usuario del usuario a buscar.
+	 * @return true si existe un usuario con el nombre de usuario especificado, false en caso contrario.
+	 */
+	public boolean existsByNombreApellidos(String nombreApellidos);
 	
 
 

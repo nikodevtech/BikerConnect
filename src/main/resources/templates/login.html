@@ -63,13 +63,13 @@
         </form>
     </div>
    	<script th:if="${not #strings.isEmpty(mensajeRegistroExitoso)}">
-	    mostrarNotificacion("¡Email de confirmación enviado!", "Debe confirmar su correo electrónico para poder iniciar sesión", 'info');
+	    mostrarNotificacion("¡Email de confirmación enviado!", "Revise su bandeja de entrada y confirme su cuenta de correo electrónico.", 'info');
 	</script>
 	<script th:if="${param.error}">
-	    mostrarNotificacion("¡Credenciales incorrectas!","No se pudo iniciar sesión. Los datos introducidos no son correctos", 'error');
+	    mostrarNotificacion("¡No se pudo iniciar sesión!","Correo electrónico o contraseña incorrecta", 'error');
 	</script>
 	<script th:if="${not #strings.isEmpty(mensajeExitoMail)}">
-	    mostrarNotificacion("¡Email de recuperación enviado!", "Revise su bandeja de entrada y sigua las instrucciones", 'info');
+	    mostrarNotificacion("¡Email de recuperación enviado!", "Revise su bandeja de entrada y sigua las instrucciones para restablecer su contraseña", 'info');
 	</script>
 	<script th:if="${not #strings.isEmpty(contraseñaModificadaExito)}">
 	    mostrarNotificacion("¡Contraseña modificada con exito!", "Ya puede iniciar sesión con su nueva contraseña", 'success');
@@ -78,7 +78,7 @@
 	    mostrarNotificacion("¡Cuenta verificada!", "La cuenta ha sido confirmada correctamente. Ya puede iniciar sesión", 'success');
 	</script>
 	<script th:if="${not #strings.isEmpty(cuentaNoVerificada)}">
-	    mostrarNotificacion("¡Debe confirmar su cuenta!","Para poder iniciar sesión, antes debe confirmar su cuenta.", 'error');
+	    mostrarNotificacion("¡Debe confirmar su correo electrónico!","Para poder iniciar sesión, antes debe confirmar su cuenta de correo electrónico.", 'error');
 	</script>
 </body>
 </html>
