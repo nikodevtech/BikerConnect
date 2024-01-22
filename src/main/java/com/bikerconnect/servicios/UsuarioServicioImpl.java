@@ -217,4 +217,19 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		return toDto.listaUsuarioToDto(repositorio.findAll());
 	}
 
+	@Override
+	public Usuario buscarPorId(long id) {
+		return repositorio.findById(id).orElse(null);
+	}
+
+	@Override
+	public Usuario eliminar(long id) {
+		Usuario usuario = repositorio.findById(id).orElse(null);
+		if (usuario != null) {
+			repositorio.delete(usuario);
+		} 
+		return usuario;
+		
+	}
+
 }

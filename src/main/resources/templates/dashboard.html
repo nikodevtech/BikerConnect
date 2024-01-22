@@ -40,5 +40,8 @@
 	<script th:if="${not #strings.isEmpty(noAdmin)}">
 	    mostrarNotificacion("¡Recurso prohibido!", "No tiene los permisos suficientes para acceder a este recurso", 'error');
 	</script>
+	<script th:if="${not #strings.isEmpty(noSePuedeEliminar)}">
+	    mostrarNotificacion("¡Error!","No se puede eliminar a un usuario con permisos de administrador", 'error');
+	</script>
 </body>
 </html>

@@ -77,7 +77,7 @@ function confirmarEliminar(event) {
     const idUsuario = event.currentTarget.getAttribute("data-id");
     confirmar().then(function (confirmado) {
         if (confirmado) {
-            window.location.href = 'http://localhost:8080/privada/eliminar/' + idUsuario;
+            window.location.href = 'http://localhost:8080/privada/eliminar-usuario/' + idUsuario;
         }
     });
 }

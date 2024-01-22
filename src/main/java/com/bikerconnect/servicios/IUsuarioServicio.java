@@ -4,6 +4,7 @@ package com.bikerconnect.servicios;
 import java.util.List;
 
 import com.bikerconnect.dtos.UsuarioDTO;
+import com.bikerconnect.entidades.Usuario;
 
 /**
  * Interfaz del servicio para la gestión de usuarios, donde se declaran los
@@ -60,6 +61,20 @@ public interface IUsuarioServicio {
 	 * @return la lista de todos los usuarios DTO
 	 */
 	public List<UsuarioDTO> obtenerTodos();
+	
+	/**
+	 * Busca a un usuario por su id asignado en la bbdd
+	 * @param id del usuario a buscar
+	 * @return El usuario buscado
+	 */
+	public Usuario buscarPorId(long id);
+	
+	/**
+	 * Elimina un usuario por su identificador
+	 * @param id del usuario
+	 * @return el usuario eliminado o null si no existe
+	 */
+	public Usuario eliminar(long id);
 	
 
 
