@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +21,8 @@
             </button>
             <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                 <ul class="navbar-nav me-5 ms-auto">
+					<li class="nav-item me-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a class="nav-link fw-bold text-white" th:href="@{/privada/administracion-usuarios}"><i class="bi bi-person-fill-gear"> Administrar usuarios</i></a>
                     <li class="nav-item me-3">
                         <form th:action="@{/auth/cerrar-sesion}" method="post" id="logoutForm">
 							<button type="button" class="btn buttonPrincipal" onclick="confirmarLogout()"><i class="bi bi-box-arrow-in-left"> Cerrar sesión</i></button>
@@ -34,6 +36,9 @@
     <h3 class="text-light text-center mt-5">Bienvenido <span th:text="${nombreUsuario}">usuario</span></h3>
 	<script th:if="${not #strings.isEmpty(credencialesCorrectas)}">
 	    mostrarNotificacion("¡Inicio de sesión correcto!", "Sa ha accedido a su cuenta de usuario", 'success');
+	</script>
+	<script th:if="${not #strings.isEmpty(noAdmin)}">
+	    mostrarNotificacion("¡Recurso prohibido!", "No tiene los permisos suficientes para acceder a este recurso", 'error');
 	</script>
 </body>
 </html>

@@ -38,7 +38,6 @@ public class RecuperarPasswordControlador {
 		if(usuario != null) {
 			model.addAttribute("usuarioDTO", usuario);
 		} else {
-	        model.addAttribute("usuarioDTO", new UsuarioDTO()); 
 	        model.addAttribute("mensajeErrorTokenValidez", "El enlace de recuperación no válido o usuario no encontrado");
 	        return "solicitarRecuperacionPassword";
 		}

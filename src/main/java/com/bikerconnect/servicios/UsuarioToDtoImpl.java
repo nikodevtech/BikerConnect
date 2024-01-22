@@ -17,27 +17,40 @@ import com.bikerconnect.entidades.Usuario;
 public class UsuarioToDtoImpl implements IUsuarioToDto {
 
 	@Override
-	public UsuarioDTO usuarioToDto(Usuario u) {
-		
-		try {
-			UsuarioDTO dto = new UsuarioDTO();
-			String[] nombreApellidos = u.getNombreApellidos().split(" ", 2);
-			dto.setNombreUsuario(nombreApellidos[0]);			
-			dto.setApellidosUsuario(nombreApellidos[1]);
-			dto.setTlfUsuario(u.getTelefono());
-			dto.setEmailUsuario(u.getEmail());
-			dto.setClaveUsuario(u.getPassword());
-			dto.setToken(u.getToken());
-			dto.setExpiracionToken(u.getExpiracionToken());
-			dto.setId(u.getId());
-			
-			return dto;
-		} catch (Exception e) {
-			System.out.println(
+    public UsuarioDTO usuarioToDto(Usuario u) {
+        try {
+            UsuarioDTO dto = new UsuarioDTO();
+            String[] nombreApellidos = u.getNombreApellidos().split(" ");
+
+            if (nombreApellidos.length > 0) {
+                dto.setNombreUsuario(nombreApellidos[0]);
+
+                if (nombreApellidos.length > 1) {
+                    StringBuilder apellidos = new StringBuilder();
+                    for (int i = 1; i < nombreApellidos.length; i++) {
+                        apellidos.append(nombreApellidos[i]).append(" ");
+                    }
+                    dto.setApellidosUsuario(apellidos.toString().trim());
+                }
+
+                dto.setTlfUsuario(u.getTelefono());
+                dto.setEmailUsuario(u.getEmail());
+                dto.setClaveUsuario(u.getPassword());
+                dto.setToken(u.getToken());
+                dto.setExpiracionToken(u.getExpiracionToken());
+                dto.setId(u.getId());
+				dto.setFechaRegistro(u.getFechaRegistro());
+				dto.setCuentaConfirmada(u.isCuentaConfirmada());
+				dto.setRol(u.getRol());
+            }
+
+            return dto;
+        } catch (Exception e) {
+        	System.out.println(
 					"\n[ERROR UsuarioToDtoImpl - usuarioToDto()] - Error al convertir usuario DAO a usuarioDTO (return null): "
 							+ e);
 			return null;
-		}
+        }
 	}
 	
 	@Override

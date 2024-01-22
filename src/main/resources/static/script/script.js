@@ -61,7 +61,7 @@ function confirmarLogout() {
 }
 function confirmar() {
     return Swal.fire({
-        title: '¿Estás seguro de que deseas eliminar?',
+        title: '¿Estás seguro de que deseas eliminar este usuario?',
         text: 'Esta acción es irreversible.',
         icon: 'warning',
         showCancelButton: true,

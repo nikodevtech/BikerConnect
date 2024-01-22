@@ -1,6 +1,8 @@
 package com.bikerconnect.servicios;
 
 
+import java.util.List;
+
 import com.bikerconnect.dtos.UsuarioDTO;
 
 /**
@@ -52,6 +54,12 @@ public interface IUsuarioServicio {
 	 * @return true si el usuario existe y su cuenta ha sido confirmada, false en caso contrario
 	 */
 	public boolean estaLaCuentaConfirmada(String email);
+
+	/**
+	 * Obtiene la lista de todos los usuarios registrados
+	 * @return la lista de todos los usuarios DTO
+	 */
+	public List<UsuarioDTO> obtenerTodos();
 	
 
 

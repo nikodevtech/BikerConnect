@@ -1,6 +1,7 @@
 package com.bikerconnect.servicios;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -196,6 +197,8 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			admin.setEmail("admin@bikerconnect.com");
 			admin.setTelefono("-");
 			admin.setRol("ROLE_ADMIN");
+			Calendar calendar = Calendar.getInstance();
+		    admin.setFechaRegistro(calendar);
 			
 			repositorio.save(admin);
 		}
@@ -207,6 +210,11 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 	@EventListener(ApplicationReadyEvent.class)
 	public void onApplicationReady() {
 		inicializarUsuarioAdmin();
+	}
+
+	@Override
+	public List<UsuarioDTO> obtenerTodos() {
+		return toDto.listaUsuarioToDto(repositorio.findAll());
 	}
 
 }

@@ -20,6 +20,9 @@ public class UsuarioDTO {
 	private String password;
 	private String password2;
 	private Calendar expiracionToken;
+	private Calendar fechaRegistro;
+	private boolean cuentaConfirmada;
+	private String rol;
 
 	// CONSTRUCTORES
 	public UsuarioDTO() {
@@ -114,11 +117,35 @@ public class UsuarioDTO {
 		this.expiracionToken = expiracionToken;
 	}
 
+	public Calendar getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Calendar fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public boolean isCuentaConfirmada() {
+		return cuentaConfirmada;
+	}
+
+	public void setCuentaConfirmada(boolean cuentaConfirmada) {
+		this.cuentaConfirmada = cuentaConfirmada;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	// METODOS
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellidosUsuario, claveUsuario, emailUsuario, expiracionToken, id, nombreUsuario, password,
-				password2, tlfUsuario, token);
+		return Objects.hash(apellidosUsuario, claveUsuario, cuentaConfirmada, emailUsuario, expiracionToken,
+				fechaRegistro, id, nombreUsuario, password, password2, rol, tlfUsuario, token);
 	}
 
 	@Override
@@ -131,22 +158,23 @@ public class UsuarioDTO {
 			return false;
 		UsuarioDTO other = (UsuarioDTO) obj;
 		return Objects.equals(apellidosUsuario, other.apellidosUsuario)
-				&& Objects.equals(claveUsuario, other.claveUsuario) && Objects.equals(emailUsuario, other.emailUsuario)
-				&& Objects.equals(expiracionToken, other.expiracionToken) && id == other.id
+				&& Objects.equals(claveUsuario, other.claveUsuario) && cuentaConfirmada == other.cuentaConfirmada
+				&& Objects.equals(emailUsuario, other.emailUsuario)
+				&& Objects.equals(expiracionToken, other.expiracionToken)
+				&& Objects.equals(fechaRegistro, other.fechaRegistro) && id == other.id
 				&& Objects.equals(nombreUsuario, other.nombreUsuario) && Objects.equals(password, other.password)
-				&& Objects.equals(password2, other.password2) && Objects.equals(tlfUsuario, other.tlfUsuario)
-				&& Objects.equals(token, other.token);
+				&& Objects.equals(password2, other.password2) && Objects.equals(rol, other.rol)
+				&& Objects.equals(tlfUsuario, other.tlfUsuario) && Objects.equals(token, other.token);
 	}
 
 	@Override
 	public String toString() {
-		return "UsuarioDTO [id=" + id + ", nombreUsuario=" + nombreUsuario + ", apellidosUsuario=" + apellidosUsuario + ", tlfUsuario="
-				+ tlfUsuario + ", emailUsuario=" + emailUsuario + ", claveUsuario=" + claveUsuario + ", token=" + token
-				+ ", password=" + password + ", password2=" + password2 + ", expiracionToken=" + expiracionToken + "]";
+		return "UsuarioDTO [id=" + id + ", nombreUsuario=" + nombreUsuario + ", apellidosUsuario=" + apellidosUsuario
+				+ ", tlfUsuario=" + tlfUsuario + ", emailUsuario=" + emailUsuario + ", claveUsuario=" + claveUsuario
+				+ ", token=" + token + ", password=" + password + ", password2=" + password2 + ", expiracionToken="
+				+ expiracionToken + ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada
+				+ ", rol=" + rol + "]";
 	}
-
-	
-
 
 
 }

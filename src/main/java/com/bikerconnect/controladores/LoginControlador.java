@@ -39,7 +39,7 @@ public class LoginControlador {
 	 * @return La vista de cuenta de usuario (cuentaDeUsuario.html) si la cuenta fue confirmada 
 	 * 		   o la vista de inicio de sesión (login.html).
 	 */
-	@GetMapping("/privada/cuenta-usuario")
+	@GetMapping("/privada/dashboard")
 	public String loginCorrecto(Model model, Authentication authentication) {
 
 	    boolean cuentaConfirmada = usuarioServicio.estaLaCuentaConfirmada(authentication.getName());    
@@ -47,7 +47,7 @@ public class LoginControlador {
 	    if (cuentaConfirmada) {
 	        model.addAttribute("credencialesCorrectas", "Credenciales correctas, bienvenido");
 	        model.addAttribute("nombreUsuario", authentication.getName());
-	        return "cuentaDeUsuario";
+	        return "dashboard";
 	    } else {
 	    	 model.addAttribute("cuentaNoVerificada", "Error al confirmar su email");
 	        return "login";
