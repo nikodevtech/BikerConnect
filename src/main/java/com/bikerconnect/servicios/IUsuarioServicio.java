@@ -65,9 +65,9 @@ public interface IUsuarioServicio {
 	/**
 	 * Busca a un usuario por su id asignado en la bbdd
 	 * @param id del usuario a buscar
-	 * @return El usuario buscado
+	 * @return El usuario buscado como DTO
 	 */
-	public Usuario buscarPorId(long id);
+	public UsuarioDTO buscarPorId(long id);
 	
 	/**
 	 * Elimina un usuario por su identificador
@@ -75,6 +75,13 @@ public interface IUsuarioServicio {
 	 * @return el usuario eliminado o null si no existe
 	 */
 	public Usuario eliminar(long id);
+	
+	/**
+	 * 
+	 * @param usuario
+	 * @return
+	 */
+	public void actualizarUsuario(UsuarioDTO usuario);
 	
 
 

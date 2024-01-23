@@ -146,8 +146,6 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 
 		return false;
 	}
-	
-	
 
 	@Override
 	public boolean confirmarCuenta(String token) {
@@ -162,7 +160,8 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 
 				return true;
 			} else {
-				System.out.println("[Error UsuarioServicioImpl - confirmarCuenta()] La cuenta no existe o ya está confirmada");
+				System.out.println(
+						"[Error UsuarioServicioImpl - confirmarCuenta()] La cuenta no existe o ya está confirmada");
 				return false;
 			}
 		} catch (IllegalArgumentException iae) {
@@ -182,11 +181,12 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * Metodo que ejecuta la creacion de un usuario administrador con su rol de administrador
+	 * Metodo que ejecuta la creacion de un usuario administrador con su rol de
+	 * administrador
 	 */
-	private void inicializarUsuarioAdmin() {		
+	private void inicializarUsuarioAdmin() {
 		// Valida si ya se creó un usuario admin
 		if (!repositorio.existsByNombreApellidos("admin")) {
 			// Si no existe, crea un nuevo usuario con rol de administrador
@@ -198,14 +198,15 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			admin.setTelefono("-");
 			admin.setRol("ROLE_ADMIN");
 			Calendar calendar = Calendar.getInstance();
-		    admin.setFechaRegistro(calendar);
-			
+			admin.setFechaRegistro(calendar);
+
 			repositorio.save(admin);
 		}
 	}
 
 	/**
-	 * Metodo que automatiza la creacion de un usuario administrador que se ejecuta la primera vez que se despliega la aplicacion
+	 * Metodo que automatiza la creacion de un usuario administrador que se ejecuta
+	 * la primera vez que se despliega la aplicacion
 	 */
 	@EventListener(ApplicationReadyEvent.class)
 	public void onApplicationReady() {
@@ -218,8 +219,8 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 	}
 
 	@Override
-	public Usuario buscarPorId(long id) {
-		return repositorio.findById(id).orElse(null);
+	public UsuarioDTO buscarPorId(long id) {
+		return toDto.usuarioToDto(repositorio.findById(id).orElse(null));
 	}
 
 	@Override
@@ -227,9 +228,22 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		Usuario usuario = repositorio.findById(id).orElse(null);
 		if (usuario != null) {
 			repositorio.delete(usuario);
-		} 
+		}
 		return usuario;
-		
+
 	}
+
+	public void actualizarUsuario(UsuarioDTO usuarioDTO) {
+
+		Usuario existente = repositorio.findById(usuarioDTO.getId()).orElse(null);
+
+		existente.setEmail(usuarioDTO.getEmailUsuario());
+		existente.setNombreApellidos(usuarioDTO.getNombreUsuario() + " " + usuarioDTO.getApellidosUsuario());
+		existente.setTelefono(usuarioDTO.getTlfUsuario());
+
+		repositorio.save(existente);
+	}
+
+
 
 }

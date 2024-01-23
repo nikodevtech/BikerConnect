@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+    <script th:src="@{/script/script.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>   
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white">
+        <div class="container-fluid ms-5">
+            <a class="navbar-brand text-white" th:href="@{/bienvenida}"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
+                <ul class="navbar-nav me-5 ms-auto">
+                    <li class="nav-item me-3">
+                        <a class="nav-link fw-bold text-white" th:href="@{/auth/iniciar-sesion}"><i class="bi bi-box-arrow-in-right fs-5"> Iniciar sesión</i></a>
+                    </li>               
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="registro">
+        <form class="custom-form" th:action="@{/auth/crear-cuenta}" enctype="multipart/form-data" method="post" th:object="${usuarioDTO}">
+		 
+          <h2 class="text-center mb-5"><i class="bi bi-person-vcard-fill" style="color: #1f3c85;"> Registro nuevo usuario</i></h2>
+          <div class="mb-3">
+            <label for="email" class="form-label textoPrincipal">Correo Electrónico</label>
+            <input
+              th:field="*{emailUsuario}"
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Escribe tu correo electrónico"
+              required           
+            />
+          </div>
+		  <div class="mb-3">
+          	<label for="password" class="form-label textoPrincipal">Contraseña</label>
+            <input
+               th:field="*{claveUsuario}"
+               type="password"
+               id="password"
+               name="password"
+               class="form-control"
+               placeholder="Escribe tu contraseña"
+               required
+               oninput="revisarContraseña()"
+            />
+           </div>
+           <div class="mb-3">
+           	<label for="confirmarPassword" class="form-label textoPrincipal">Confirmar Contraseña</label>
+            <input
+               type="password"
+               id="confirmarPassword"
+               name="confirmarPassword"
+               class="form-control"
+               placeholder="Repite tu contraseña"
+               required
+               oninput="revisarContraseña()"
+            />
+          </div>
+          <hr class="border border-primary border-2 opacity-80 mt-5 mb-5">
+          <div class="mb-3">
+            <label for="nombre" class="form-label textoPrincipal">Nombre</label>
+            <input
+              th:field="*{nombreUsuario}"
+              type="text"
+              id="nombre"
+              name="nombre"
+              class="form-control"
+              placeholder="Escribe tu nombre"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="apellidos" class="form-label textoPrincipal">Apellidos</label>
+            <input
+			  th:field="*{apellidosUsuario}"
+              type="text"
+              id="apellidos"
+              name="apellidos"
+              class="form-control"
+              placeholder="Escribe tus apellidos"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label textoPrincipal">Teléfono</label>
+            <input
+              th:field="*{tlfUsuario}"
+              type="tel"
+              id="telefono"
+              name="telefono"
+              class="form-control"
+              placeholder="Escribe tu número de teléfono"
+              required
+            />
+          </div>
+          <button type="submit" id="btnRegistro" class="btn btn-primary mt-5"><i class="bi bi-person-add fs-5"> Crear cuenta</i></button>
+          <div class="mensajeContrasenya mt-4 text-center " id="mensajeContrasenya"></div>
+        </form>
+      </div>
+      <script th:if="${not #strings.isEmpty(emailYaRegistrado)}">
+	    	mostrarNotificacion("¡Error al crear cuenta!", "El email introducido ya se encuentra registrado en el sistema", 'error');
+	  </script>  
+</body>
+</html>

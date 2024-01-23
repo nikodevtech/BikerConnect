@@ -63,7 +63,7 @@
 							<td th:text="${usuario.cuentaConfirmada ? 'Sí' : 'No'}"></td>
 							<td th:text="${usuario.rol == 'ROLE_USER' ? 'USER' : 'ADMIN'}"></td>							
 							<td sec:authorize="hasRole('ROLE_ADMIN')">
-								<a class="btn btn-success" th:href="@{/privada/editar-usuario/} + ${usuario.id}">
+								<a class="btn btn-success" th:href="@{/form/} + ${usuario.id}">
 									<i class="bi bi-pencil-square"> Editar</i>
 								</a>
 							</td>
@@ -80,9 +80,6 @@
 	</div>
 	<script th:if="${not #strings.isEmpty(noSePuedeEliminar)}">
 	    mostrarNotificacion("¡Error!","No se puede eliminar a un usuario con permisos de administrador", 'error');
-	</script>
-	<script th:if="${not #strings.isEmpty(eliminacionCorrecta)}">
-	    mostrarNotificacion("¡Usuario eliminado!","El usuario ha sido eliminado correctamente", 'success');
 	</script>
 </body>
 </html>
