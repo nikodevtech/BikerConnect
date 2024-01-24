@@ -43,10 +43,14 @@ public class RegistroControlador {
 		
 		UsuarioDTO nuevoUsuario = usuarioServicio.registrarUsuario(usuarioDTO);
 		
-		if (nuevoUsuario != null) { // Si entra a este if es que el registro se completo correctamente
+		if (nuevoUsuario != null && !nuevoUsuario.isCuentaConfirmada()) { // Si entra a este if es que el registro se completo correctamente
 			model.addAttribute("mensajeRegistroExitoso", "Registro del nuevo usuario OK");
 			return "login";
-		} else { // De lo contrario, es que ya existe un usuario con el dicho email
+		} else if(nuevoUsuario.isCuentaConfirmada()) {
+			model.addAttribute("mensajeRegistroExitoso", "Registro del nuevo usuario OK");
+			model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
+			return "administracionUsuarios";			
+		} else  { // De lo contrario, es que ya existe un usuario con el dicho email
 			model.addAttribute("emailYaRegistrado", "Ya existe un usuario con ese email");
 			return "registro";
 		}

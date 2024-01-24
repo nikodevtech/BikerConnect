@@ -56,18 +56,22 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			Usuario usuarioDao = toDao.usuarioToDao(userDto);
 			usuarioDao.setFechaRegistro(Calendar.getInstance());
 			usuarioDao.setRol("ROLE_USER");
-			usuarioDao.setCuentaConfirmada(false);
+			if (userDto.isCuentaConfirmada()) {
+				usuarioDao.setCuentaConfirmada(true);
+				repositorio.save(usuarioDao);
+			} else {
+				usuarioDao.setCuentaConfirmada(false);
+				// Generar token de confirmación
+				String token = passwordEncoder.encode(RandomStringUtils.random(30));
+				usuarioDao.setToken(token);
 
-			// Generar token de confirmación
-			String token = passwordEncoder.encode(RandomStringUtils.random(30));
-			usuarioDao.setToken(token);
+				// Guardar el usuario en la base de datos
+				repositorio.save(usuarioDao);
 
-			// Guardar el usuario en la base de datos
-			repositorio.save(usuarioDao);
-
-			// Enviar el correo de confirmación
-			String nombreUsuario = usuarioDao.getNombreApellidos();
-			emailServicio.enviarEmailConfirmacion(userDto.getEmailUsuario(), nombreUsuario, token);
+				// Enviar el correo de confirmación
+				String nombreUsuario = usuarioDao.getNombreApellidos();
+				emailServicio.enviarEmailConfirmacion(userDto.getEmailUsuario(), nombreUsuario, token);
+			}
 
 			return userDto;
 		} catch (IllegalArgumentException iae) {
@@ -240,6 +244,7 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		existente.setEmail(usuarioDTO.getEmailUsuario());
 		existente.setNombreApellidos(usuarioDTO.getNombreUsuario() + " " + usuarioDTO.getApellidosUsuario());
 		existente.setTelefono(usuarioDTO.getTlfUsuario());
+		existente.setRol(usuarioDTO.getRol());
 
 		repositorio.save(existente);
 	}
