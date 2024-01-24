@@ -62,6 +62,7 @@ h1 {
 .logo {
 	max-width: 230px;
 	height: auto;
+	margin-left: 20px;
 }
 
 .tituloPrincipal {
