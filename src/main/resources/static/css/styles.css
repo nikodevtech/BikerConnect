@@ -19,7 +19,7 @@ h1 {
 
 .custom-form {
 	min-width: 300px;
-	max-width: 60%;
+	max-width: 50%;
 	margin: 0px auto;
 	background: rgba(255, 255, 255, 0.15);
 	padding: 2rem 3rem;
@@ -38,7 +38,7 @@ h1 {
 	padding: 1rem;
 	border: none;
 	box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8),
-		inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+		inset 5px 5px 10px rgba(0, 0, 0, 0.25);
 	border: 0 none;
 	background: #ebf5fc;
 }
@@ -95,6 +95,14 @@ h1 {
 	/* Sombra de texto personalizada */
 }
 
+.subtituloSecundario {
+	font-family: 'Kalam', cursive;
+	font-size: 1.5rem;
+	color: #1f3c85;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+	margin-top: 10px;
+}
+
 .listaLogin {
 	list-style-type: disc;
 	color: #1f3c85;
@@ -122,6 +130,10 @@ h1 {
 .buttonPrincipal:active {
 	background-color: white !important;
 	color: #1f3c85 !important;
+}
+
+.dashboardCard {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); 
 }
 
 .custom-checkbox {

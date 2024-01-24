@@ -200,7 +200,7 @@ public class Usuario {
 		return "Usuario [id=" + id + ", nombreApellidos=" + nombreApellidos + ", email=" + email + ", password="
 				+ password + ", telefono=" + telefono + ", token=" + token + ", expiracionToken=" + expiracionToken
 				+ ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada + ", rol=" + rol
-				+ ", foto=" + foto + ", motosPropias=" + motosPropias.toString() + "]";
+				+ ", foto=" + foto + "]";
 	}	
 	
 
