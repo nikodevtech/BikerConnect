@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +22,10 @@
             <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                 <ul class="navbar-nav me-5 ms-auto">
                     <li class="nav-item me-3">
-                        <a class="nav-link fw-bold text-white" th:href="@{/auth/iniciar-sesion}"><i class="bi bi-box-arrow-in-right fs-5"> Iniciar sesión</i></a>
+                        <a class="nav-link fw-bold text-white" th:href="@{/auth/iniciar-sesion}" th:if="${not #authorization.expression('isAuthenticated()')}"><i class="bi bi-box-arrow-in-right fs-5"> Iniciar sesión</i></a>
                     </li>
                     <li class="nav-item">
-						<a  class="nav-link fw-bold text-white" th:href="@{/privada/administracion-usuarios}" sec:authorize='hasAnyRole("ROLE_ADMIN")'><i class="bi bi-arrow-return-left fs-5"> Volver</i></a>
+						<a  class="nav-link fw-bold text-white" th:href="@{/privada/administracion-usuarios}" sec:authorize='hasAnyRole("ROLE_ADMIN")'><i class="bi bi-person-fill-gear fs-5"> Administración usuarios</i></a>
 					</li>            
                 </ul>
             </div>

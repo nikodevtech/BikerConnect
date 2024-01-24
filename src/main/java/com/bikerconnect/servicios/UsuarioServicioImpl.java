@@ -14,6 +14,7 @@ import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.entidades.Usuario;
 import com.bikerconnect.repositorios.UsuarioRepositorio;
 
+import jakarta.persistence.PersistenceException;
 import jakarta.transaction.Transactional;
 
 /**
@@ -75,9 +76,9 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 
 			return userDto;
 		} catch (IllegalArgumentException iae) {
-			System.out.println("[Error UsuarioServicioImpl - registrarUsuario() ]" + iae.getMessage());
-		} catch (Exception e) {
-			System.out.println("[Error UsuarioServicioImpl - registrarUsuario() ]" + e.getMessage());
+			System.out.println("[Error UsuarioServicioImpl - registrarUsuario()] Argumento no valido al registrar usuario " + iae.getMessage());
+		} catch (PersistenceException e) {
+			System.out.println("[Error UsuarioServicioImpl - registrarUsuario()] Error de persistencia al registrar usuario " + e.getMessage());
 		}
 		return null;
 	}
@@ -106,48 +107,54 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 				return true;
 
 			} else {
-				System.out.println("[Error UsuarioServicioImpl - iniciarProcesoRecuperacion()] El usuario con email "
-						+ emailUsuario + " no existe");
+				System.out.println("El usuario con email "+ emailUsuario + " no existe");
 				return false;
 			}
 		} catch (IllegalArgumentException iae) {
-			System.out.println("[Error UsuarioServicioImpl - iniciarProcesoRecuperacion() ]" + iae.getMessage());
+			System.out.println("[Error UsuarioServicioImpl - iniciarProcesoRecuperacion()] Argumento no valido al iniciar el proceso de recuperación" + iae.getMessage());
 			return false;
-		} catch (Exception e) {
-			System.out.println("[Error UsuarioServicioImpl - iniciarProcesoRecuperacion()]" + e.getMessage());
+		} catch (PersistenceException e) {
+			System.out.println("[Error UsuarioServicioImpl - iniciarProcesoRecuperacion()] Error de persistencia al iniciar el proceso de recuperación de contraseña" + e.getMessage());
 			return false;
 		}
 	}
 
 	@Override
 	public UsuarioDTO obtenerUsuarioPorToken(String token) {
-		Usuario usuarioExistente = repositorio.findByToken(token);
+		try {
+			Usuario usuarioExistente = repositorio.findByToken(token);
 
-		if (usuarioExistente != null) {
-			UsuarioDTO usuario = toDto.usuarioToDto(usuarioExistente);
-			return usuario;
-		} else {
-			System.out.println("No existe el usuario con el token " + token);
+			if (usuarioExistente != null) {
+				UsuarioDTO usuario = toDto.usuarioToDto(usuarioExistente);
+				return usuario;
+			} else {
+				System.out.println("No existe el usuario con el token " + token);
+				return null;
+			}
+		} catch (Exception e) {
+			System.out.println("[Error UsuarioServicioImpl - obtenerUsuarioPorToken()] Error al obtener usuario por token " + e.getMessage());
 			return null;
 		}
-
 	}
 
 	@Override
 	public boolean modificarContraseñaConToken(UsuarioDTO usuario) {
+		try {
+			Usuario usuarioExistente = repositorio.findByToken(usuario.getToken());
 
-		Usuario usuarioExistente = repositorio.findByToken(usuario.getToken());
+			if (usuarioExistente != null) {
+				String nuevaContraseña = passwordEncoder.encode(usuario.getPassword());
+				usuarioExistente.setPassword(nuevaContraseña);
+				usuarioExistente.setToken(null); // Se setea a null para invalidar el token ya consumido al cambiar de
+													// password
+				repositorio.save(usuarioExistente);
 
-		if (usuarioExistente != null) {
-			String nuevaContraseña = passwordEncoder.encode(usuario.getPassword());
-			usuarioExistente.setPassword(nuevaContraseña);
-			usuarioExistente.setToken(null); // Se setea a null para invalidar el token ya consumido al cambiar de
-												// password
-			repositorio.save(usuarioExistente);
+				return true;
+			}
 
-			return true;
+		} catch (Exception e) {
+			System.out.println("[Error UsuarioServicioImpl - modificarContraseñaConToken()] Error al modificar el password con el token " + e.getMessage());
 		}
-
 		return false;
 	}
 
@@ -164,25 +171,28 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 
 				return true;
 			} else {
-				System.out.println(
-						"[Error UsuarioServicioImpl - confirmarCuenta()] La cuenta no existe o ya está confirmada");
+				System.out.println("La cuenta no existe o ya está confirmada");
 				return false;
 			}
 		} catch (IllegalArgumentException iae) {
-			System.out.println("[Error UsuarioServicioImpl - confirmarCuenta()] " + iae.getMessage());
+			System.out.println("[Error UsuarioServicioImpl - confirmarCuenta()] Error al confirmar la cuenta " + iae.getMessage());
 			return false;
-		} catch (Exception e) {
-			System.out.println("[Error UsuarioServicioImpl - confirmarCuenta()]" + e.getMessage());
+		} catch (PersistenceException e) {
+			System.out.println("[Error UsuarioServicioImpl - confirmarCuenta()] Error de persistencia al confirmar la cuenta" + e.getMessage());
 			return false;
 		}
 	}
 
 	@Override
 	public boolean estaLaCuentaConfirmada(String email) {
-		Usuario usuarioExistente = repositorio.findFirstByEmail(email);
-		if (usuarioExistente != null && usuarioExistente.isCuentaConfirmada()) {
-			return true;
-		}
+		try {
+			Usuario usuarioExistente = repositorio.findFirstByEmail(email);
+			if (usuarioExistente != null && usuarioExistente.isCuentaConfirmada()) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println("[Error UsuarioServicioImpl - estaLaCuentaConfirmada()] Error al comprobar si la cuenta ya ha sido confirmada" + e.getMessage());
+		}	
 		return false;
 	}
 
@@ -191,21 +201,26 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 	 * administrador
 	 */
 	private void inicializarUsuarioAdmin() {
-		// Valida si ya se creó un usuario admin
-		if (!repositorio.existsByNombreApellidos("admin")) {
-			// Si no existe, crea un nuevo usuario con rol de administrador
-			Usuario admin = new Usuario();
-			admin.setNombreApellidos("admin");
-			admin.setPassword(passwordEncoder.encode("admin"));
-			admin.setCuentaConfirmada(true);
-			admin.setEmail("admin@bikerconnect.com");
-			admin.setTelefono("-");
-			admin.setRol("ROLE_ADMIN");
-			Calendar calendar = Calendar.getInstance();
-			admin.setFechaRegistro(calendar);
+		try {
+			// Valida si ya se creó un usuario admin
+			if (!repositorio.existsByNombreApellidos("admin")) {
+				// Si no existe, crea un nuevo usuario con rol de administrador
+				Usuario admin = new Usuario();
+				admin.setNombreApellidos("admin");
+				admin.setPassword(passwordEncoder.encode("admin"));
+				admin.setCuentaConfirmada(true);
+				admin.setEmail("admin@bikerconnect.com");
+				admin.setTelefono("-");
+				admin.setRol("ROLE_ADMIN");
+				Calendar calendar = Calendar.getInstance();
+				admin.setFechaRegistro(calendar);
 
-			repositorio.save(admin);
+				repositorio.save(admin);
+			}
+		} catch (PersistenceException e) {
+			System.out.println("[Error UsuarioServicioImpl - inicializarUsuarioAdmin()] Error de persistencia al inicializar el usuario administrador" + e.getMessage());
 		}
+		
 	}
 
 	/**
@@ -224,36 +239,59 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 
 	@Override
 	public UsuarioDTO buscarPorId(long id) {
-		return toDto.usuarioToDto(repositorio.findById(id).orElse(null));
+		try {
+			Usuario usuario = repositorio.findById(id).orElse(null);
+			if (usuario != null) {
+				toDto.usuarioToDto(usuario);
+			}
+		} catch (IllegalArgumentException iae) {
+			System.out.println("[Error UsuarioServicioImpl - buscarPorId()] Al buscar el usuario por su id " + iae.getMessage());
+		}
+		return null;
 	}
 
 	@Override
-	public UsuarioDTO eliminar(long id) {
-		Usuario usuario = repositorio.findById(id).orElse(null);
-		if (usuario != null) {
-			repositorio.delete(usuario);
-		}
-		return toDto.usuarioToDto(usuario);
-
+	public void eliminar(long id) {
+		try {
+			Usuario usuario = repositorio.findById(id).orElse(null);
+			if (usuario != null) {
+				repositorio.delete(usuario);
+			}
+		} catch (IllegalArgumentException iae) {
+			System.out.println("[Error UsuarioServicioImpl - eliminar()] Al eliminar el usuario por su id " + iae.getMessage());
+		} 
 	}
 
-	public void actualizarUsuario(UsuarioDTO usuarioDTO) {
+	@Override
+	public void actualizarUsuario(UsuarioDTO usuarioModificado) {
 
-		Usuario existente = repositorio.findById(usuarioDTO.getId()).orElse(null);
+		try {
+			Usuario usuarioActual = repositorio.findById(usuarioModificado.getId()).orElse(null);
 
-		existente.setEmail(usuarioDTO.getEmailUsuario());
-		existente.setNombreApellidos(usuarioDTO.getNombreUsuario() + " " + usuarioDTO.getApellidosUsuario());
-		existente.setTelefono(usuarioDTO.getTlfUsuario());
-		existente.setRol(usuarioDTO.getRol());
+			usuarioActual.setEmail(usuarioModificado.getEmailUsuario());
+			usuarioActual.setNombreApellidos(usuarioModificado.getNombreUsuario() + " " + usuarioModificado.getApellidosUsuario());
+			usuarioActual.setTelefono(usuarioModificado.getTlfUsuario());
+			usuarioActual.setRol(usuarioModificado.getRol());
+			usuarioActual.setCuentaConfirmada(usuarioModificado.isCuentaConfirmada());
 
-		repositorio.save(existente);
+			repositorio.save(usuarioActual);
+		} catch (PersistenceException pe) {
+			System.out.println("[Error UsuarioServicioImpl - actualizarUsuario()] Al modificar el usuario " + pe.getMessage());
+			
+		}
+		
 	}
 	
+	@Override
 	public UsuarioDTO buscarPorEmail(String email) {
-		Usuario usuario = repositorio.findFirstByEmail(email);
-		if (usuario != null) {
-			return toDto.usuarioToDto(repositorio.findFirstByEmail(email));
-		}
+		try {
+			Usuario usuario = repositorio.findFirstByEmail(email);
+			if (usuario != null) {
+				return toDto.usuarioToDto(usuario);
+			}
+		} catch (Exception e) {
+			System.out.println("[Error UsuarioServicioImpl - buscarPorEmail()] Al buscar el usuario por su email " + e.getMessage());
+		}	
 		return null;
 	}
 

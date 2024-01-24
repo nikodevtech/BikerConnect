@@ -71,16 +71,15 @@ public interface IUsuarioServicio {
 	
 	/**
 	 * Elimina un usuario por su identificador
-	 * @param id del usuario
-	 * @return el usuario eliminado o null si no existe
+	 * @param id del usuario a eliminar
 	 */
-	public UsuarioDTO eliminar(long id);
+	public void eliminar(long id);
 	
 	/**
 	 * Modifica un usuario en la bbdd
 	 * @param usuario el usuario con los datos modificados
 	 */
-	public void actualizarUsuario(UsuarioDTO usuario);
+	public void actualizarUsuario(UsuarioDTO usuarioModificado);
 
 	/**
 	 * Busca un usuario por su email
