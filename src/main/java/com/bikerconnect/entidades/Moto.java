@@ -36,7 +36,7 @@ public class Moto {
     private String descModificaciones;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario_propietario_fk")
+    @JoinColumn(name = "id_usuario_propietario")
     private Usuario usuarioPropietario;
     
     public Moto() {

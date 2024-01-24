@@ -34,3 +34,24 @@ VALUES
 ('Marina Martínez', 'marina.martinez@example.com', '$2a$10$RtSUJbLWmD6Xdt5atFdAB.SAlHSCWyryHEVGBlAzf0NG6XSDPXrW.', '555555555', true, 'ROLE_USER', current_timestamp),
 ('Raúl Sánchez', 'raul.sanchez@example.com', '$2a$10$RtSUJbLWmD6Xdt5atFdAB.SAlHSCWyryHEVGBlAzf0NG6XSDPXrW.', '666666666', true, 'ROLE_USER', current_timestamp),
 ('Eva López', 'eva.lopez@example.com', '$2a$10$RtSUJbLWmD6Xdt5atFdAB.SAlHSCWyryHEVGBlAzf0NG6XSDPXrW.', '777777777', true, 'ROLE_USER', current_timestamp);
+
+INSERT INTO gestion_logicanegocio.motos (id_usuario_propietario, marca, modelo, año, color, desc_modificaciones)
+VALUES
+(2, 'Yamaha', 'YZF-R6', 2018, 'Negro', 'Escape Yoshimura, Cúpula Zero Gravity'),
+(2, 'Kawasaki', 'Ninja ZX-10R', 2021, 'Verde', 'Suspensión Showa, Frenos Brembo'),
+(3, 'Suzuki', 'GSX-R750', 2019, 'Azul', 'Escape Akrapovic, Amortiguador Öhlins'),
+(3, 'Ducati', 'Panigale V4', 2020, 'Rojo', 'Suspensión Öhlins, Frenos Brembo'),
+(4, 'Honda', 'CBR1000RR', 2022, 'Blanco', 'Escape Yoshimura, Cúpula Puig'),
+(4, 'BMW', 'S1000RR', 2021, 'Gris', 'Suspensión Ohlins, Quickshifter'),
+(5, 'Kawasaki', 'Ninja 650', 2019, 'Negro', 'Escape Akrapovic, Cúpula Puig'),
+(5, 'Triumph', 'Street Triple RS', 2020, 'Blanco', 'Suspensión Öhlins, Frenos Brembo'),
+(6, 'Yamaha', 'MT-09', 2021, 'Azul', 'Escape Akrapovic, Cúpula Puig'),
+(6, 'Ducati', 'Monster 821', 2018, 'Rojo', 'Suspensión Öhlins, Frenos Brembo'),
+(7, 'Suzuki', 'SV650', 2020, 'Negro', 'Escape Yoshimura, Cúpula Puig'),
+(7, 'KTM', 'Duke 790', 2019, 'Naranja', 'Suspensión WP, Frenos Brembo'),
+(8, 'Honda', 'CB500F', 2022, 'Blanco', 'Escape Akrapovic, Cúpula Puig'),
+(8, 'Harley-Davidson', 'Street Rod', 2021, 'Negro', 'Asiento Biplaza, Alforjas'),
+(9, 'Kawasaki', 'Z900', 2019, 'Verde', 'Escape Akrapovic, Cúpula Puig'),
+(9, 'MV Agusta', 'Brutale 800', 2020, 'Rojo', 'Suspensión Öhlins, Frenos Brembo'),
+(10, 'Ducati', 'Scrambler Icon', 2021, 'Amarillo', 'Escape Termignoni, Manillar Rizoma'),
+(10, 'BMW', 'R1250GS', 2022, 'Gris', 'Suspensión ESA, Asientos Calefactables');
