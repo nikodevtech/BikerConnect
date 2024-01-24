@@ -224,12 +224,12 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 	}
 
 	@Override
-	public Usuario eliminar(long id) {
+	public UsuarioDTO eliminar(long id) {
 		Usuario usuario = repositorio.findById(id).orElse(null);
 		if (usuario != null) {
 			repositorio.delete(usuario);
 		}
-		return usuario;
+		return toDto.usuarioToDto(usuario);
 
 	}
 

@@ -84,5 +84,8 @@
 	<script th:if="${not #strings.isEmpty(eliminacionCorrecta)}">
 	    mostrarNotificacion("¡Usuario eliminado!","El usuario ha sido eliminado correctamente", 'success');
 	</script>
+	<script th:if="${not #strings.isEmpty(edicionCorrecta)}">
+	    mostrarNotificacion("¡Cambios guardados!", "El usuario ha sido modificado", 'info');
+	</script>
 </body>
 </html>

@@ -51,6 +51,7 @@ public class AdministracionUsuariosControlador {
 		}
 		usuarioServicio.eliminar(id);
 		model.addAttribute("eliminacionCorrecta", "El usuario se ha eliminado correctamente");
+		model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
 		return "administracionUsuarios";
 
 	}
@@ -70,6 +71,7 @@ public class AdministracionUsuariosControlador {
 		try {
 			usuarioServicio.actualizarUsuario(usuarioDTO);
 			model.addAttribute("edicionCorrecta", "El Usuario se ha editado correctamente");
+			model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
 			return "administracionUsuarios";
 		} catch (Exception e) {
 			model.addAttribute("error", "Error al editar el usuario. Por favor, inténtalo de nuevo.");
