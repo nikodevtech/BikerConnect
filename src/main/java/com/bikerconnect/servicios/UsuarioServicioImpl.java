@@ -248,6 +248,14 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 
 		repositorio.save(existente);
 	}
+	
+	public UsuarioDTO buscarPorEmail(String email) {
+		Usuario usuario = repositorio.findFirstByEmail(email);
+		if (usuario != null) {
+			return toDto.usuarioToDto(repositorio.findFirstByEmail(email));
+		}
+		return null;
+	}
 
 
 

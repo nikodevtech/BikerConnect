@@ -77,11 +77,17 @@ public interface IUsuarioServicio {
 	public UsuarioDTO eliminar(long id);
 	
 	/**
-	 * 
-	 * @param usuario
-	 * @return
+	 * Modifica un usuario en la bbdd
+	 * @param usuario el usuario con los datos modificados
 	 */
 	public void actualizarUsuario(UsuarioDTO usuario);
+
+	/**
+	 * Busca un usuario por su email
+	 * @param email del usuario
+	 * @return el usuario buscado como DTO
+	 */
+	public UsuarioDTO buscarPorEmail(String email);
 	
 
 

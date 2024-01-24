@@ -28,38 +28,37 @@
             </div>
         </div>
     </nav>
-<!--    <div class="container py-4 mt-5">-->
-<!--		<div class="card bg-light">-->
-<!--			<div class="card-header"><h3>Mis motos</h3></div>-->
-<!--			<div class="card-body" >-->
-<!--				<h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(usuarios)}">No tengo motos registradas</h5>-->
-<!--				<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/auth/crear-cuenta}" role="button" class="btn buttonPrincipal p-2 mb-3">-->
-<!--          			<i class="bi bi-bicycle p-2 fs-5"> Agregar</i>-->
-<!--        		</a>-->
+    <div class="container py-4 mt-5">
+		<div class="card bg-light">
+			<div class="card-header"><h3>Mis motos</h3></div>
+			<div class="card-body" >
+				<h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misMotos)}">No tengo motos registradas</h5>
+				<a th:href="@{/auth/crear-cuenta}" role="button" class="btn buttonPrincipal p-2 mb-3">
+          			<i class="bi bi-bicycle p-2 fs-5"> Agregar</i>
+        		</a>
 
-<!--				<table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(usuarios)}">-->
-<!--					<thead class="thead-inverse">-->
-<!--						<tr>-->
-<!--							<th class="table-dark">Marca</th>-->
-<!--							<th class="table-dark">Modelo</th>-->
-<!--							<th class="table-dark">Año fabricación</th>-->
-<!--							<th class="table-dark">Color</th>-->
-<!--							<th class="table-dark">Descripción</th>														-->
-<!--						</tr>-->
-<!--					</thead>-->
-<!--					<tbody>-->
-<!--						<tr th:each="moto : ${motos}">-->
-<!--							<td th:text="${moto.marca} + ${usuario.apellidosUsuario != null ? ' ' + usuario.apellidosUsuario : ''}"></td>-->
-<!--							<td th:text="${moto.modelo}"></td>-->
-<!--							<td th:text="${moto.año}"></td>-->
-<!--							<td th:text="${{moto.color}"></td>-->
-<!--							<td th:text="${moto.descripcion}"></td>-->
-<!--						</tr>-->
-<!--					</tbody>-->
-<!--				</table>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-	<h3 class="text-light text-center mt-5">Mis motos</h3>
+				<table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(misMotos)}">
+					<thead class="thead-inverse">
+						<tr>
+							<th class="table-dark">Marca</th>
+							<th class="table-dark">Modelo</th>
+							<th class="table-dark">Año fabricación</th>
+							<th class="table-dark">Color</th>
+							<th class="table-dark">Descripción</th>														
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="moto : ${misMotos}">
+							<td th:text="${moto.marca}"></td>
+							<td th:text="${moto.modelo}"></td>
+							<td th:text="${moto.año}"></td>
+							<td th:text="${moto.color}"></td>
+							<td th:text="${moto.descModificaciones}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
