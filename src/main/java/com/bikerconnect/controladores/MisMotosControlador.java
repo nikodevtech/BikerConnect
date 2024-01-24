@@ -1,6 +1,7 @@
 package com.bikerconnect.controladores;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,12 @@ public class MisMotosControlador {
 		}
 		return "misMotos";
 	}
+	@GetMapping("/privada/crear-moto")
+	public String mostrarFormNuevaMoto(Model model) {
+		model.addAttribute("motoDTO", new MotoDTO());
+		return "registroMoto";
+	}
+	
 
 
 }
