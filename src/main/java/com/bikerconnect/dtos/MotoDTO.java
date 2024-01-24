@@ -8,7 +8,7 @@ public class MotoDTO {
 	private String marca;
 	private String modelo;
 	private String color;
-	private String año;
+	private int año;
 	private String descModificaciones;
 	
 	public MotoDTO() {
@@ -46,11 +46,11 @@ public class MotoDTO {
 		this.color = color;
 	}
 
-	public String getAño() {
+	public int getAño() {
 		return año;
 	}
 
-	public void setAño(String año) {
+	public void setAño(int año) {
 		this.año = año;
 	}
 
