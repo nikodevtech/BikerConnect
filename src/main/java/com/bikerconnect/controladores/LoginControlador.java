@@ -45,7 +45,6 @@ public class LoginControlador {
 	    boolean cuentaConfirmada = usuarioServicio.estaLaCuentaConfirmada(authentication.getName());    
 
 	    if (cuentaConfirmada) {
-	        model.addAttribute("credencialesCorrectas", "Credenciales correctas, bienvenido");
 	        model.addAttribute("nombreUsuario", authentication.getName());
 	        return "dashboard";
 	    } else {

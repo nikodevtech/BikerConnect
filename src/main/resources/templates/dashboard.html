@@ -32,11 +32,21 @@
             </div>
         </div>
     </nav>
-    
     <h3 class="text-light text-center mt-5">Bienvenido <span th:text="${nombreUsuario}">usuario</span></h3>
-	<script th:if="${not #strings.isEmpty(credencialesCorrectas)}">
-	    mostrarNotificacion("¡Inicio de sesión correcto!", "Sa ha accedido a su cuenta de usuario", 'success');
-	</script>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4" sec:authorize="hasRole('ROLE_ADMIN')">
+					<i class="bi bi-person-fill-gear fs-1 m-2" style="color: #1f3c85"></i>
+					<div class="card-body">
+                        <h5 class="card-title">Administrar Usuarios</h5>
+                        <p class="card-text">Acceda para gestionar usuarios.</p>
+                        <a th:href="@{/privada/administracion-usuarios}" class="btn buttonPrincipal">Ir a Administración</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<script th:if="${not #strings.isEmpty(noAdmin)}">
 	    mostrarNotificacion("¡Recurso prohibido!", "No tiene los permisos suficientes para acceder a este recurso", 'error');
 	</script>

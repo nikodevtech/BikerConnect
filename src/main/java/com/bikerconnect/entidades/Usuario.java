@@ -1,13 +1,16 @@
 package com.bikerconnect.entidades;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -54,6 +57,9 @@ public class Usuario {
 	
 	@Column(nullable = true, length = 100)
 	private String foto;
+	
+	@OneToMany(mappedBy = "usuarioPropietario", cascade = CascadeType.ALL)
+	private List<Moto> motosPropias;
 	
 	
 	//CONSTRUCTORES
@@ -150,12 +156,23 @@ public class Usuario {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	
+
+	public List<Moto> getMotosPropias() {
+		return motosPropias;
+	}
+
+
+	public void setMotosPropias(List<Moto> motosPropias) {
+		this.motosPropias = motosPropias;
+	}
+
 
 	//METODOS
 	@Override
 	public int hashCode() {
-		return Objects.hash(cuentaConfirmada, email, expiracionToken, fechaRegistro, foto, id, nombreApellidos,
-				password, rol, telefono, token);
+		return Objects.hash(cuentaConfirmada, email, expiracionToken, fechaRegistro, foto, id, motosPropias,
+				nombreApellidos, password, rol, telefono, token);
 	}
 
 
@@ -171,9 +188,10 @@ public class Usuario {
 		return cuentaConfirmada == other.cuentaConfirmada && Objects.equals(email, other.email)
 				&& Objects.equals(expiracionToken, other.expiracionToken)
 				&& Objects.equals(fechaRegistro, other.fechaRegistro) && Objects.equals(foto, other.foto)
-				&& id == other.id && Objects.equals(nombreApellidos, other.nombreApellidos)
-				&& Objects.equals(password, other.password) && Objects.equals(rol, other.rol)
-				&& Objects.equals(telefono, other.telefono) && Objects.equals(token, other.token);
+				&& id == other.id && Objects.equals(motosPropias, other.motosPropias)
+				&& Objects.equals(nombreApellidos, other.nombreApellidos) && Objects.equals(password, other.password)
+				&& Objects.equals(rol, other.rol) && Objects.equals(telefono, other.telefono)
+				&& Objects.equals(token, other.token);
 	}
 
 
@@ -182,9 +200,8 @@ public class Usuario {
 		return "Usuario [id=" + id + ", nombreApellidos=" + nombreApellidos + ", email=" + email + ", password="
 				+ password + ", telefono=" + telefono + ", token=" + token + ", expiracionToken=" + expiracionToken
 				+ ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada + ", rol=" + rol
-				+ ", foto=" + foto + "]";
-	}
-	
+				+ ", foto=" + foto + ", motosPropias=" + motosPropias.toString() + "]";
+	}	
 	
 
 }
