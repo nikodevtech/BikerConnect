@@ -1,7 +1,5 @@
 package com.bikerconnect.servicios;
 
-import java.util.List;
-
 import com.bikerconnect.dtos.MotoDTO;
 
 /**
@@ -15,6 +13,13 @@ public interface IMotoServicio {
 	 * @param idUsuario El id del usuario que tiene las motos
 	 * @return La lista de motos
 	 */
-	public List<MotoDTO> obtenerMotosPorIdUsuario(Long idUsuario);
+	//public List<MotoDTO> obtenerMotosPorIdUsuario(Long idUsuario);
+	
+	/**
+	 * Se registra una moto de un usuario en el sistema
+	 * @param motoDTO La nueva moto a registrar
+	 * @return true si se ha podido registrar, false en caso contrario
+	 */
+	public boolean registrarMoto(MotoDTO motoDTO);
 
 }

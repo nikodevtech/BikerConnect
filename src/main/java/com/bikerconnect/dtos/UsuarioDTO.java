@@ -1,6 +1,7 @@
 package com.bikerconnect.dtos;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -23,6 +24,7 @@ public class UsuarioDTO {
 	private Calendar fechaRegistro;
 	private boolean cuentaConfirmada;
 	private String rol;
+	private List<MotoDTO> misMotos;
 
 	// CONSTRUCTORES
 	public UsuarioDTO() {
@@ -140,12 +142,20 @@ public class UsuarioDTO {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	public List<MotoDTO> getMisMotos() {
+		return misMotos;
+	}
+	
+	public void setMisMotos(List<MotoDTO> misMotos) {
+		this.misMotos = misMotos;
+	}
 
 	// METODOS
 	@Override
 	public int hashCode() {
 		return Objects.hash(apellidosUsuario, claveUsuario, cuentaConfirmada, emailUsuario, expiracionToken,
-				fechaRegistro, id, nombreUsuario, password, password2, rol, tlfUsuario, token);
+				fechaRegistro, id, misMotos, nombreUsuario, password, password2, rol, tlfUsuario, token);
 	}
 
 	@Override
@@ -162,9 +172,10 @@ public class UsuarioDTO {
 				&& Objects.equals(emailUsuario, other.emailUsuario)
 				&& Objects.equals(expiracionToken, other.expiracionToken)
 				&& Objects.equals(fechaRegistro, other.fechaRegistro) && id == other.id
-				&& Objects.equals(nombreUsuario, other.nombreUsuario) && Objects.equals(password, other.password)
-				&& Objects.equals(password2, other.password2) && Objects.equals(rol, other.rol)
-				&& Objects.equals(tlfUsuario, other.tlfUsuario) && Objects.equals(token, other.token);
+				&& Objects.equals(misMotos, other.misMotos) && Objects.equals(nombreUsuario, other.nombreUsuario)
+				&& Objects.equals(password, other.password) && Objects.equals(password2, other.password2)
+				&& Objects.equals(rol, other.rol) && Objects.equals(tlfUsuario, other.tlfUsuario)
+				&& Objects.equals(token, other.token);
 	}
 
 	@Override
@@ -175,6 +186,6 @@ public class UsuarioDTO {
 				+ expiracionToken + ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada
 				+ ", rol=" + rol + "]";
 	}
-
+	
 
 }

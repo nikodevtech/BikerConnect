@@ -1,12 +1,12 @@
 package com.bikerconnect.controladores;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bikerconnect.dtos.MotoDTO;
 import com.bikerconnect.dtos.UsuarioDTO;
@@ -20,12 +20,12 @@ import com.bikerconnect.servicios.IUsuarioServicio;
 @Controller
 public class MisMotosControlador {
 
-
-	@Autowired
-	private IMotoServicio motoServicio;
 	
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
+	
+	@Autowired 
+	private IMotoServicio motoServicio;
 
     /**
      * Gestiona la solicitud HTTP GET para la url /privada/mis-motos
@@ -39,8 +39,7 @@ public class MisMotosControlador {
 	public String mostrarMisMotos(Authentication authentication, Model model) {
 		UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
 		if (usuario != null) {
-			List<MotoDTO> motos = motoServicio.obtenerMotosPorIdUsuario(usuario.getId());
-			model.addAttribute("misMotos", motos);
+			model.addAttribute("misMotos", usuario.getMisMotos());
 		}
 		return "misMotos";
 	}
@@ -53,9 +52,35 @@ public class MisMotosControlador {
      * @return La vista de registroMoto.html con el formulario para crear una nueva motocicleta.
      */
 	@GetMapping("/privada/crear-moto")
-	public String mostrarFormNuevaMoto(Model model) {
-		model.addAttribute("motoDTO", new MotoDTO());
+	public String mostrarFormNuevaMoto(Model model, Authentication authentication) {
+		UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
+		MotoDTO moto = new MotoDTO();
+		moto.setIdPropietario(usuario.getId());
+		model.addAttribute("motoDTO", moto);
 		return "registroMoto";
+	}
+	
+	@PostMapping("/privada/crear-moto")
+	public String registrarMotoPost(@ModelAttribute MotoDTO motoDTO, Model model, Authentication authentication) {
+		
+		try {
+			boolean exito = motoServicio.registrarMoto(motoDTO);
+			UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
+
+			if(exito) {
+				model.addAttribute("altaMotoExito", "Alta de la moto en el sistema OK");
+				model.addAttribute("misMotos", usuario.getMisMotos());
+				return "misMotos";
+			} else {
+				model.addAttribute("altaMotoError", "No se pudo dar de alta la moto");
+				model.addAttribute("misMotos", usuario.getMisMotos());
+				return "misMotos";
+			}
+		} catch(Exception e) {
+			System.out.println( "[Error MisMotosControlador - registrarMotoPost()] Error al registrar nueva moto " + e.getMessage());
+		}
+		return "misMotos";
+	
 	}
 	
 

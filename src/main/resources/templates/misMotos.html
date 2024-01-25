@@ -63,5 +63,11 @@
 			</div>
 		</div>
 	</div>
+	<script th:if="${not #strings.isEmpty(altaMotoExito)}">
+	   mostrarNotificacion("¡Moto registrada en el sistema!", "Se ha dado de alta su nueva moto correctamente", 'success');
+	</script>
+	<script th:if="${not #strings.isEmpty(altaMotoError)}">
+	   mostrarNotificacion("¡Error al registrar tu moto!","No se pudo registrar su nueva moto, intentelo de nuevo.", 'error');
+	</script>
 </body>
 </html>

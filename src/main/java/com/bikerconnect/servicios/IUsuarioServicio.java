@@ -4,7 +4,6 @@ package com.bikerconnect.servicios;
 import java.util.List;
 
 import com.bikerconnect.dtos.UsuarioDTO;
-import com.bikerconnect.entidades.Usuario;
 
 /**
  * Interfaz del servicio para la gestión de usuarios, donde se declaran los

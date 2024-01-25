@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.bikerconnect.entidades.Moto;
-import com.bikerconnect.entidades.Usuario;
 
 /**
  * Interfaz que define un repositorio para la entidad {@link Moto}. Extiende

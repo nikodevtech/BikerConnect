@@ -1,5 +1,6 @@
 package com.bikerconnect.servicios;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.bikerconnect.dtos.MotoDTO;
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.entidades.Usuario;
 import com.bikerconnect.repositorios.UsuarioRepositorio;
@@ -40,6 +42,9 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 
 	@Autowired
 	private IUsuarioToDto toDto;
+	
+	@Autowired
+	private IMotoToDto toMotoDto;
 
 	@Override
 	public UsuarioDTO registrarUsuario(UsuarioDTO userDto) {
@@ -285,9 +290,15 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 	@Override
 	public UsuarioDTO buscarPorEmail(String email) {
 		try {
+			List<MotoDTO> motos = new ArrayList<>();
+			UsuarioDTO uDto = new UsuarioDTO();
 			Usuario usuario = repositorio.findFirstByEmail(email);
+			motos = toMotoDto.listaMotosToDto(usuario.getMotosPropias());
+			uDto = toDto.usuarioToDto(usuario);
+			uDto.setMisMotos(motos);
+			
 			if (usuario != null) {
-				return toDto.usuarioToDto(usuario);
+				return uDto;
 			}
 		} catch (Exception e) {
 			System.out.println("[Error UsuarioServicioImpl - buscarPorEmail()] Al buscar el usuario por su email " + e.getMessage());

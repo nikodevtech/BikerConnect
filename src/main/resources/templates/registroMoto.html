@@ -22,19 +22,17 @@
             <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                 <ul class="navbar-nav me-5 ms-auto">
                     <li class="nav-item me-3">
-                        <a class="nav-link fw-bold text-white" th:href="@{/auth/iniciar-sesion}" th:if="${not #authorization.expression('isAuthenticated()')}"><i class="bi bi-box-arrow-in-right fs-5"> Iniciar sesión</i></a>
-                    </li>
-                    <li class="nav-item">
-						<a  class="nav-link fw-bold text-white" th:href="@{/privada/administracion-usuarios}" sec:authorize='hasAnyRole("ROLE_ADMIN")'><i class="bi bi-person-fill-gear fs-5"> Administración usuarios</i></a>
-					</li>            
+                        <a class="nav-link fw-bold text-white" th:href="@{/privada/dashboard}"><i class="bi bi-house fs-5"> Dashboard</i></a>
+                    </li>         
                 </ul>
             </div>
         </div>
     </nav>
     <div class="registro">
-        <form class="custom-form" th:action="@{/auth/crear-moto}" enctype="multipart/form-data" method="post" th:object="${motoDTO}">
+        <form class="custom-form" th:action="@{/privada/crear-moto}" enctype="multipart/form-data" method="post" th:object="${motoDTO}">
 		 
           <h2 class="text-center mb-5"><i class="bi bi-bicycle" style="color: #1f3c85;"> Registro nueva moto</i></h2>
+          <input type="hidden" th:field="*{idPropietario}" />
           <div class="mb-3">
             <label for="marca" class="form-label textoPrincipal">Marca</label>
             <input
@@ -97,5 +95,6 @@
           <button type="submit" id="btnRegistro" class="btn btn-primary mt-5"><i class="bi bi-plus-square fs-5"> Alta moto</i></button>
         </form>
       </div>
+
 </body>
 </html>

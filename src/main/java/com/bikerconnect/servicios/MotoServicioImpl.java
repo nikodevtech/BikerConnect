@@ -1,13 +1,18 @@
 package com.bikerconnect.servicios;
 
-import java.util.List;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bikerconnect.dtos.MotoDTO;
 import com.bikerconnect.entidades.Moto;
+import com.bikerconnect.entidades.Usuario;
 import com.bikerconnect.repositorios.MotoRepositorio;
+import com.bikerconnect.repositorios.UsuarioRepositorio;
+
+import jakarta.persistence.PersistenceException;
 
 /**
  * Servicio que implementa los metodos de la interface {@link IMotoServicio} 
@@ -19,16 +24,41 @@ public class MotoServicioImpl implements IMotoServicio {
 
 	@Autowired
 	private MotoRepositorio motoRepositorio;
-
+	
 	@Autowired
-	private IMotoToDto toDto;
+	private IMotoToDao toDao;
+	
+	@Autowired
+	private UsuarioRepositorio usuarioRepositorio;
+
 
 	@Override
-	public List<MotoDTO> obtenerMotosPorIdUsuario(Long idUsuario) {
+	public boolean registrarMoto(MotoDTO motoDTO) {
 		
-		List<Moto> motos = motoRepositorio.findAllByUsuarioPropietarioId(idUsuario);
-	
-		return toDto.listaMotosToDto(motos);
+		try {
+			Optional<Usuario> usuarioPropietario = usuarioRepositorio.findById(motoDTO.getIdPropietario());
+			Moto moto = toDao.motoToDao(motoDTO);
+			if(usuarioPropietario.isPresent())
+				moto.setUsuarioPropietario(usuarioPropietario.get());
+			Moto motoGuardada = motoRepositorio.save(moto);
+			
+			if(motoGuardada != null) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch(PersistenceException e) {
+			System.out.println("\n[ERROR MotoServicioImpl - registrarMoto()] - Al registrar moto: "+ e);
+			return false;
+		}	
 	}
+
+//	@Override
+//	public List<MotoDTO> obtenerMotosPorIdUsuario(Long idUsuario) {
+//		
+//		List<Moto> motos = motoRepositorio.findAllByUsuarioPropietarioId(idUsuario);
+//	
+//		return toDto.listaMotosToDto(motos);
+//	}
 
 }

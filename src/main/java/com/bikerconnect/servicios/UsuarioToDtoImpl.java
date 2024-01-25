@@ -42,6 +42,7 @@ public class UsuarioToDtoImpl implements IUsuarioToDto {
 				dto.setFechaRegistro(u.getFechaRegistro());
 				dto.setCuentaConfirmada(u.isCuentaConfirmada());
 				dto.setRol(u.getRol());
+				
             }
 
             return dto;

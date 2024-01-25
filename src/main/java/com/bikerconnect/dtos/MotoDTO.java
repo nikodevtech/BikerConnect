@@ -15,6 +15,8 @@ public class MotoDTO {
 	private String color;
 	private int año;
 	private String descModificaciones;
+	private long idPropietario;
+
 	
 	//Constructor
 	public MotoDTO() {
@@ -69,10 +71,18 @@ public class MotoDTO {
 		this.descModificaciones = descModificaciones;
 	}
 
+	public long getIdPropietario() {
+		return idPropietario;
+	}
+
+	public void setIdPropietario(long idPropietario) {
+		this.idPropietario = idPropietario;
+	}
+
 	//Metodos
 	@Override
 	public int hashCode() {
-		return Objects.hash(año, color, descModificaciones, id, marca, modelo);
+		return Objects.hash(año, color, descModificaciones, id, idPropietario, marca, modelo);
 	}
 
 	@Override
@@ -84,16 +94,18 @@ public class MotoDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		MotoDTO other = (MotoDTO) obj;
-		return Objects.equals(año, other.año) && Objects.equals(color, other.color)
+		return año == other.año && Objects.equals(color, other.color)
 				&& Objects.equals(descModificaciones, other.descModificaciones) && id == other.id
-				&& Objects.equals(marca, other.marca) && Objects.equals(modelo, other.modelo);
+				&& idPropietario == other.idPropietario && Objects.equals(marca, other.marca)
+				&& Objects.equals(modelo, other.modelo);
 	}
 
 	@Override
 	public String toString() {
 		return "MotoDTO [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", año=" + año
-				+ ", descModificaciones=" + descModificaciones + "]";
+				+ ", descModificaciones=" + descModificaciones + ", idPropietario=" + idPropietario + "]";
 	}
+
 
 
 }
