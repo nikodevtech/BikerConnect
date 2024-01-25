@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.servicios.IUsuarioServicio;
@@ -27,7 +25,17 @@ public class AdministracionUsuariosControlador {
 
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
-
+	
+	/**
+     * Gestiona la solicitud HTTP GET para la url /privada/administracion-usuarios
+     * y muestra la página de administración de usuarios con el listado de usuarios.
+     *
+     * @param model           Modelo que se utiliza para enviar el listado de usuarios a la vista.
+     * @param request         HttpServletRequest para comprobar el rol del usuario.
+     * @param authentication  Objeto Authentication que contiene el username/email.
+     * @return La vista de administración de usuarios (administracionUsuarios.html) si es rol user
+     *         o la vista del dashboard si el usuario no es rol admin.
+     */
 	@GetMapping("/privada/administracion-usuarios")
 	public String listadoUsuarios(Model model, HttpServletRequest request, Authentication authentication) {
 		List<UsuarioDTO> usuarios = usuarioServicio.obtenerTodos();
@@ -40,6 +48,15 @@ public class AdministracionUsuariosControlador {
 		return "dashboard";
 	}
 
+	/**
+     * Gestiona la solicitud HTTP GET para la url /privada/eliminar-usuario/{id}
+     * y elimina al usuario con el ID proporcionado.
+     *
+     * @param id     ID del usuario a eliminar.
+     * @param model  Modelo que se utiliza para enviar mensajes y el listado actualizado a la vista.
+     * @param request HttpServletRequest para comprobar el rol del usuario.
+     * @return La vista de administración de usuarios con el resultado de la eliminación.
+     */
 	@GetMapping("/privada/eliminar-usuario/{id}")
 	public String eliminarUsuario(@PathVariable Long id, Model model, HttpServletRequest request) {
 		UsuarioDTO usuario = usuarioServicio.buscarPorId(id);
@@ -56,6 +73,14 @@ public class AdministracionUsuariosControlador {
 
 	}
 
+	/**
+     * Gestiona la solicitud HTTP GET para la url /privada/editar-usuario/{id}
+     * y muestra el formulario de edición del usuario con el ID proporcionado.
+     *
+     * @param id     ID del usuario a editar.
+     * @param model  Modelo que se utiliza para enviar el usuario a editar a la vista.
+     * @return La vista de editarUsuario con el formulario de edición.
+     */
 	@GetMapping("/privada/editar-usuario/{id}")
 	public String mostrarFormularioEdicion(@PathVariable Long id, Model model) {
 		UsuarioDTO usuarioDTO = usuarioServicio.buscarPorId(id);
@@ -66,6 +91,14 @@ public class AdministracionUsuariosControlador {
 		return "editarUsuario";
 	}
 
+    /**
+     * Gestiona la solicitud HTTP POST para la url /privada/procesar-editar
+     * y procesa el formulario de edición del usuario.
+     *
+     * @param usuarioDTO UsuarioDTO con los datos editados.
+     * @param model      Modelo que se utiliza para enviar mensajes y el listado actualizado a la vista.
+     * @return La vista de administración de usuarios con el resultado de la edición.
+     */
 	@PostMapping("/privada/procesar-editar")
 	public String procesarFormularioEdicion(@ModelAttribute("usuarioDTO") UsuarioDTO usuarioDTO, Model model) {
 		try {

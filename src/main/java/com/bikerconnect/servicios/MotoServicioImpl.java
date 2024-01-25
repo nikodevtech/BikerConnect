@@ -9,6 +9,11 @@ import com.bikerconnect.dtos.MotoDTO;
 import com.bikerconnect.entidades.Moto;
 import com.bikerconnect.repositorios.MotoRepositorio;
 
+/**
+ * Servicio que implementa los metodos de la interface {@link IMotoServicio} 
+ * y en esta clase es donde se entra al detalle de la logica de dichos métodos
+ * para la gestión de las motos de los usuarios.
+ */
 @Service
 public class MotoServicioImpl implements IMotoServicio {
 

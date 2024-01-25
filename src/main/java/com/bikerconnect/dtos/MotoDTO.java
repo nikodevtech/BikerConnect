@@ -2,8 +2,13 @@ package com.bikerconnect.dtos;
 
 import java.util.Objects;
 
+/**
+ * Clase que representa un objeto MotoDTO para almacenar los datos de una moto y 
+ * moverlo entre las distintas capas de la aplicación.
+ */
 public class MotoDTO {
 	
+	//Atributos
 	private long id;
 	private String marca;
 	private String modelo;
@@ -11,9 +16,11 @@ public class MotoDTO {
 	private int año;
 	private String descModificaciones;
 	
+	//Constructor
 	public MotoDTO() {
 	}
 
+	//Getters y Setters
 	public long getId() {
 		return id;
 	}
@@ -62,6 +69,7 @@ public class MotoDTO {
 		this.descModificaciones = descModificaciones;
 	}
 
+	//Metodos
 	@Override
 	public int hashCode() {
 		return Objects.hash(año, color, descModificaciones, id, marca, modelo);

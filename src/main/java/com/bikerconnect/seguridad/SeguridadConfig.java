@@ -35,7 +35,7 @@ public class SeguridadConfig {
     /**
      * Configura el proveedor de autenticación de spring que utiliza el servicio
      * de detalles de usuario y el codificador de contraseñas.
-     * @return El proveedor de autenticación configurado.
+     * @return El proveedor de autenticación configurado que permite delegar la autenticación en spring.
      */
     @Bean
     DaoAuthenticationProvider authenticationProvider() {

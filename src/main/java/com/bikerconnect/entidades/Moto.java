@@ -11,10 +11,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+/**
+ * Clase DAO (Data Access Object) que representa la tabla motos de la BBDD,
+ * mapea con esta 1:1 y ejerce como modelo virtual de la tabla en la aplicación.
+ */
 @Entity
 @Table(name = "Motos", schema = "gestion_logicanegocio")
 public class Moto {
 	
+	//ATRIBUTOS
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_moto")
@@ -39,10 +44,12 @@ public class Moto {
     @JoinColumn(name = "id_usuario_propietario")
     private Usuario usuarioPropietario;
     
+    //CONSTRUCTORES
     public Moto() {
 	    
     }
 
+    //GETTERS Y SETTERS
 	public Long getIdMoto() {
 		return idMoto;
 	}
@@ -99,6 +106,7 @@ public class Moto {
 		this.usuarioPropietario = usuarioPropietario;
 	}
 
+	//METODOS
 	@Override
 	public int hashCode() {
 		return Objects.hash(año, color, descModificaciones, idMoto, marca, modelo, usuarioPropietario);
