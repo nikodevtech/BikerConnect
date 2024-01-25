@@ -278,6 +278,7 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			usuarioActual.setTelefono(usuarioModificado.getTlfUsuario());
 			usuarioActual.setRol(usuarioModificado.getRol());
 			usuarioActual.setCuentaConfirmada(usuarioModificado.isCuentaConfirmada());
+			usuarioActual.setPassword(passwordEncoder.encode(usuarioModificado.getClaveUsuario()));
 
 			repositorio.save(usuarioActual);
 		} catch (PersistenceException pe) {

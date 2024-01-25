@@ -60,10 +60,35 @@
             id="email"
             name="email"
             class="form-control"
-            placeholder="Escribe tu correo electrónico"
+            placeholder="Introduce el email del usuario"
             required
           />
         </div>
+		<div class="mb-3">
+          <label for="password" class="form-label textoPrincipal">Contraseña</label>
+           <input
+             th:field="*{claveUsuario}"
+             type="password"
+             id="password"
+             name="password"
+             class="form-control"
+             placeholder="Introduce la contraseña del usuario"
+             required
+             oninput="revisarContraseña()"
+           />
+        </div>
+        <div class="mb-3">
+           <label for="confirmarPassword" class="form-label textoPrincipal">Confirmar Contraseña</label>
+           <input
+             type="password"
+             id="confirmarPassword"
+             name="confirmarPassword"
+             class="form-control"
+             placeholder="Repite la contraseña del usuario"
+             required
+             oninput="revisarContraseña()"
+           />
+        </div>        
         <div class="mb-3">
           <label for="nombre" class="form-label textoPrincipal">Nombre</label>
           <input
@@ -72,7 +97,7 @@
             id="nombre"
             name="nombre"
             class="form-control"
-            placeholder="Escribe tu nombre"
+            placeholder="Introduce el nombre del usuario"
             required
           />
         </div>
@@ -84,7 +109,7 @@
             id="apellidos"
             name="apellidos"
             class="form-control"
-            placeholder="Escribe tus apellidos"
+            placeholder="Introduce los apellidos del usuario"
             required
           />
         </div>
@@ -96,7 +121,7 @@
             id="telefono"
             name="telefono"
             class="form-control"
-            placeholder="Escribe tu número de teléfono"
+            placeholder="Introduce el número de teléfono del usuario"
             required
           />
          <div class="mb-3">
@@ -126,7 +151,8 @@
 		       class="custom-checkbox" 
 		    />
 		  </div>
-          <button type="submit" class="btn btn-primary mt-5">
+		  <div class="mensajeContrasenya mt-4 text-center " id="mensajeContrasenya"></div>
+          <button type="submit" class="btn btn-primary mt-5" id="btnRegistro">
             <i class="bi bi-person-fill-gear fs-5"> Guardar cambios</i>
           </button>
         </div>
