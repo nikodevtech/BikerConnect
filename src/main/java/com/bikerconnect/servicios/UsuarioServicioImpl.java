@@ -273,12 +273,9 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		try {
 			Usuario usuarioActual = repositorio.findById(usuarioModificado.getId()).orElse(null);
 
-			usuarioActual.setEmail(usuarioModificado.getEmailUsuario());
 			usuarioActual.setNombreApellidos(usuarioModificado.getNombreUsuario() + " " + usuarioModificado.getApellidosUsuario());
 			usuarioActual.setTelefono(usuarioModificado.getTlfUsuario());
 			usuarioActual.setRol(usuarioModificado.getRol());
-			usuarioActual.setCuentaConfirmada(usuarioModificado.isCuentaConfirmada());
-			usuarioActual.setPassword(passwordEncoder.encode(usuarioModificado.getClaveUsuario()));
 
 			repositorio.save(usuarioActual);
 		} catch (PersistenceException pe) {
