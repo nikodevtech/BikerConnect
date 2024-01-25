@@ -11,7 +11,7 @@ import com.bikerconnect.entidades.Moto;
 /**
  * Interfaz que define un repositorio para la entidad {@link Moto}. Extiende
  * la interfaz JpaRepository de Spring Data para realizar operaciones CRUD y
- * otras consultas relacionadas con la entidad Moto en la base de datos.
+ * otras consultas relacionadas con la tabla Moto en la base de datos.
  */
 public interface MotoRepositorio extends JpaRepository<Moto, Long> {
 	

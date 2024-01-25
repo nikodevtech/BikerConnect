@@ -122,8 +122,8 @@ h1 {
 }
 
 .buttonPrincipal:active {
-	background-color: white !important;
-	color: #1f3c85 !important;
+	background-color: #1f3c85 !important;
+	color: white !important;
 }
 
 .dashboardCard {

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis motos</title>
+    <title>Quedadas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
@@ -33,44 +33,33 @@
     </nav>
     <div class="container py-4 mt-5">
 		<div class="card bg-light">
-			<div class="card-header border-bottom border-3"><h3 class="subtituloSecundario">Mis motos</h3></div>
+			<div class="card-header border-bottom border-3"><h3 class="subtituloSecundario">Quedadas</h3></div>
 			<div class="card-body" >
-				<h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misMotos)}">No tengo ninguna moto registrada en el sistema</h5>
-				<a th:href="@{/privada/crear-moto}" role="button" class="btn buttonPrincipal p-2 mb-3">
-          			<i class="bi bi-bicycle p-2 fs-5"> Registrar moto</i>
+				<h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(quedadas)}">No hay ninguna quedada planificada</h5>
+				<a th:href="@{/privada/crear-quedada}" role="button" class="btn buttonPrincipal p-2 mb-3">
+          			<i class="bi bi-people p-2 fs-5"> Planificar quedada</i>
         		</a>
 
-				<table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(misMotos)}">
+				<table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(quedadas)}">
 					<thead class="thead-inverse">
 						<tr>
-							<th class="table-dark">Marca</th>
-							<th class="table-dark">Modelo</th>
-							<th class="table-dark">Año fabricación</th>
-							<th class="table-dark">Color</th>
-							<th class="table-dark">Descripción</th>														
+							<th class="table-dark">Lugar</th>
+							<th class="table-dark">Fecha y hora</th>
+							<th class="table-dark">Descripción</th>
+							<th class="table-dark">Estado</th>														
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="moto : ${misMotos}">
-							<td th:text="${moto.marca}"></td>
-							<td th:text="${moto.modelo}"></td>
-							<td th:text="${moto.año}"></td>
-							<td th:text="${moto.color}"></td>
-							<td th:text="${moto.descModificaciones}"></td>
+						<tr th:each="quedada : ${quedadas}">
+							<td th:text="${quedada.lugar}"></td>
+							<td th:text="${#dates.format(quedada.fechaHoraEncuentro, 'dd-MM-yyyy HH:mm')}"></td>
+							<td th:text="${quedada.descripcion}"></td>
+							<td th:text="${quedada.estado}"></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
-	<script th:if="${not #strings.isEmpty(altaMotoExito)}">
-	   mostrarNotificacion("¡Moto registrada en el sistema!", "Se ha dado de alta su nueva moto correctamente", 'success');
-	</script>
-	<script th:if="${not #strings.isEmpty(altaMotoError)}">
-	   mostrarNotificacion("¡Error al registrar tu moto!","No se pudo registrar su nueva moto, intentelo de nuevo.", 'error');
-	</script>
-	<script th:if="${not #strings.isEmpty(error)}">
-	    mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
-	</script>
 </body>
 </html>
