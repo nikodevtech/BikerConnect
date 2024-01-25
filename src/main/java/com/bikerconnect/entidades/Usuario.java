@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -60,6 +61,9 @@ public class Usuario {
 	
 	@OneToMany(mappedBy = "usuarioPropietario", cascade = CascadeType.ALL)
 	private List<Moto> motosPropias;
+	
+    @ManyToMany(mappedBy = "usuariosParticipantes")
+    private List<Quedada> quedadasParticipante;
 	
 	
 	//CONSTRUCTORES
@@ -166,13 +170,23 @@ public class Usuario {
 	public void setMotosPropias(List<Moto> motosPropias) {
 		this.motosPropias = motosPropias;
 	}
+	
+
+	public List<Quedada> getQuedadasParticipante() {
+		return quedadasParticipante;
+	}
+
+
+	public void setQuedadasParticipantes(List<Quedada> quedadasParticipante) {
+		this.quedadasParticipante = quedadasParticipante;
+	}
 
 
 	//METODOS
 	@Override
 	public int hashCode() {
 		return Objects.hash(cuentaConfirmada, email, expiracionToken, fechaRegistro, foto, id, motosPropias,
-				nombreApellidos, password, rol, telefono, token);
+				nombreApellidos, password, quedadasParticipante, rol, telefono, token);
 	}
 
 
@@ -190,10 +204,9 @@ public class Usuario {
 				&& Objects.equals(fechaRegistro, other.fechaRegistro) && Objects.equals(foto, other.foto)
 				&& id == other.id && Objects.equals(motosPropias, other.motosPropias)
 				&& Objects.equals(nombreApellidos, other.nombreApellidos) && Objects.equals(password, other.password)
-				&& Objects.equals(rol, other.rol) && Objects.equals(telefono, other.telefono)
-				&& Objects.equals(token, other.token);
-	}
-
+				&& Objects.equals(quedadasParticipante, other.quedadasParticipante) && Objects.equals(rol, other.rol)
+				&& Objects.equals(telefono, other.telefono) && Objects.equals(token, other.token);
+	}	
 
 	@Override
 	public String toString() {
@@ -201,7 +214,7 @@ public class Usuario {
 				+ password + ", telefono=" + telefono + ", token=" + token + ", expiracionToken=" + expiracionToken
 				+ ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada + ", rol=" + rol
 				+ ", foto=" + foto + "]";
-	}	
-	
+	}
+
 
 }
