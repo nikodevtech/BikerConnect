@@ -125,6 +125,9 @@
       </div>
       <script th:if="${not #strings.isEmpty(emailYaRegistrado)}">
 	    	mostrarNotificacion("¡Error al crear cuenta!", "El email introducido ya se encuentra registrado en el sistema", 'error');
+	  </script>
+	  <script th:if="${not #strings.isEmpty(error)}">
+	  		mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
 	  </script>  
 </body>
 </html>

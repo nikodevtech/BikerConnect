@@ -20,12 +20,11 @@ import com.bikerconnect.servicios.IUsuarioServicio;
 @Controller
 public class MisMotosControlador {
 
-	
-	@Autowired
-	private IUsuarioServicio usuarioServicio;
-	
-	@Autowired 
-	private IMotoServicio motoServicio;
+    @Autowired
+    private IUsuarioServicio usuarioServicio;
+
+    @Autowired
+    private IMotoServicio motoServicio;
 
     /**
      * Gestiona la solicitud HTTP GET para la url /privada/mis-motos
@@ -35,54 +34,69 @@ public class MisMotosControlador {
      * @param model          Modelo que se utiliza para enviar la lista de motocicletas a la vista.
      * @return La vista de misMotos.html con la lista de motocicletas del usuario.
      */
-	@GetMapping("/privada/mis-motos")
-	public String mostrarMisMotos(Authentication authentication, Model model) {
-		UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
-		if (usuario != null) {
-			model.addAttribute("misMotos", usuario.getMisMotos());
-		}
-		return "misMotos";
-	}
-	
+    @GetMapping("/privada/mis-motos")
+    public String mostrarMisMotos(Authentication authentication, Model model) {
+        try {
+            UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
+            if (usuario != null) {
+                model.addAttribute("misMotos", usuario.getMisMotos());
+            }
+            return "misMotos";
+        } catch (Exception e) {
+            model.addAttribute("error", "Error al obtener la lista de motocicletas");
+            return "misMotos";
+        }
+    }
+
     /**
      * Gestiona la solicitud HTTP GET para la url /privada/crear-moto
      * y muestra el formulario para registrar una nueva motocicleta.
      *
-     * @param model Modelo que se utiliza para enviar un objeto MotoDTO vacío a la vista.
+     * @param model          Modelo que se utiliza para enviar un objeto MotoDTO vacío a la vista.
+     * @param authentication Objeto Authentication que contiene el nombre de usuario.
      * @return La vista de registroMoto.html con el formulario para crear una nueva motocicleta.
      */
-	@GetMapping("/privada/crear-moto")
-	public String mostrarFormNuevaMoto(Model model, Authentication authentication) {
-		UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
-		MotoDTO moto = new MotoDTO();
-		moto.setIdPropietario(usuario.getId());
-		model.addAttribute("motoDTO", moto);
-		return "registroMoto";
-	}
-	
-	@PostMapping("/privada/crear-moto")
-	public String registrarMotoPost(@ModelAttribute MotoDTO motoDTO, Model model, Authentication authentication) {
-		
-		try {
-			boolean exito = motoServicio.registrarMoto(motoDTO);
-			UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
+    @GetMapping("/privada/crear-moto")
+    public String mostrarFormNuevaMoto(Model model, Authentication authentication) {
+        try {
+            UsuarioDTO usuarioSesionActual = usuarioServicio.buscarPorEmail(authentication.getName());
+            MotoDTO nuevaMoto = new MotoDTO();
+            nuevaMoto.setIdPropietario(usuarioSesionActual.getId());
+            model.addAttribute("motoDTO", nuevaMoto);
+            return "registroMoto";
+        } catch (Exception e) {
+            model.addAttribute("error", "Error al mostrar el formulario para crear una nueva moto");
+            return "misMotos";
+        }
+    }
 
-			if(exito) {
-				model.addAttribute("altaMotoExito", "Alta de la moto en el sistema OK");
-				model.addAttribute("misMotos", usuario.getMisMotos());
-				return "misMotos";
-			} else {
-				model.addAttribute("altaMotoError", "No se pudo dar de alta la moto");
-				model.addAttribute("misMotos", usuario.getMisMotos());
-				return "misMotos";
-			}
-		} catch(Exception e) {
-			System.out.println( "[Error MisMotosControlador - registrarMotoPost()] Error al registrar nueva moto " + e.getMessage());
-		}
-		return "misMotos";
-	
-	}
-	
+    /**
+     * Procesa la solicitud HTTP POST de la url /privada/crear-moto para registro de un nueva motocicleta.
+     *
+     * @param motoDTO         El objeto motoDTO que recibe en el modelo y contiene los datos de la nueva moto.
+     * @param model           Modelo que se utiliza para enviar mensajes y el listado actualizado a la vista.
+     * @param authentication  Objeto Authentication que contiene el nombre de usuario.
+     * @return La vista donde se ven las motos del usuario (misMotos.html) con mensajes de información.
+     */
+    @PostMapping("/privada/crear-moto")
+    public String registrarMotoPost(@ModelAttribute MotoDTO motoDTO, Model model, Authentication authentication) {
+        try {
+            boolean motoRegistradaConExito = motoServicio.registrarMoto(motoDTO);
+            UsuarioDTO usuarioSesionActual = usuarioServicio.buscarPorEmail(authentication.getName());
 
+            if (motoRegistradaConExito) {
+                model.addAttribute("altaMotoExito", "Alta de la moto en el sistema OK");
+                model.addAttribute("misMotos", usuarioSesionActual.getMisMotos());
+                return "misMotos";
+            } else {
+                model.addAttribute("altaMotoError", "No se pudo dar de alta la moto");
+                model.addAttribute("misMotos", usuarioSesionActual.getMisMotos());
+                return "misMotos";
+            }
+        } catch (Exception e) {
+            model.addAttribute("error", "Error al procesar la solicitud");
+            return "misMotos";
+        }
+    }
 
 }

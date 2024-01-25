@@ -247,7 +247,7 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		try {
 			Usuario usuario = repositorio.findById(id).orElse(null);
 			if (usuario != null) {
-				toDto.usuarioToDto(usuario);
+				return toDto.usuarioToDto(usuario);
 			}
 		} catch (IllegalArgumentException iae) {
 			System.out.println("[Error UsuarioServicioImpl - buscarPorId()] Al buscar el usuario por su id " + iae.getMessage());

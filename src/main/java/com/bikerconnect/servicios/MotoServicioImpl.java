@@ -48,7 +48,7 @@ public class MotoServicioImpl implements IMotoServicio {
 				return false;
 			}
 		} catch(PersistenceException e) {
-			System.out.println("\n[ERROR MotoServicioImpl - registrarMoto()] - Al registrar moto: "+ e);
+			System.out.println("\n[ERROR MotoServicioImpl - registrarMoto()] - Al registrar nueva moto de un usuario: "+ e);
 			return false;
 		}	
 	}

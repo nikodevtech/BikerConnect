@@ -35,7 +35,7 @@
 		<div class="card bg-light">
 			<div class="card-header"><h3 class="subtituloSecundario">Mis motos</h3></div>
 			<div class="card-body" >
-				<h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misMotos)}">No tengo motos registradas</h5>
+				<h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misMotos)}">No tengo ninguna moto registrada en el sistema</h5>
 				<a th:href="@{/privada/crear-moto}" role="button" class="btn buttonPrincipal p-2 mb-3">
           			<i class="bi bi-bicycle p-2 fs-5"> Agregar</i>
         		</a>
@@ -68,6 +68,9 @@
 	</script>
 	<script th:if="${not #strings.isEmpty(altaMotoError)}">
 	   mostrarNotificacion("¡Error al registrar tu moto!","No se pudo registrar su nueva moto, intentelo de nuevo.", 'error');
+	</script>
+	<script th:if="${not #strings.isEmpty(error)}">
+	    mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
 	</script>
 </body>
 </html>
