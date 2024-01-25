@@ -38,6 +38,9 @@ public class Quedada {
 
 	@Column(nullable = false, length = 50)
 	private String estado;
+	
+	@Column(name = "usuario_organizador", nullable = false, length = 50)
+	private String usuarioOrganizador;
 
 	@ManyToMany
 	@JoinTable(name = "participantes", 
@@ -85,6 +88,14 @@ public class Quedada {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	public String getUsuarioOrganizador() {
+		return usuarioOrganizador;
+	}
+	
+	public void setUsuarioOrganizador(String usuarioOrganizador) {
+		this.usuarioOrganizador = usuarioOrganizador;
+	}
 
 	public List<Usuario> getUsuariosParticipantes() {
 		return usuariosParticipantes;
@@ -97,7 +108,8 @@ public class Quedada {
 	//Metodos
 	@Override
 	public int hashCode() {
-		return Objects.hash(descripcion, estado, fechaHoraEncuentro, idQuedada, lugar, usuariosParticipantes);
+		return Objects.hash(descripcion, estado, fechaHoraEncuentro, idQuedada, lugar, usuarioOrganizador,
+				usuariosParticipantes);
 	}
 
 	@Override
@@ -112,14 +124,16 @@ public class Quedada {
 		return Objects.equals(descripcion, other.descripcion) && Objects.equals(estado, other.estado)
 				&& Objects.equals(fechaHoraEncuentro, other.fechaHoraEncuentro)
 				&& Objects.equals(idQuedada, other.idQuedada) && Objects.equals(lugar, other.lugar)
+				&& Objects.equals(usuarioOrganizador, other.usuarioOrganizador)
 				&& Objects.equals(usuariosParticipantes, other.usuariosParticipantes);
 	}
 
 	@Override
 	public String toString() {
 		return "Quedada [idQuedada=" + idQuedada + ", descripcion=" + descripcion + ", fechaHoraEncuentro="
-				+ fechaHoraEncuentro + ", lugar=" + lugar + ", estado=" + estado + ", usuariosParticipantes="
-				+ usuariosParticipantes + "]";
+				+ fechaHoraEncuentro.getTime() + ", lugar=" + lugar + ", estado=" + estado + ", usuarioOrganizador="
+				+ usuarioOrganizador + ", usuariosParticipantes=" + usuariosParticipantes + "]";
 	}
+
 	
 }

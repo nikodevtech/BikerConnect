@@ -9,13 +9,6 @@ import com.bikerconnect.dtos.MotoDTO;
 public interface IMotoServicio {
 	
 	/**
-	 * Obtiene una lista de motos de un usuario
-	 * @param idUsuario El id del usuario que tiene las motos
-	 * @return La lista de motos
-	 */
-	//public List<MotoDTO> obtenerMotosPorIdUsuario(Long idUsuario);
-	
-	/**
 	 * Se registra una moto de un usuario en el sistema
 	 * @param motoDTO La nueva moto a registrar
 	 * @return true si se ha podido registrar, false en caso contrario

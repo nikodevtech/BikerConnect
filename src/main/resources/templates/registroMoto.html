@@ -71,11 +71,12 @@
           </div>
           <div class="mb-3">
             <label for="nombre" class="form-label textoPrincipal">Año fabricación</label>
-            <input
+            <input       
               th:field="*{año}"
               type="number"
               id="año"
               name="año"
+              min="1900"
               class="form-control"
               required
             />

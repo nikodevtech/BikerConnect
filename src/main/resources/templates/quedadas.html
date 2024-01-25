@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,14 +46,16 @@
 							<th class="table-dark">Lugar</th>
 							<th class="table-dark">Fecha y hora</th>
 							<th class="table-dark">Descripción</th>
-							<th class="table-dark">Estado</th>														
+							<th class="table-dark">Organizador</th>
+							<th class="table-dark">Estado</th>																												
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="quedada : ${quedadas}">
 							<td th:text="${quedada.lugar}"></td>
-							<td th:text="${#dates.format(quedada.fechaHoraEncuentro, 'dd-MM-yyyy HH:mm')}"></td>
+							<td th:text="${#dates.format(quedada.fechaHora, 'dd-MM-yyyy HH:mm')}"></td>
 							<td th:text="${quedada.descripcion}"></td>
+							<td th:text="${quedada.usuarioOrganizador}"></td>
 							<td th:text="${quedada.estado}"></td>
 						</tr>
 					</tbody>

@@ -53,12 +53,4 @@ public class MotoServicioImpl implements IMotoServicio {
 		}	
 	}
 
-//	@Override
-//	public List<MotoDTO> obtenerMotosPorIdUsuario(Long idUsuario) {
-//		
-//		List<Moto> motos = motoRepositorio.findAllByUsuarioPropietarioId(idUsuario);
-//	
-//		return toDto.listaMotosToDto(motos);
-//	}
-
 }

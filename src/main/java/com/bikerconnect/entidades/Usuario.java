@@ -212,7 +212,7 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [id=" + id + ", nombreApellidos=" + nombreApellidos + ", email=" + email + ", password="
 				+ password + ", telefono=" + telefono + ", token=" + token + ", expiracionToken=" + expiracionToken
-				+ ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada + ", rol=" + rol
+				+ ", fechaRegistro=" + fechaRegistro.getTime() + ", cuentaConfirmada=" + cuentaConfirmada + ", rol=" + rol
 				+ ", foto=" + foto + "]";
 	}
 

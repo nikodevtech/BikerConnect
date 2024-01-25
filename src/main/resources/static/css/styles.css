@@ -68,25 +68,29 @@ h1 {
 .tituloPrincipal {
 	font-family: 'Kalam', cursive;
 	font-size: 3rem;
-	/* Tamaño de fuente personalizado */
 	color: #ffffff;
-	/* Color de texto personalizado */
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	/* Sombra de texto personalizada */
 }
 
 .subtituloPrincipal {
-	font-family: 'Kalam', cursive;
-	font-size: 4rem;
-	color: #5993d3;
-	text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+  font-family: 'Kalam', cursive;
+  font-size: 4.5rem; 
+  color: #1f3c85; 
+  text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8); 
+}
+.subtituloPrincipal2 {
+  font-family: 'Kalam', cursive;
+  font-size: 4.5rem; 
+  color: #5993d3; 
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8); 
 }
 
-.subtituloPrincipal2 {
+.subtituloSecundario2 {
 	font-family: 'Kalam', cursive;
-	font-size: 4.5rem;
+	font-size: 1.5rem;
 	color: #5993d3;
-	text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+	margin-top: 10px;
 }
 
 .subtituloSecundario {
@@ -95,6 +99,15 @@ h1 {
 	color: #1f3c85;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 	margin-top: 10px;
+}
+
+.subtituloSecundario3 {
+	font-family: 'Kalam', cursive;
+	font-size: 3.5rem;
+	color: #5993d3;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .listaLogin {
