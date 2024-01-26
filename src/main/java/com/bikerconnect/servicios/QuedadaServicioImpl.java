@@ -43,4 +43,16 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 		}
 	}
 
+	@Override
+	public QuedadaDTO obtenerQuedadaPorId(Long id) {
+		try {
+			QuedadaDTO quedada = new QuedadaDTO();
+			quedada = toDto.quedadaToDto(quedadaRepo.findById(id).get());
+			return quedada;
+		} catch (IllegalArgumentException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - otenerQuedadaPorId()] - Al buscar una quedada por su id: "+ e);
+		}
+		return null;
+	}
+
 }

@@ -21,5 +21,12 @@ public interface IQuedadaServicio {
 	 * @return true si se pudo crear la quedada o false si no
 	 */
 	public boolean crearQuedada(QuedadaDTO quedadaDTO);
+	
+	/**
+	 * Busca una quedada por su id
+	 * @param id el id de la quedada
+	 * @return la quedada como DTO
+	 */
+	public QuedadaDTO obtenerQuedadaPorId(Long id);
 
 }
