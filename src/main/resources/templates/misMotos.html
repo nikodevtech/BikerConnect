@@ -5,72 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis motos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
     <script th:src="@{/script/script.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>   
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-	<nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white">
-        <div class="container-fluid ms-5">
-            <a class="navbar-brand text-white" th:href="@{/bienvenida}"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white">
+    <div class="container-fluid ms-5">
+        <a class="navbar-brand text-white" th:href="@{/bienvenida}"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
-                <ul class="navbar-nav me-5 ms-auto">
-                    <li class="nav-item me-3">
-                        <a class="nav-link fw-bold text-white" th:href="@{/privada/dashboard}"><i class="bi bi-house fs-5"> Dashboard</i></a>
-                    </li>               
-                </ul>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
+            <ul class="navbar-nav me-5 ms-auto">
+                <li class="nav-item me-3">
+                    <a class="nav-link fw-bold text-white" th:href="@{/privada/dashboard}"><i class="bi bi-house fs-5"> Dashboard</i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container py-4 mt-5">
+    <div class="card bg-light">
+        <div class="card-header border-bottom border-3"><h3 class="subtituloSecundario">Mis motos</h3></div>
+        <div class="card-body">
+            <h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misMotos)}">No tengo ninguna moto registrada en el sistema</h5>
+            <a th:href="@{/privada/crear-moto}" role="button" class="btn buttonPrincipal p-2 mb-3">
+                <i class="bi bi-bicycle p-2 fs-5"> Registrar moto</i>
+            </a>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div th:each="moto : ${misMotos}" class="col">
+                    <div class="card cardMoto">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${moto.marca + ' ' + moto.modelo}"></h5>
+                            <p class="card-text">Año: <span th:text="${moto.año}"></span></p>
+                            <p class="card-text">Color: <span th:text="${moto.color}"></span></p>
+                            <p class="card-text">Descripción: <span th:text="${moto.descModificaciones}"></span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-    <div class="container py-4 mt-5">
-		<div class="card bg-light">
-			<div class="card-header border-bottom border-3"><h3 class="subtituloSecundario">Mis motos</h3></div>
-			<div class="card-body" >
-				<h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misMotos)}">No tengo ninguna moto registrada en el sistema</h5>
-				<a th:href="@{/privada/crear-moto}" role="button" class="btn buttonPrincipal p-2 mb-3">
-          			<i class="bi bi-bicycle p-2 fs-5"> Registrar moto</i>
-        		</a>
-
-				<table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(misMotos)}">
-					<thead class="thead-inverse">
-						<tr>
-							<th class="table-dark">Marca</th>
-							<th class="table-dark">Modelo</th>
-							<th class="table-dark">Año fabricación</th>
-							<th class="table-dark">Color</th>
-							<th class="table-dark">Descripción</th>														
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="moto : ${misMotos}">
-							<td th:text="${moto.marca}"></td>
-							<td th:text="${moto.modelo}"></td>
-							<td th:text="${moto.año}"></td>
-							<td th:text="${moto.color}"></td>
-							<td th:text="${moto.descModificaciones}"></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<script th:if="${not #strings.isEmpty(altaMotoExito)}">
-	   mostrarNotificacion("¡Moto registrada en el sistema!", "Se ha dado de alta su nueva moto correctamente", 'success');
-	</script>
-	<script th:if="${not #strings.isEmpty(altaMotoError)}">
-	   mostrarNotificacion("¡Error al registrar tu moto!","No se pudo registrar su nueva moto, intentelo de nuevo.", 'error');
-	</script>
-	<script th:if="${not #strings.isEmpty(error)}">
-	    mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
-	</script>
+    </div>
+</div>
+<script th:if="${not #strings.isEmpty(altaMotoExito)}">
+    mostrarNotificacion("¡Moto registrada en el sistema!", "Se ha dado de alta su nueva moto correctamente", 'success');
+</script>
+<script th:if="${not #strings.isEmpty(altaMotoError)}">
+    mostrarNotificacion("¡Error al registrar tu moto!","No se pudo registrar su nueva moto, intentelo de nuevo.", 'error');
+</script>
+<script th:if="${not #strings.isEmpty(error)}">
+    mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
+</script>
 </body>
 </html>

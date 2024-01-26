@@ -37,7 +37,7 @@ public class EmailServicioImpl implements IEmailServicio {
 
 	            String cuerpoMensaje = String.format(
 	    				"﻿<!DOCTYPE html> <html lang='es'> <body> <div style='width: 600px; padding: 20px; border: 2px solid black; border-radius: 13px; background-color: #DEDEDE;"
-	    				+ " font-family: Sans-serif'> <h1 style='color:#1f3c85'>Restablecer contraseña<b style='color:#5993d3'> Biblioteca app</b></h1>"
+	    				+ " font-family: Sans-serif'> <h1 style='color:#1f3c85'>Restablecer contraseña<b style='color:#5993d3'> BikerConnect</b></h1>"
 	    				+ " <p style='margin-bottom:25px'>Estimado/a&nbsp;<b>%s</b>:</p> <p style='margin-bottom:25px'>"
 	    				+ "Recibiste este correo porque se solicitó un restablecimiento de contraseña para tu cuenta. Haz clic en el botón que aparece a continuación para cambiar tu contraseña.</p>"
 	    				+ " <a style='padding: 10px 15px; border-radius: 10px; background-color: #5993d3; color: white; text-decoration: none' href='%s' target='_blank'>Cambiar contraseña</a>"

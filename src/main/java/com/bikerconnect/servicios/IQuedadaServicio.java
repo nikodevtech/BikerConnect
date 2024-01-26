@@ -14,5 +14,12 @@ public interface IQuedadaServicio {
 	 * @return La lista de quedadas como DTO
 	 */
 	public List<QuedadaDTO> obtenerQuedadas();
+	
+	/**
+	 * Metodo que planifica una nueva quedada
+	 * @param quedadaDTO la quedada a planificar
+	 * @return true si se pudo crear la quedada o false si no
+	 */
+	public boolean crearQuedada(QuedadaDTO quedadaDTO);
 
 }

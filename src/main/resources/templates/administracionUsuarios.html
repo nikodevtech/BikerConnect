@@ -45,15 +45,15 @@
 				<table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(usuarios)}">
 					<thead class="thead-inverse">
 						<tr>
-							<th class="table-dark">id</th>
-							<th class="table-dark">Nombre y apellidos</th>
-							<th class="table-dark">Email</th>
-							<th class="table-dark">Teléfono</th>
-							<th class="table-dark">Fecha de registro</th>
-							<th class="table-dark">Cuenta activa</th>														
-							<th class="table-dark">Rol</th>							
-							<th class="table-dark" sec:authorize="hasRole('ROLE_ADMIN')">Edición</th>
-							<th  class="table-dark"sec:authorize="hasRole('ROLE_ADMIN')">Eliminado</th>
+							<th class="tableCustom">id</th>
+							<th class="tableCustom">Nombre y apellidos</th>
+							<th class="tableCustom">Email</th>
+							<th class="tableCustom">Teléfono</th>
+							<th class="tableCustom">Fecha de registro</th>
+							<th class="tableCustom">Cuenta activa</th>														
+							<th class="tableCustom">Rol</th>							
+							<th class="tableCustom" sec:authorize="hasRole('ROLE_ADMIN')">Edición</th>
+							<th class="tableCustom" sec:authorize="hasRole('ROLE_ADMIN')">Eliminado</th>
 						</tr>
 					</thead>
 					<tbody>

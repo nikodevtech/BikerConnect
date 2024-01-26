@@ -109,6 +109,10 @@ h1 {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+.tableCustom{
+ background-color: #1f3c85 !important;
+ color: white !important;	
+}
 
 .listaLogin {
 	list-style-type: disc;
@@ -121,7 +125,7 @@ h1 {
 }
 
 .textoPrincipal {
-	color: #1f3c85;
+	color: #1f3c85 ;
 }
 
 .buttonPrincipal {
@@ -150,4 +154,11 @@ h1 {
 	margin-left: 5px;
 	margin-top: 5px;
     transform: scale(2); /* Ajusta el valor según el tamaño deseado */
+}
+.cardMoto{
+	border: 1.5px solid #1f3c85;
+	border-radius: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	background-color: #E8E8E8;
+	color: #1f3c85;
 }

@@ -36,18 +36,18 @@
 			<div class="card-header border-bottom border-3"><h3 class="subtituloSecundario">Quedadas</h3></div>
 			<div class="card-body" >
 				<h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(quedadas)}">No hay ninguna quedada planificada</h5>
-				<a th:href="@{/privada/crear-quedada}" role="button" class="btn buttonPrincipal p-2 mb-3">
+				<a th:href="@{/privada/quedadas/planificar-quedada}" role="button" class="btn buttonPrincipal p-2 mb-3">
           			<i class="bi bi-people p-2 fs-5"> Planificar quedada</i>
         		</a>
 
 				<table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(quedadas)}">
 					<thead class="thead-inverse">
 						<tr>
-							<th class="table-dark">Lugar</th>
-							<th class="table-dark">Fecha y hora</th>
-							<th class="table-dark">Descripción</th>
-							<th class="table-dark">Organizador</th>
-							<th class="table-dark">Estado</th>																												
+							<th class="tableCustom">Lugar</th>
+							<th class="tableCustom">Fecha y hora</th>
+							<th class="tableCustom">Descripción</th>
+							<th class="tableCustom">Organizador</th>
+							<th class="tableCustom">Estado</th>																												
 						</tr>
 					</thead>
 					<tbody>
@@ -63,5 +63,14 @@
 			</div>
 		</div>
 	</div>
+	<script th:if="${not #strings.isEmpty(quedadaCreadaExito)}">
+	    mostrarNotificacion("¡Quedada planificada!", "La quedada ha sido registrada con exito", 'success');
+	</script>
+	<script th:if="${not #strings.isEmpty(quedadaCreadaError)}">
+	    mostrarNotificacion("¡No se pudo planificar la quedada!", "Error al registrar la quedada", 'error');
+	</script>
+	<script th:if="${not #strings.isEmpty(error)}">
+	    mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
+	</script>
 </body>
 </html>
