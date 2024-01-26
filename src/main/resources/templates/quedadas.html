@@ -45,9 +45,6 @@
 						<tr>
 							<th class="tableCustom">Lugar</th>
 							<th class="tableCustom">Fecha y hora</th>
-							<th class="tableCustom">Descripción</th>
-							<th class="tableCustom">Organizador</th>
-							<th class="tableCustom">Estado</th>
 							<th class="tableCustom">Detalles</th>																												
 						</tr>
 					</thead>
@@ -55,10 +52,7 @@
 						<tr th:each="quedada : ${quedadas}">
 							<td th:text="${quedada.lugar}"></td>
 							<td th:text="${#dates.format(quedada.fechaHora, 'dd-MM-yyyy HH:mm')}"></td>
-							<td th:text="${quedada.descripcion}"></td>
-							<td th:text="${quedada.usuarioOrganizador}"></td>
-							<td th:text="${quedada.estado}"></td>
-							<td><a th:href="@{/privada/quedadas/detalle-quedada/} + ${quedada.id}" role="button" class="btn buttonPrincipal">Ver</a></td>
+							<td><a th:href="@{/privada/quedadas/detalle-quedada/} + ${quedada.id}" role="button" class="btn buttonPrincipal"><i class="bi bi-file-text"> Ver</i></a></td>
 						</tr>
 					</tbody>
 				</table>

@@ -47,25 +47,25 @@
 		            </div>
 		            <div class="col-md-6">
 					    <p><strong>Asistentes:</strong></p>
-					    <ul>
+<!-- 					    <ul> -->
 <!-- 					        <li th:each="asistente : ${quedada.usuariosParticipantes}"> -->
 <!-- 					            <p> -->
 <!-- 					                <strong>Nombre:</strong> <span th:text="${asistente.nombre}"></span><br/> -->
 <!-- 					                <strong>Moto:</strong> <span th:text="${asistente.moto}"></span> -->
 <!-- 					            </p> -->
 <!-- 					        </li> -->
-					        <li>
-					            <p>
-					                <strong>Nombre:</strong> <span >Juan</span> - 
-					                <strong>Moto:</strong> <span > Kawasaki</span>
-					            </p>
-					        </li>
-					    </ul>
+<!-- 					        <li> -->
+<!-- 					            <p> -->
+<!-- 					                <strong>Nombre:</strong> <span >Juan</span> -  -->
+<!-- 					                <strong>Moto:</strong> <span > Kawasaki</span> -->
+<!-- 					            </p> -->
+<!-- 					        </li> -->
+<!-- 					    </ul> -->
 					</div>
         		</div>
 			</div>
 			<div class="card-footer">
-				<a th:href="@{/privada/quedadas}" class="btn buttonPrincipal m-1"><i class="bi bi-plus-circle"> Unirse a la Quedada</i></a>
+				<a th:href="@{/privada/quedadas/detalle-quedada/unirse/} + ${quedada.id}" class="btn buttonPrincipal m-1"><i class="bi bi-plus-circle"> Unirse a la Quedada</i></a>
 			</div>
 		</div>
 	</div>

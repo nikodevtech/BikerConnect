@@ -76,7 +76,7 @@ public class QuedadaDTO {
 	}
 	@Override
 	public String toString() {
-		return "QuedadaDTO [id=" + id + ", lugar=" + lugar + ", fechaHora=" + fechaHora.getTime() + ", descripcion=" + descripcion
+		return "QuedadaDTO [id=" + id + ", lugar=" + lugar + ", fechaHora=" + fechaHora + ", descripcion=" + descripcion
 				+ ", estado=" + estado + ", usuarioOrganizador=" + usuarioOrganizador + "]";
 	}
 		

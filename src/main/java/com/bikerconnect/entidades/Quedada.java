@@ -1,5 +1,6 @@
 package com.bikerconnect.entidades;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -46,7 +47,7 @@ public class Quedada {
 	@JoinTable(name = "participantes", 
 			   joinColumns = @JoinColumn(name = "id_quedada"), 
 			   inverseJoinColumns = @JoinColumn(name = "id_usuario"))
-	private List<Usuario> usuariosParticipantes;
+	private List<Usuario> usuariosParticipantes = new ArrayList<>();
 	
 	//Getters y Setters
 	public Long getIdQuedada() {
@@ -131,7 +132,7 @@ public class Quedada {
 	@Override
 	public String toString() {
 		return "Quedada [idQuedada=" + idQuedada + ", descripcion=" + descripcion + ", fechaHoraEncuentro="
-				+ fechaHoraEncuentro.getTime() + ", lugar=" + lugar + ", estado=" + estado + ", usuarioOrganizador="
+				+ fechaHoraEncuentro + ", lugar=" + lugar + ", estado=" + estado + ", usuarioOrganizador="
 				+ usuarioOrganizador + ", usuariosParticipantes=" + usuariosParticipantes + "]";
 	}
 

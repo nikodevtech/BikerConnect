@@ -1,5 +1,6 @@
 package com.bikerconnect.entidades;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -63,7 +64,7 @@ public class Usuario {
 	private List<Moto> motosPropias;
 	
     @ManyToMany(mappedBy = "usuariosParticipantes")
-    private List<Quedada> quedadasParticipante;
+    private List<Quedada> quedadasParticipante = new ArrayList<>();;
 	
 	
 	//CONSTRUCTORES
@@ -212,8 +213,8 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [id=" + id + ", nombreApellidos=" + nombreApellidos + ", email=" + email + ", password="
 				+ password + ", telefono=" + telefono + ", token=" + token + ", expiracionToken=" + expiracionToken
-				+ ", fechaRegistro=" + fechaRegistro.getTime() + ", cuentaConfirmada=" + cuentaConfirmada + ", rol=" + rol
-				+ ", foto=" + foto + "]";
+				+ ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada + ", rol=" + rol
+				+ ", foto=" + foto +"]";
 	}
 
 
