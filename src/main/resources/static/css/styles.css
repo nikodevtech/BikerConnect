@@ -186,3 +186,7 @@ body {
     position: relative;
     min-height: 100vh;
 }
+
+.footer-p {
+	font-family: 'Kalam', cursive;
+}

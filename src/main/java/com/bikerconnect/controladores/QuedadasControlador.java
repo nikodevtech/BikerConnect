@@ -131,26 +131,30 @@ public class QuedadasControlador {
 	 */
 	@GetMapping("/privada/quedadas/detalle-quedada/unirse/{id}")
 	public String unirseQuedada(@PathVariable Long id, Model model, Authentication auth) {
-		
-		try {
-			boolean unidoCorrectamente = quedadaServicio.unirseQuedada(id, auth.getName());
+	    try {
+	        boolean unidoCorrectamente = quedadaServicio.unirseQuedada(id, auth.getName());
 
-			if (unidoCorrectamente) {
-				Quedada quedada = quedadaRepo.findById(id).get();
-				List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedada.getUsuariosParticipantes());
-				model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
-				model.addAttribute("participantes", participantes);
-				model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
-				return "quedadas";
-			} else {
-				model.addAttribute("quedadaAsistenciaError", "No se ha podido unir a la quedada");
-				return "quedadas";
-			}
-		} catch (Exception e) {
-			model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
-			return "quedadas";
-		}
-		
+	        if (unidoCorrectamente) {
+	            Quedada quedada = quedadaRepo.findById(id).orElse(null);
+	            List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedada.getUsuariosParticipantes());
+	            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+	            model.addAttribute("participantes", participantes);
+	            model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
+	        } else {
+	            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+	            if (quedadaServicio.estaUsuarioUnido(id, auth.getName())) {
+	                model.addAttribute("quedadaAsistenciaInfo", "Ya estás unido a esta quedada");
+	            } else {
+	                model.addAttribute("quedadaAsistenciaErrorGeneral", "No se ha podido unir a la quedada");
+	            }
+	        }
+
+	        return "quedadas";
+	    } catch (Exception e) {
+	        model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
+	        return "quedadas";
+	    }
 	}
+
 
 }

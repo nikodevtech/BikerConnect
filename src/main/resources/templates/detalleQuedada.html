@@ -45,33 +45,35 @@
 		                <p><strong>Estado:</strong> <span th:text="${quedada.estado}"></span></p>
 		                <p><strong>Descripción:</strong> <span th:text="${quedada.descripcion}"></span></p>
 		            </div>
-		            <div class="col-md-6">
-					    <p><strong>Asistentes:</strong></p>
+		        </div>
+		        <div class="row">
+		            <div class="col-md-6 offset-md-3">
+		            	<h5 class="subtituloSecundario fs-5">Asistentes</h5>
 					    <h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(participantes)}">No hay participantes en la quedada</h5>
 					    <table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(participantes)}">
-				        <thead class="thead-inverse">
-				            <tr>
-				                <th class="tableCustom">Nombre</th>
-				                <th class="tableCustom">Apellidos</th>
-				                <th class="tableCustom">Teléfono</th>
-				                <th class="tableCustom">Motos</th>
-				            </tr>
-				        </thead>
-				        <tbody>
-				            <tr th:each="asistente : ${participantes}">
-				                <td th:text="${asistente.nombreUsuario}"></td>
-				                <td th:text="${asistente.apellidosUsuario}"></td>
-				                <td th:text="${asistente.tlfUsuario}"></td>
-				                <td>
-				                    <ul>
-				                        <li th:each="moto : ${asistente.misMotos}">
-				                            <span th:text="${moto.marca}"></span> - <span th:text="${moto.modelo}"></span><br/>
-				                        </li>
-				                    </ul>
-				                </td>
-				            </tr>
-				        </tbody>
-				    </table>
+					        <thead class="thead-inverse">
+					            <tr>
+					                <th class="tableCustom">Nombre</th>
+					                <th class="tableCustom">Apellidos</th>
+					                <th class="tableCustom">Teléfono</th>
+					                <th class="tableCustom">Motos</th>
+					            </tr>
+					        </thead>
+					        <tbody>
+					            <tr th:each="asistente : ${participantes}">
+					                <td th:text="${asistente.nombreUsuario}"></td>
+					                <td th:text="${asistente.apellidosUsuario}"></td>
+					                <td th:text="${asistente.tlfUsuario}"></td>
+					                <td>
+					                    <ul>
+					                        <li th:each="moto : ${asistente.misMotos}">
+					                            <span th:text="${moto.marca}"></span> - <span th:text="${moto.modelo}"></span><br/>
+					                        </li>
+					                    </ul>
+					                </td>
+					            </tr>
+					        </tbody>
+				    	</table>
 					</div>
         		</div>
 			</div>
@@ -83,7 +85,7 @@
 	<div class="vg-footer bg-dark bg-gradient">
 		<div class="container d-flex justify-content-between align-items-center">
 		  <a class="navbar-brand text-white" href="#" style="pointer-events: none;"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect" style="width: 130px;"></a>     
-		  <p class="text-center mb-0 mt-1">Copyright © 2024 - BikerConnect Todos los Derechos Reservados</p>
+		  <p class="text-center mb-0 mt-1 footer-p">Copyright © 2024 - BikerConnect Todos los Derechos Reservados</p>
 		  <ul class="nav list-unstyled d-flex">
 		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-twitter-x fs-4"></i></a></li>
 		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-facebook fs-4"></i></a></li>

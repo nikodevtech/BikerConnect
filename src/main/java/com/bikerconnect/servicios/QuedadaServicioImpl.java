@@ -63,42 +63,44 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 
 	@Override
 	public boolean unirseQuedada(Long idQuedada, String emailUsuario) {
-		try {
-			Quedada q = quedadaRepo.findById(idQuedada).get();
-			Usuario u = usuarioRepo.findFirstByEmail(emailUsuario);
-			
-			if (u == null) {
-				return false;
-			}
-			
-			if (q == null) {
-				return false;
-			}
-			
-			if (u.getQuedadasParticipante().contains(q)) {
-				return false;
-			}
-			
-			if (q.getUsuariosParticipantes().contains(u)) {
-				return false;
-			}
-			
-			u.getQuedadasParticipante().add(q);
-			q.getUsuariosParticipantes().add(u);
-			
-			usuarioRepo.save(u);
-			quedadaRepo.save(q);
-			
-			return true;
-			
-		} catch (IllegalArgumentException e) {
-			System.out.println("\n[ERROR QuedadaServicioImpl - unirseQuedada()] - Error de argumento incorrecto al unirse a una quedada: "+ e);
-			return false;
-		} catch (PersistenceException e) {
-			System.out.println("\n[ERROR QuedadaServicioImpl - unirseQuedada()] - Error de persistencia al unirse a una quedada: "+ e);
-			return false;
-		}	
+	    try {
+	        Quedada q = quedadaRepo.findById(idQuedada).orElse(null);
+	        Usuario u = usuarioRepo.findFirstByEmail(emailUsuario);
+
+	        if (u == null || q == null) {
+	            return false;
+	        }
+
+	        if (u.getQuedadasParticipante().contains(q) || q.getUsuariosParticipantes().contains(u)) {
+	            return false; 
+	        }
+
+	        u.getQuedadasParticipante().add(q);
+	        q.getUsuariosParticipantes().add(u);
+
+	        usuarioRepo.save(u);
+	        quedadaRepo.save(q);
+
+	        return true;
+
+	    } catch (IllegalArgumentException e) {
+	        System.out.println("\n[ERROR QuedadaServicioImpl - unirseQuedada()] - Error de argumento incorrecto al unirse a una quedada: " + e);
+	        return false;
+	    } catch (PersistenceException e) {
+	        System.out.println("\n[ERROR QuedadaServicioImpl - unirseQuedada()] - Error de persistencia al unirse a una quedada: " + e);
+	        return false;
+	    }
 	}
+
+	
+	@Override
+	public boolean estaUsuarioUnido(Long idQuedada, String emailUsuario) {
+	    Quedada q = quedadaRepo.findById(idQuedada).orElse(null);
+	    Usuario u = usuarioRepo.findFirstByEmail(emailUsuario);
+
+	    return (q != null && u != null && (u.getQuedadasParticipante().contains(q) || q.getUsuariosParticipantes().contains(u)));
+	}
+
 		
 
 }
