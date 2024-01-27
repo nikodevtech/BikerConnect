@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bikerconnect.dtos.QuedadaDTO;
+import com.bikerconnect.entidades.Quedada;
+import com.bikerconnect.entidades.Usuario;
 import com.bikerconnect.repositorios.QuedadaRepositorio;
+import com.bikerconnect.repositorios.UsuarioRepositorio;
 
 import jakarta.persistence.PersistenceException;
 
@@ -26,6 +29,9 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 	
 	@Autowired
 	private IQuedadaToDao toDao;
+	
+	@Autowired
+	private UsuarioRepositorio usuarioRepo;
 
 	@Override
 	public List<QuedadaDTO> obtenerQuedadas() {
@@ -54,5 +60,45 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean unirseQuedada(Long idQuedada, String emailUsuario) {
+		try {
+			Quedada q = quedadaRepo.findById(idQuedada).get();
+			Usuario u = usuarioRepo.findFirstByEmail(emailUsuario);
+			
+			if (u == null) {
+				return false;
+			}
+			
+			if (q == null) {
+				return false;
+			}
+			
+			if (u.getQuedadasParticipante().contains(q)) {
+				return false;
+			}
+			
+			if (q.getUsuariosParticipantes().contains(u)) {
+				return false;
+			}
+			
+			u.getQuedadasParticipante().add(q);
+			q.getUsuariosParticipantes().add(u);
+			
+			usuarioRepo.save(u);
+			quedadaRepo.save(q);
+			
+			return true;
+			
+		} catch (IllegalArgumentException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - unirseQuedada()] - Error de argumento incorrecto al unirse a una quedada: "+ e);
+			return false;
+		} catch (PersistenceException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - unirseQuedada()] - Error de persistencia al unirse a una quedada: "+ e);
+			return false;
+		}	
+	}
+		
 
 }

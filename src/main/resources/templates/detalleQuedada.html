@@ -47,20 +47,23 @@
 		            </div>
 		            <div class="col-md-6">
 					    <p><strong>Asistentes:</strong></p>
-<!-- 					    <ul> -->
-<!-- 					        <li th:each="asistente : ${quedada.usuariosParticipantes}"> -->
-<!-- 					            <p> -->
-<!-- 					                <strong>Nombre:</strong> <span th:text="${asistente.nombre}"></span><br/> -->
-<!-- 					                <strong>Moto:</strong> <span th:text="${asistente.moto}"></span> -->
-<!-- 					            </p> -->
-<!-- 					        </li> -->
-<!-- 					        <li> -->
-<!-- 					            <p> -->
-<!-- 					                <strong>Nombre:</strong> <span >Juan</span> -  -->
-<!-- 					                <strong>Moto:</strong> <span > Kawasaki</span> -->
-<!-- 					            </p> -->
-<!-- 					        </li> -->
-<!-- 					    </ul> -->
+					    <h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(participantes)}">No hay participantes en la quedada</h5>
+					    <table class="table" th:if="${not #lists.isEmpty(participantes)}">
+				        <thead>
+				            <tr>
+				                <th class="tableCustom">Nombre</th>
+				                <th class="tableCustom">Apellidos</th>
+				                <th class="tableCustom">Teléfono</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr th:each="asistente : ${participantes}">
+				                <td th:text="${asistente.nombreUsuario}"></td>
+				                <td th:text="${asistente.apellidosUsuario}"></td>
+				                <td th:text="${asistente.tlfUsuario}"></td>
+				            </tr>
+				        </tbody>
+				    </table>
 					</div>
         		</div>
 			</div>

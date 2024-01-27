@@ -28,5 +28,11 @@ public interface IQuedadaServicio {
 	 * @return la quedada como DTO
 	 */
 	public QuedadaDTO obtenerQuedadaPorId(Long id);
+	
+	/**
+	 * 
+	 * @param id
+	 */
+	public boolean unirseQuedada(Long idQuedada, String emailUsuario);
 
 }

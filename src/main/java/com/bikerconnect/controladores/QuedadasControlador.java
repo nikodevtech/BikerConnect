@@ -1,5 +1,7 @@
 package com.bikerconnect.controladores;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -12,13 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.bikerconnect.dtos.QuedadaDTO;
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.entidades.Quedada;
-import com.bikerconnect.entidades.Usuario;
 import com.bikerconnect.repositorios.QuedadaRepositorio;
-import com.bikerconnect.repositorios.UsuarioRepositorio;
 import com.bikerconnect.servicios.IQuedadaServicio;
-import com.bikerconnect.servicios.IQuedadaToDao;
-import com.bikerconnect.servicios.IUsuarioServicio;
-import com.bikerconnect.servicios.IUsuarioToDao;
+import com.bikerconnect.servicios.IUsuarioToDto;
 
 /**
  * Clase que ejerce de controlador de la vista de quedadas
@@ -30,13 +28,11 @@ public class QuedadasControlador {
 	private IQuedadaServicio quedadaServicio;
 	
 	@Autowired
-	private IUsuarioServicio usuarioServicio;
-	
-	@Autowired
 	private QuedadaRepositorio quedadaRepo;
 	
 	@Autowired
-	private UsuarioRepositorio usuarioRepo;
+	private IUsuarioToDto toDto;
+	
 
 	/**
 	 * Gestiona las peticion HTTP GET para la url /privada/quedadas
@@ -109,7 +105,10 @@ public class QuedadasControlador {
 
 		QuedadaDTO quedada = quedadaServicio.obtenerQuedadaPorId(id);
 		if (quedada != null) {
+			Quedada quedadaDao = quedadaRepo.findById(id).get();
+			List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedadaDao.getUsuariosParticipantes());
 			model.addAttribute("quedada", quedada);
+			model.addAttribute("participantes", participantes);
 			return "detalleQuedada"; 
 		} else {
 			return "redirect:/privada/quedadas"; 
@@ -119,18 +118,20 @@ public class QuedadasControlador {
 	
 	@GetMapping("/privada/quedadas/detalle-quedada/unirse/{id}")
 	public String unirseQuedada(@PathVariable Long id, Model model, Authentication auth) {
-				
-		Quedada q = quedadaRepo.findById(id).get();
-		Usuario u = usuarioRepo.findFirstByEmail(auth.getName());
-			
-		u.getQuedadasParticipante().add(q);
-		q.getUsuariosParticipantes().add(u);
 		
-		usuarioRepo.save(u);
-		quedadaRepo.save(q);
+		boolean unidoCorrectamente = quedadaServicio.unirseQuedada(id, auth.getName());
 
-		model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
-		return "quedadas";
+		if (unidoCorrectamente) {
+			Quedada quedada = quedadaRepo.findById(id).get();
+			List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedada.getUsuariosParticipantes());
+			model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+			model.addAttribute("participantes", participantes);
+			model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
+			return "quedadas";
+		} else {
+			model.addAttribute("quedadaAsistenciaError", "No se ha podido unir a la quedada");
+			return "quedadas";
+		}
 	}
 
 }

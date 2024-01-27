@@ -70,6 +70,12 @@
 		  </ul>
 		</div>
     </div>
+	<script th:if="${not #strings.isEmpty(quedadaAsistenciaExito)}">
+	    mostrarNotificacion("¡Tu asistencia ha sido registrada!", "Ahora quedas marcado como participante de la quedada", 'success');
+	</script>
+	<script th:if="${not #strings.isEmpty(quedadaAsistenciaError)}">
+	    mostrarNotificacion("¡Error al registrar tu asistencia!","No se pudo registrar tu asistencia en la quedada, intentelo de nuevo", 'error');
+	</script>
 	<script th:if="${not #strings.isEmpty(quedadaCreadaExito)}">
 	    mostrarNotificacion("¡Quedada planificada!", "La quedada ha sido registrada con exito", 'success');
 	</script>
