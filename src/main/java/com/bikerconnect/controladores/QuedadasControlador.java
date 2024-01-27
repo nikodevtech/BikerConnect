@@ -145,7 +145,7 @@ public class QuedadasControlador {
 	            if (quedadaServicio.estaUsuarioUnido(id, auth.getName())) {
 	                model.addAttribute("quedadaAsistenciaInfo", "Ya estás unido a esta quedada");
 	            } else {
-	                model.addAttribute("quedadaAsistenciaErrorGeneral", "No se ha podido unir a la quedada");
+	                model.addAttribute("quedadaAsistenciaError", "No se ha podido unir a la quedada");
 	            }
 	        }
 
