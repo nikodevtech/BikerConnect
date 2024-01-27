@@ -3,6 +3,7 @@ package com.bikerconnect.servicios;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bikerconnect.dtos.UsuarioDTO;
@@ -16,6 +17,9 @@ import com.bikerconnect.entidades.Usuario;
 @Service
 public class UsuarioToDtoImpl implements IUsuarioToDto {
 
+	@Autowired
+	private IMotoToDto motoToDto;
+	
 	@Override
     public UsuarioDTO usuarioToDto(Usuario u) {
         try {
@@ -43,6 +47,9 @@ public class UsuarioToDtoImpl implements IUsuarioToDto {
 				dto.setCuentaConfirmada(u.isCuentaConfirmada());
 				dto.setRol(u.getRol());
 				
+				if(u.getMotosPropias().size() > 0) {
+					dto.setMisMotos(motoToDto.listaMotosToDto(u.getMotosPropias()));
+				}			
             }
 
             return dto;

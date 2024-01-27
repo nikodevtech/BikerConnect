@@ -3,7 +3,6 @@ package com.bikerconnect.servicios;
 import org.springframework.stereotype.Service;
 
 import com.bikerconnect.dtos.QuedadaDTO;
-import com.bikerconnect.entidades.Moto;
 import com.bikerconnect.entidades.Quedada;
 
 /**

@@ -103,35 +103,54 @@ public class QuedadasControlador {
 	@GetMapping("/privada/quedadas/detalle-quedada/{id}")
 	public String verDetallesQuedada(@PathVariable Long id, Model model) {
 
-		QuedadaDTO quedada = quedadaServicio.obtenerQuedadaPorId(id);
-		if (quedada != null) {
-			Quedada quedadaDao = quedadaRepo.findById(id).get();
-			List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedadaDao.getUsuariosParticipantes());
-			model.addAttribute("quedada", quedada);
-			model.addAttribute("participantes", participantes);
-			return "detalleQuedada"; 
-		} else {
-			return "redirect:/privada/quedadas"; 
+		try {	
+			QuedadaDTO quedada = quedadaServicio.obtenerQuedadaPorId(id);
+			if (quedada != null) {
+				Quedada quedadaDao = quedadaRepo.findById(id).get();
+				List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedadaDao.getUsuariosParticipantes());
+				model.addAttribute("quedada", quedada);
+				model.addAttribute("participantes", participantes);
+				return "detalleQuedada"; 
+			} else {
+				return "redirect:/privada/quedadas"; 
+			}
+		} catch (Exception e) {
+			model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
+			return "quedadas";
 		}
 
 	}
 	
+	/**
+	 * Gestiona la peticion HTTP GET para la url /privada/quedadas/detalle-quedada/unirse/{id}
+	 * con el procedimiento de unirse a la quedada por parte del usuario autenticado
+	 * @param id id de la quedada
+	 * @param model el modelo en el que se guardan los datos de participantes, la quedada y los mensajes al usuario
+	 * @param auth representa al usuario autenticado
+	 * @return la vista de las quedadas
+	 */
 	@GetMapping("/privada/quedadas/detalle-quedada/unirse/{id}")
 	public String unirseQuedada(@PathVariable Long id, Model model, Authentication auth) {
 		
-		boolean unidoCorrectamente = quedadaServicio.unirseQuedada(id, auth.getName());
+		try {
+			boolean unidoCorrectamente = quedadaServicio.unirseQuedada(id, auth.getName());
 
-		if (unidoCorrectamente) {
-			Quedada quedada = quedadaRepo.findById(id).get();
-			List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedada.getUsuariosParticipantes());
-			model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
-			model.addAttribute("participantes", participantes);
-			model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
-			return "quedadas";
-		} else {
-			model.addAttribute("quedadaAsistenciaError", "No se ha podido unir a la quedada");
+			if (unidoCorrectamente) {
+				Quedada quedada = quedadaRepo.findById(id).get();
+				List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedada.getUsuariosParticipantes());
+				model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+				model.addAttribute("participantes", participantes);
+				model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
+				return "quedadas";
+			} else {
+				model.addAttribute("quedadaAsistenciaError", "No se ha podido unir a la quedada");
+				return "quedadas";
+			}
+		} catch (Exception e) {
+			model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
 			return "quedadas";
 		}
+		
 	}
 
 }

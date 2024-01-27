@@ -1,5 +1,6 @@
 package com.bikerconnect.dtos;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +25,7 @@ public class UsuarioDTO {
 	private Calendar fechaRegistro;
 	private boolean cuentaConfirmada;
 	private String rol;
-	private List<MotoDTO> misMotos;
+	private List<MotoDTO> misMotos = new ArrayList<>();
 
 	// CONSTRUCTORES
 	public UsuarioDTO() {
