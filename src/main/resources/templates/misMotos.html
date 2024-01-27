@@ -15,54 +15,65 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-<nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white">
-    <div class="container-fluid ms-5">
-        <a class="navbar-brand text-white" th:href="@{/bienvenida}"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
-            <ul class="navbar-nav me-5 ms-auto">
-                <li class="nav-item me-3">
-                    <a class="nav-link fw-bold text-white" th:href="@{/privada/dashboard}"><i class="bi bi-house fs-5"> Dashboard</i></a>
-                </li>
-            </ul>
-        </div>
+	<nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white w-100">
+	    <div class="container-fluid ms-5">
+	        <a class="navbar-brand text-white" th:href="@{/bienvenida}"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"></a>
+	        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+	                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
+	            <ul class="navbar-nav me-5 ms-auto">
+	                <li class="nav-item me-3">
+	                    <a class="nav-link fw-bold text-white" th:href="@{/privada/dashboard}"><i class="bi bi-house fs-5"> Dashboard</i></a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+	<div class="container py-4">
+	    <div class="card bg-light cardPrincipal">
+	        <div class="card-header border-bottom border-3"><h3 class="subtituloSecundario">Mis motos</h3></div>
+	        <div class="card-body">
+	            <h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misMotos)}">No tengo ninguna moto registrada en el sistema</h5>
+	            <a th:href="@{/privada/crear-moto}" role="button" class="btn buttonPrincipal p-2 mb-3">
+	                <i class="bi bi-bicycle p-2 fs-5"> Registrar moto</i>
+	            </a>
+	
+	            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+	                <div th:each="moto : ${misMotos}" class="col">
+	                    <div class="card cardMoto">
+	                        <div class="card-body">
+	                            <h5 class="card-title" th:text="${moto.marca + ' ' + moto.modelo}"></h5>
+	                            <p class="card-text">Año: <span th:text="${moto.año}"></span></p>
+	                            <p class="card-text">Color: <span th:text="${moto.color}"></span></p>
+	                            <p class="card-text">Descripción: <span th:text="${moto.descModificaciones}"></span></p>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="vg-footer bg-dark bg-gradient">
+		<div class="container d-flex justify-content-between align-items-center">
+		  <a class="navbar-brand text-white" href="#" style="pointer-events: none;"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect" style="width: 130px;"></a>     
+		  <p class="text-center mb-0 mt-1">Copyright © 2024 - BikerConnect Todos los Derechos Reservados</p>
+		  <ul class="nav list-unstyled d-flex">
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-twitter-x fs-4"></i></a></li>
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-facebook fs-4"></i></a></li>
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-instagram fs-4"></i></a></li>
+		  </ul>
+		</div>
     </div>
-</nav>
-<div class="container py-4 mt-5">
-    <div class="card bg-light">
-        <div class="card-header border-bottom border-3"><h3 class="subtituloSecundario">Mis motos</h3></div>
-        <div class="card-body">
-            <h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misMotos)}">No tengo ninguna moto registrada en el sistema</h5>
-            <a th:href="@{/privada/crear-moto}" role="button" class="btn buttonPrincipal p-2 mb-3">
-                <i class="bi bi-bicycle p-2 fs-5"> Registrar moto</i>
-            </a>
-
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <div th:each="moto : ${misMotos}" class="col">
-                    <div class="card cardMoto">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${moto.marca + ' ' + moto.modelo}"></h5>
-                            <p class="card-text">Año: <span th:text="${moto.año}"></span></p>
-                            <p class="card-text">Color: <span th:text="${moto.color}"></span></p>
-                            <p class="card-text">Descripción: <span th:text="${moto.descModificaciones}"></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script th:if="${not #strings.isEmpty(altaMotoExito)}">
-    mostrarNotificacion("¡Moto registrada en el sistema!", "Se ha dado de alta su nueva moto correctamente", 'success');
-</script>
-<script th:if="${not #strings.isEmpty(altaMotoError)}">
-    mostrarNotificacion("¡Error al registrar tu moto!","No se pudo registrar su nueva moto, intentelo de nuevo.", 'error');
-</script>
-<script th:if="${not #strings.isEmpty(error)}">
-    mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
-</script>
+	<script th:if="${not #strings.isEmpty(altaMotoExito)}">
+	    mostrarNotificacion("¡Moto registrada en el sistema!", "Se ha dado de alta su nueva moto correctamente", 'success');
+	</script>
+	<script th:if="${not #strings.isEmpty(altaMotoError)}">
+	    mostrarNotificacion("¡Error al registrar tu moto!","No se pudo registrar su nueva moto, intentelo de nuevo.", 'error');
+	</script>
+	<script th:if="${not #strings.isEmpty(error)}">
+	    mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
+	</script>
 </body>
 </html>

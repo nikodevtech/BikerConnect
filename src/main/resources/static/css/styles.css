@@ -162,3 +162,27 @@ h1 {
 	background-color: #E8E8E8;
 	color: #1f3c85;
 }
+nav {
+	position: fixed !important;	
+	z-index: 1000; /* Puedes ajustar el valor según sea necesario */
+}
+.cardPrincipal{
+ 	margin-top: 100px;
+}
+.cardAdminUser{
+	margin-bottom: 120px;
+}
+.vg-footer {
+  display: block;
+  margin: 0;
+  padding: 25px 0;
+  color: white;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+body {
+    position: relative;
+    min-height: 100vh;
+}

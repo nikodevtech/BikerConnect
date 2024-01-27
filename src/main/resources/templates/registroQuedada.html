@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white w-100">
         <div class="container-fluid ms-5">
             <a class="navbar-brand text-white" th:href="@{/bienvenida}"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -28,68 +28,81 @@
             </div>
         </div>
     </nav>
-    <div class="registro">
-        <form class="custom-form" th:action="@{/privada/quedadas/planificar-quedada}" enctype="multipart/form-data" method="post" th:object="${quedadaDTO}">
-		 
-          <h2 class="text-center mb-5"><i class="bi bi-calendar2-date" style="color: #1f3c85;"> Planificar quedada</i></h2>
-          <div class="mb-3">
-            <label for="lugar" class="form-label textoPrincipal">Lugar</label>
-            <input
-              th:field="*{lugar}"
-              type="text"
-              id="lugar"
-              name="lugar"
-              class="form-control"
-              placeholder="Introduzca la ubicación"
-              required           
-            />
-          </div>
-		  <div class="mb-3">
-          	<label for="fechaHora" class="form-label textoPrincipal">Fecha y hora</label>
-            <input
-               th:field="*{fechaHora}"
-			   type="datetime-local"
-			   id="fechaHora"
-               name="fechaHora"
-               class="form-control"
-               placeholder="Introduzca la fecha y hora"
-               required
-            />
-           </div>
-           <div class="mb-3">
-           	<label for="descripcion" class="form-label textoPrincipal">Descripción</label>
-            <input
-               th:field="*{descripcion}"
-               type="text"
-               id="descripcion"
-               name="descripcion"
-               class="form-control"
-               placeholder="Introduzca una breve descripción"
-               required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="organizador" class="form-label textoPrincipal">Organizador</label>
-            <input       
-              th:field="*{usuarioOrganizador}"
-              type="email"
-              id="organizador"
-              name="organizador"
-              class="form-control"
-              placeholder="Introduzca su email"
-              required
-            />
-          </div>
-		  <div class="mb-3">
-		      <label for="estado" class="form-label textoPrincipal">Estado</label>
-		      <select th:field="*{estado}" class="form-control" required>
-		          <option value="Planificada" selected>Planificada</option>
-		          <option value="Completada" disabled>Completada</option>
-		          <option value="Cancelada" disabled>Cancelada</option>
-		      </select>
-		  </div>
-          <button type="submit" id="btnRegistro" class="btn btn-primary mt-5"><i class="bi bi-calendar2-date fs-5"> Planificar</i></button>
-        </form>
+	<div class="container py-4">
+	    <div class="registro cardPrincipal">
+	        <form class="custom-form" th:action="@{/privada/quedadas/planificar-quedada}" enctype="multipart/form-data" method="post" th:object="${quedadaDTO}">
+			 
+	          <h2 class="text-center mb-5"><i class="bi bi-calendar2-date" style="color: #1f3c85;"> Planificar quedada</i></h2>
+	          <div class="mb-3">
+	            <label for="lugar" class="form-label textoPrincipal">Lugar</label>
+	            <input
+	              th:field="*{lugar}"
+	              type="text"
+	              id="lugar"
+	              name="lugar"
+	              class="form-control"
+	              placeholder="Introduzca la ubicación"
+	              required           
+	            />
+	          </div>
+			  <div class="mb-3">
+	          	<label for="fechaHora" class="form-label textoPrincipal">Fecha y hora</label>
+	            <input
+	               th:field="*{fechaHora}"
+				   type="datetime-local"
+				   id="fechaHora"
+	               name="fechaHora"
+	               class="form-control"
+	               placeholder="Introduzca la fecha y hora"
+	               required
+	            />
+	           </div>
+	           <div class="mb-3">
+	           	<label for="descripcion" class="form-label textoPrincipal">Descripción</label>
+	            <input
+	               th:field="*{descripcion}"
+	               type="text"
+	               id="descripcion"
+	               name="descripcion"
+	               class="form-control"
+	               placeholder="Introduzca una breve descripción"
+	               required
+	            />
+	          </div>
+	          <div class="mb-3">
+	            <label for="organizador" class="form-label textoPrincipal">Organizador</label>
+	            <input       
+	              th:field="*{usuarioOrganizador}"
+	              type="email"
+	              id="organizador"
+	              name="organizador"
+	              class="form-control"
+	              placeholder="Introduzca su email"
+	              required
+	            />
+	          </div>
+			  <div class="mb-3">
+			      <label for="estado" class="form-label textoPrincipal">Estado</label>
+			      <select th:field="*{estado}" class="form-control" required>
+			          <option value="Planificada" selected>Planificada</option>
+			          <option value="Completada" disabled>Completada</option>
+			          <option value="Cancelada" disabled>Cancelada</option>
+			      </select>
+			  </div>
+	          <button type="submit" id="btnRegistro" class="btn btn-primary mt-5"><i class="bi bi-calendar2-date fs-5"> Planificar</i></button>
+	        </form>
+	      </div>
+	  </div>
+	  <div class="vg-footer bg-dark bg-gradient">
+		<div class="container d-flex justify-content-between align-items-center">
+		  <a class="navbar-brand text-white" href="#" style="pointer-events: none;"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect" style="width: 130px;"></a>     
+		  <p class="text-center mb-0 mt-1">Copyright © 2024 - BikerConnect Todos los Derechos Reservados</p>
+		  <ul class="nav list-unstyled d-flex">
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-twitter-x fs-4"></i></a></li>
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-facebook fs-4"></i></a></li>
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-instagram fs-4"></i></a></li>
+		  </ul>
+		</div>
       </div>
 </body>
 </html>

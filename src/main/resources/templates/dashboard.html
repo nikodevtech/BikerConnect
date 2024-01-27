@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-	<nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white">
+	<nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white w-100">
         <div class="container-fluid ms-5">
             <a class="navbar-brand text-white" th:href="@{/bienvenida}"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -35,13 +35,19 @@
             </div>
         </div>
     </nav>
-    <h3 class="text-center mt-5 subtituloSecundario3">Dashboard</h3>
-	<hr class="border border-primary border-2 opacity-55 mb-5 mt-4">
-	<h4 class="text-light text-center subtituloSecundario">Bienvenido <span sec:authentication="principal.username"></span></h4>
-    <div class="container mt-5">
+   
+    <div class="container py-4">
+    <div class="row cardPrincipal">
+		<div class="col">
+		 	<h3 class="text-center mt-5 subtituloSecundario3 ">Dashboard</h3>
+			<hr class="border border-primary border-2 opacity-55 mb-5 mt-4">
+			<h4 class="text-light text-center subtituloSecundario">Bienvenido <span sec:authentication="principal.username"></span></h4>
+		</div>
+    </div>
+   
         <div class="row">
             <div class="col-md-4" sec:authorize="hasRole('ROLE_ADMIN')">
-                <div class="card mb-4 dashboardCard border border-dark">
+                <div class="card mb-4 dashboardCard border border-dark cardPrincipal">
 					<i class="bi bi-person-fill-gear fs-1 ms-4" style="color: #1f3c85"></i>
 					<div class="card-body">
                         <h5 class="card-title">Administrar Usuarios</h5>
@@ -51,7 +57,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card mb-4 dashboardCard border border-dark">
+                <div class="card mb-4 dashboardCard border border-dark cardPrincipal">
 					<i class="bi bi-bicycle fs-1 ms-3" style="color: #1f3c85"></i>
 					<div class="card-body">
                         <h5 class="card-title">Mis motos</h5>
@@ -61,16 +67,27 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card mb-4 dashboardCard border border-dark">
+                <div class="card mb-4 dashboardCard border border-dark cardPrincipal">
 					<i class="bi bi-people-fill fs-1 ms-3" style="color: #1f3c85"></i>
 					<div class="card-body">
                         <h5 class="card-title">Quedadas</h5>
-                        <p class="card-text">Participe o planifique una nueva quedada.</p>
+                        <p class="card-text">Asistir o planificar una nueva quedada.</p>
                         <a th:href="@{/privada/quedadas}" class="btn buttonPrincipal"><i class="bi bi-arrow-right-circle"> Acceder</i></a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="vg-footer bg-dark bg-gradient">
+		<div class="container d-flex justify-content-between align-items-center">
+		  <a class="navbar-brand text-white" href="#" style="pointer-events: none;"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect" style="width: 130px;"></a>     
+		  <p class="text-center mb-0 mt-1">Copyright © 2024 - BikerConnect Todos los Derechos Reservados</p>
+		  <ul class="nav list-unstyled d-flex">
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-twitter-x fs-4"></i></a></li>
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-facebook fs-4"></i></a></li>
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-instagram fs-4"></i></a></li>
+		  </ul>
+		</div>
     </div>
 	<script th:if="${not #strings.isEmpty(noAdmin)}">
 	    mostrarNotificacion("¡Recurso prohibido!", "No tiene los permisos suficientes para acceder a este recurso", 'error');

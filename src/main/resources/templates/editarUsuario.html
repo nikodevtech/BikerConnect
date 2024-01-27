@@ -16,7 +16,7 @@
 </head>
 
   <body>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white w-100">
       <div class="container-fluid ms-5">
         <a class="navbar-brand text-white" th:href="@{/bienvenida}">
 		<img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"/></a>
@@ -40,9 +40,9 @@
         </div>
       </div>
     </nav>
-    <div class="container mt-5">
+    <div class="container py-4">
       <form
-        class="custom-form"
+        class="custom-form cardPrincipal"
         th:action="@{/privada/procesar-editar}"
         enctype="multipart/form-data"
         method="post"
@@ -118,6 +118,17 @@
           </button>
         </div>
       </form>
+    </div>
+    <div class="vg-footer bg-dark bg-gradient">
+		<div class="container d-flex justify-content-between align-items-center">
+		  <a class="navbar-brand text-white" href="#" style="pointer-events: none;"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect" style="width: 130px;"></a>     
+		  <p class="text-center mb-0 mt-1">Copyright © 2024 - BikerConnect Todos los Derechos Reservados</p>
+		  <ul class="nav list-unstyled d-flex">
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-twitter-x fs-4"></i></a></li>
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-facebook fs-4"></i></a></li>
+		    <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-instagram fs-4"></i></a></li>
+		  </ul>
+		</div>
     </div>
   </body>
 </html>

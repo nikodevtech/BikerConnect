@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark bg-gradient text-white w-100">
         <div class="container-fluid ms-5">
             <a class="navbar-brand text-white" href="#"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -22,33 +22,46 @@
             </button>
         </div>
     </nav>
-	<div class="jumbotron text-center mt-5">
-		  <h2 class="display-4 text-light tituloPrincipal">¡Bienvenido a <span class="subtituloPrincipal">Biker<span class="subtituloPrincipal2">Connect</span></span>!</h2>
-		  <p class="lead text-light">Conecta con otros fans de las motos. Encuentra eventos, comparte experiencias y conecta con otros apasionados de este gran hobby.</p>
-		  <hr class="border border-primary border-2 opacity-55 w-50 mx-auto mt-5">
-		  <a class="btn buttonPrincipal btn-lg mt-5 me-3" th:href="@{/auth/iniciar-sesion}" role="button"><i class="bi bi-box-arrow-in-right fs-4"> iniciar sesión</i></a>
-		  <a class="btn buttonPrincipal btn-lg mt-5" th:href="@{/auth/crear-cuenta}" role="button"><i class="bi bi-person-add fs-4"> crear cuenta</i></a>
+	<div class="container py-4">
+		<div class="jumbotron text-center cardPrincipal">
+			  <h2 class="display-4 text-light tituloPrincipal">¡Bienvenido a <span class="subtituloPrincipal">Biker<span class="subtituloPrincipal2">Connect</span></span>!</h2>
+			  <p class="lead text-light">Conecta con otros fans de las motos. Encuentra eventos, comparte experiencias y conecta con otros apasionados de este gran hobby.</p>
+			  <hr class="border border-primary border-2 opacity-55 w-50 mx-auto mt-5">
+			  <a class="btn buttonPrincipal btn-lg mt-5 me-3" th:href="@{/auth/iniciar-sesion}" role="button"><i class="bi bi-box-arrow-in-right fs-4"> iniciar sesión</i></a>
+			  <a class="btn buttonPrincipal btn-lg mt-5" th:href="@{/auth/crear-cuenta}" role="button"><i class="bi bi-person-add fs-4"> crear cuenta</i></a>
+		</div>
+		<div id="carouselExampleFade" class="carousel slide carousel-fade mt-5 mb-5 w-50 mx-auto" data-bs-ride="carousel">
+		  <div class="carousel-inner">
+		    <div class="carousel-item active" data-bs-interval="4000">
+		      <img th:src="@{/css/assets/quedada1.jpg}" class="d-block w-100" alt="quedada motera">
+		    </div>
+		    <div class="carousel-item" data-bs-interval="4000">
+		      <img th:src="@{/css/assets/moto2.jpg}" class="d-block w-100" alt="moto honda">
+		    </div>
+		    <div class="carousel-item" data-bs-interval="4000">
+		      <img th:src="@{/css/assets/moto3.jpg}" class="d-block w-100" alt="moto suzuki">
+		    </div>
+		  </div>
+		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Previous</span>
+		  </button>
+		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Next</span>
+		  </button>
+		</div>
 	</div>
-	<div id="carouselExampleFade" class="carousel slide carousel-fade mt-5 mb-5 w-50 mx-auto" data-bs-ride="carousel">
-	  <div class="carousel-inner">
-	    <div class="carousel-item active" data-bs-interval="4000">
-	      <img th:src="@{/css/assets/quedada1.jpg}" class="d-block w-100" alt="quedada motera">
-	    </div>
-	    <div class="carousel-item" data-bs-interval="4000">
-	      <img th:src="@{/css/assets/moto2.jpg}" class="d-block w-100" alt="moto honda">
-	    </div>
-	    <div class="carousel-item" data-bs-interval="4000">
-	      <img th:src="@{/css/assets/moto3.jpg}" class="d-block w-100" alt="moto suzuki">
-	    </div>
+	<div class="vg-footer bg-dark bg-gradient">
+	  <div class="container d-flex justify-content-between align-items-center">
+	    <a class="navbar-brand text-white" href="#" style="pointer-events: none;"><img th:src="@{/css/assets/logo.webp}" class="logo" alt="logo bikerconnect" style="width: 130px;"></a>     
+	    <p class="text-center mb-0 mt-1">Copyright © 2024 - BikerConnect Todos los Derechos Reservados</p>
+	    <ul class="nav list-unstyled d-flex">
+	      <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-twitter-x fs-4"></i></a></li>
+	      <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-facebook fs-4"></i></a></li>
+	      <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-instagram fs-4"></i></a></li>
+	    </ul>
 	  </div>
-	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	    <span class="visually-hidden">Previous</span>
-	  </button>
-	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	    <span class="visually-hidden">Next</span>
-	  </button>
 	</div>
 </body>
 </html>
