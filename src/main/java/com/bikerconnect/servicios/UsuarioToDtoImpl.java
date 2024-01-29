@@ -20,6 +20,9 @@ public class UsuarioToDtoImpl implements IUsuarioToDto {
 	@Autowired
 	private IMotoToDto motoToDto;
 	
+	@Autowired
+	private IQuedadaToDto quedadaToDto;
+	
 	@Override
     public UsuarioDTO usuarioToDto(Usuario u) {
         try {
@@ -49,7 +52,11 @@ public class UsuarioToDtoImpl implements IUsuarioToDto {
 				
 				if(u.getMotosPropias().size() > 0) {
 					dto.setMisMotos(motoToDto.listaMotosToDto(u.getMotosPropias()));
-				}			
+				}
+				
+				if(u.getQuedadasParticipante().size() > 0) {
+					dto.setMisQuedadas(quedadaToDto.listaQuedadToDto(u.getQuedadasParticipante()));			
+				}
             }
 
             return dto;

@@ -1,6 +1,8 @@
 package com.bikerconnect.dtos;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,6 +17,7 @@ public class QuedadaDTO {
 	private String descripcion;
 	private String estado;
 	private String usuarioOrganizador;
+	private List<UsuarioDTO> usuariosParticipantes = new ArrayList<>();
 	
 	//Getters y Setters
 	public long getId() {
@@ -56,10 +59,19 @@ public class QuedadaDTO {
 		this.usuarioOrganizador = usuarioOrganizador;
 	}
 	
+	public List<UsuarioDTO> getUsuariosParticipantes() {
+		return usuariosParticipantes;
+	} 
+	
+	public void setUsuariosParticipantes(List<UsuarioDTO> usuariosParticipantes) {
+		this.usuariosParticipantes = usuariosParticipantes;
+	}
+	
 	//Metodos
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(descripcion, estado, fechaHora, id, lugar, usuarioOrganizador);
+		return Objects.hash(descripcion, estado, fechaHora, id, lugar, usuarioOrganizador, usuariosParticipantes);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -72,12 +84,14 @@ public class QuedadaDTO {
 		QuedadaDTO other = (QuedadaDTO) obj;
 		return Objects.equals(descripcion, other.descripcion) && Objects.equals(estado, other.estado)
 				&& Objects.equals(fechaHora, other.fechaHora) && id == other.id && Objects.equals(lugar, other.lugar)
-				&& Objects.equals(usuarioOrganizador, other.usuarioOrganizador);
+				&& Objects.equals(usuarioOrganizador, other.usuarioOrganizador)
+				&& Objects.equals(usuariosParticipantes, other.usuariosParticipantes);
 	}
 	@Override
 	public String toString() {
 		return "QuedadaDTO [id=" + id + ", lugar=" + lugar + ", fechaHora=" + fechaHora + ", descripcion=" + descripcion
-				+ ", estado=" + estado + ", usuarioOrganizador=" + usuarioOrganizador + "]";
+				+ ", estado=" + estado + ", usuarioOrganizador=" + usuarioOrganizador + ", usuariosParticipantes="
+				+ usuariosParticipantes + "]";
 	}
 		
 

@@ -135,10 +135,7 @@ public class QuedadasControlador {
 	        boolean unidoCorrectamente = quedadaServicio.unirseQuedada(id, auth.getName());
 
 	        if (unidoCorrectamente) {
-	            Quedada quedada = quedadaRepo.findById(id).orElse(null);
-	            List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedada.getUsuariosParticipantes());
 	            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
-	            model.addAttribute("participantes", participantes);
 	            model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
 	        } else {
 	            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());

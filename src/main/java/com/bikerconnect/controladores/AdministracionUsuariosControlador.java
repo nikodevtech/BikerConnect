@@ -70,8 +70,15 @@ public class AdministracionUsuariosControlador {
             UsuarioDTO usuario = usuarioServicio.buscarPorId(id);
             List<UsuarioDTO> usuarios = usuarioServicio.obtenerTodos();
 
+            
             if (request.isUserInRole("ROLE_ADMIN") && usuario.getRol().equals("ROLE_ADMIN")) {
                 model.addAttribute("noSePuedeEliminar", "No se puede eliminar a un admin");
+                model.addAttribute("usuarios", usuarios);
+                return "administracionUsuarios";
+            }
+            
+            if(usuario.getMisQuedadas().size() > 0) {
+				model.addAttribute("elUsuarioTieneQuedadas", "No se puede eliminar un usuario con quedadas");
                 model.addAttribute("usuarios", usuarios);
                 return "administracionUsuarios";
             }

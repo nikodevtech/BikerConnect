@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bikerconnect.dtos.QuedadaDTO;
+import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.entidades.Quedada;
 
 /**
@@ -15,20 +16,21 @@ import com.bikerconnect.entidades.Quedada;
  */
 @Service
 public class QuedadaToDtoImpl implements IQuedadaToDto {
+	
 
 	@Override
 	public QuedadaDTO quedadaToDto(Quedada q) {
-		QuedadaDTO quedada = new QuedadaDTO();
+		QuedadaDTO quedadaDTO = new QuedadaDTO();
 		
 		try {
-			quedada.setLugar(q.getLugar());
-			quedada.setFechaHora(q.getFechaHoraEncuentro());
-			quedada.setId(q.getIdQuedada());
-			quedada.setDescripcion(q.getDescripcion());
-			quedada.setUsuarioOrganizador(q.getUsuarioOrganizador());
-			quedada.setEstado(q.getEstado());
-			
-			return quedada;
+			quedadaDTO.setLugar(q.getLugar());
+			quedadaDTO.setFechaHora(q.getFechaHoraEncuentro());
+			quedadaDTO.setId(q.getIdQuedada());
+			quedadaDTO.setDescripcion(q.getDescripcion());
+			quedadaDTO.setUsuarioOrganizador(q.getUsuarioOrganizador());
+			quedadaDTO.setEstado(q.getEstado());
+				
+			return quedadaDTO;
 			
 		} catch (Exception e) {			
 			System.out.println("\n[ERROR QuedadaToDtoImpl - quedadaToDto()] - Al convertir entidad Quedada a DTO (return null): "+ e);

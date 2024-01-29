@@ -94,6 +94,9 @@
 	<script th:if="${not #strings.isEmpty(noSePuedeEliminar)}">
 	    mostrarNotificacion("¡Error!","No se puede eliminar a un usuario con permisos de administrador", 'error');
 	</script>
+	<script th:if="${not #strings.isEmpty(elUsuarioTieneQuedadas)}">
+	    mostrarNotificacion("¡No se puede eliminar!","El usuario tiene quedadas pendientes en las que participa y antes debe salir de todas ellas", 'info');
+	</script>
 	<script th:if="${not #strings.isEmpty(eliminacionCorrecta)}">
 	    mostrarNotificacion("¡Usuario eliminado!","El usuario ha sido eliminado correctamente", 'success');
 	</script>
