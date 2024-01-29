@@ -37,7 +37,7 @@ function mostrarNotificacion(titulo, mensaje, tipo) {
         icon: tipo,
         confirmButtonText: 'OK',
         customClass: {
-            confirmButton: 'btn btn-primary'  // Aquí puedes agregar otras clases si es necesario
+            confirmButton: 'btn btn-primary'  
         }
     });
 }
@@ -65,8 +65,8 @@ function confirmar() {
         text: 'Esta acción es irreversible.',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: 'Sí, eliminar.'
     }).then((result) => {
         return result.isConfirmed;

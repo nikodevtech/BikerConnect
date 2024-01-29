@@ -16,6 +16,7 @@ import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.entidades.Quedada;
 import com.bikerconnect.repositorios.QuedadaRepositorio;
 import com.bikerconnect.servicios.IQuedadaServicio;
+import com.bikerconnect.servicios.IUsuarioServicio;
 import com.bikerconnect.servicios.IUsuarioToDto;
 
 /**
@@ -32,6 +33,9 @@ public class QuedadasControlador {
 	
 	@Autowired
 	private IUsuarioToDto toDto;
+	
+	@Autowired
+	private IUsuarioServicio usuarioServicio;
 	
 
 	/**
@@ -189,6 +193,21 @@ public class QuedadasControlador {
 	        model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
 	        return "quedadas";
 	    }
+	}
+	
+	@GetMapping("/privada/quedadas/mis-quedadas")
+	public String misQuedadas(Model model, Authentication auth) {
+		try {
+			UsuarioDTO usuario = usuarioServicio.buscarPorEmail(auth.getName());
+			System.out.println("Usuario quedadas: " + usuario.getMisQuedadas());
+			if (usuario != null) {
+				model.addAttribute("misQuedadas", usuario.getMisQuedadas());
+			}		
+		} catch (Exception e) {
+			model.addAttribute("error", "Error al procesar la solicitud. Por favor, reintente.");
+			return "quedadas";
+		}		
+		return "misQuedadas";
 	}
 
 
