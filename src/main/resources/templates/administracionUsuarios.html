@@ -65,7 +65,7 @@
 							<td th:text="${usuario.cuentaConfirmada ? 'Sí' : 'No'}"></td>
 							<td th:text="${usuario.rol == 'ROLE_USER' ? 'USER' : 'ADMIN'}"></td>							
 							<td sec:authorize="hasRole('ROLE_ADMIN')">
-								<a class="btn btn-success" th:href="@{/privada/editar-usuario/} + ${usuario.id}">
+								<a class="btn buttonPrincipal" th:href="@{/privada/editar-usuario/} + ${usuario.id}">
 									<i class="bi bi-pencil-square"> Editar</i>
 								</a>
 							</td>
@@ -95,7 +95,7 @@
 	    mostrarNotificacion("¡Error!","No se puede eliminar a un usuario con permisos de administrador", 'error');
 	</script>
 	<script th:if="${not #strings.isEmpty(elUsuarioTieneQuedadas)}">
-	    mostrarNotificacion("¡No se puede eliminar!","El usuario tiene quedadas pendientes en las que participa y antes debe salir de todas ellas", 'info');
+	    mostrarNotificacion("¡No se puede eliminar!","El usuario tiene quedadas pendientes en las que participa y para poder eliminarlo antes debe salir de todas ellas", 'info');
 	</script>
 	<script th:if="${not #strings.isEmpty(eliminacionCorrecta)}">
 	    mostrarNotificacion("¡Usuario eliminado!","El usuario ha sido eliminado correctamente", 'success');

@@ -71,11 +71,13 @@ public class QuedadasControlador {
 	 * 
 	 * @param quedada La quedada a planificar
 	 * @param model   El modelo en el que se guardan los datos desde la vista
+	 * @param auth    Objeto Authentication que contiene el nombre de usuario
 	 * @return Muestra la vista de quedadas (quedadas.html)
 	 */
 	@PostMapping("/privada/quedadas/planificar-quedada")
-	public String registrarQuedada(@ModelAttribute("quedadaDTO") QuedadaDTO quedada, Model model) {
+	public String registrarQuedada(@ModelAttribute("quedadaDTO") QuedadaDTO quedada, Model model, Authentication authentication) {
 		try {
+			quedada.setUsuarioOrganizador(authentication.getName());
 			boolean quedadaCreada = quedadaServicio.crearQuedada(quedada);
 			if (quedadaCreada) {
 				model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
@@ -132,19 +134,22 @@ public class QuedadasControlador {
 	@GetMapping("/privada/quedadas/detalle-quedada/unirse/{id}")
 	public String unirseQuedada(@PathVariable Long id, Model model, Authentication auth) {
 	    try {
-	        boolean unidoCorrectamente = quedadaServicio.unirseQuedada(id, auth.getName());
-
-	        if (unidoCorrectamente) {
-	            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
-	            model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
-	        } else {
-	            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
-	            if (quedadaServicio.estaUsuarioUnido(id, auth.getName())) {
-	                model.addAttribute("quedadaAsistenciaInfo", "Ya estás unido a esta quedada");
-	            } else {
-	                model.addAttribute("quedadaAsistenciaError", "No se ha podido unir a la quedada");
-	            }
-	        }
+	    	String mensaje = quedadaServicio.unirseQuedada(id, auth.getName());
+	    	
+	    	switch (mensaje) {
+		    	case "Usuario unido a la quedada":
+		    		model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+		            model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
+		    		break;
+		    	case "Ya estás unido a esta quedada":
+		            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+		    		model.addAttribute("quedadaAsistenciaInfo", "Ya estás unido a esta quedada");
+		    		break;
+		    	case "La quedada está completada":
+		            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+		    		model.addAttribute("quedadaYaCompletada", "La quedada está completada");
+		    		break;
+	    	}
 
 	        return "quedadas";
 	    } catch (Exception e) {
@@ -154,11 +159,12 @@ public class QuedadasControlador {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @param model
-	 * @param auth
-	 * @return
+	 * Gestiona la peticion HTTP GET para la url /privada/quedadas/detalle-quedada/cancelar/{id}
+	 * con el procedimiento de cancelar la asistencia a la quedada por parte del usuario autenticado
+	 * @param id id de la quedada a cancelar
+	 * @param model el modelo en el que se guardan los datos de la quedada y los mensajes al usuario
+	 * @param auth instancia que representa al usuario autenticado
+	 * @return la vista de las quedadas
 	 */
 	@GetMapping("/privada/quedadas/detalle-quedada/cancelar/{id}")
 	public String cancelarAsistenciaQuedada(@PathVariable Long id, Model model, Authentication auth) {

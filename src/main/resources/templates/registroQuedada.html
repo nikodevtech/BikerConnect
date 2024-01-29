@@ -35,7 +35,10 @@
 	    <div class="registro cardPrincipal">
 	        <form class="custom-form" th:action="@{/privada/quedadas/planificar-quedada}" enctype="multipart/form-data" method="post" th:object="${quedadaDTO}">
 			 
-	          <h2 class="text-center mb-5"><i class="bi bi-calendar2-date" style="color: #1f3c85;"> Planificar quedada</i></h2>
+	          <h2 class="text-center mb-4"><i class="bi bi-calendar2-date" style="color: #1f3c85;"> Planificar quedada</i></h2>
+	          <div class="alert alert-warning text-center mb-4" role="alert">
+            		¡Atención! Al planificar esta quedada, aceptas la condición de ser el organizador y responsable de la misma.
+        	  </div>
 	          <div class="mb-3">
 	            <label for="lugar" class="form-label textoPrincipal">Lugar</label>
 	            <input
@@ -70,18 +73,6 @@
 	               class="form-control"
 	               placeholder="Introduzca una breve descripción"
 	               required
-	            />
-	          </div>
-	          <div class="mb-3">
-	            <label for="organizador" class="form-label textoPrincipal">Organizador</label>
-	            <input       
-	              th:field="*{usuarioOrganizador}"
-	              type="email"
-	              id="organizador"
-	              name="organizador"
-	              class="form-control"
-	              placeholder="Introduzca su email"
-	              required
 	            />
 	          </div>
 			  <div class="mb-3">

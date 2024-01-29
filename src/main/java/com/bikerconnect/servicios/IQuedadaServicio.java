@@ -33,9 +33,9 @@ public interface IQuedadaServicio {
 	 * Método que permite unirse a un usuario a una quedada
 	 * @param id el id de la quedada
 	 * @param emailUsuario el email del usuario
-	 * @return true si se pudo unir o false si no
+	 * @return una cadena de texto con la información de la asistencia
 	 */
-	public boolean unirseQuedada(Long idQuedada, String emailUsuario);
+	public String unirseQuedada(Long idQuedada, String emailUsuario);
 	
 	/**
 	 * Método que comprueba si un usuario ya se encuentra unido a una quedada o viceversa
@@ -52,5 +52,10 @@ public interface IQuedadaServicio {
 	 * @return true si se pudo cancelar la asistencia o false si no
 	 */
 	public boolean cancelarAsistenciaQuedada(Long idQuedada, String emailUsuario);
+	
+	/**
+	 * Comprueba las quedadas que ya han pasado de la fecha actual para setearla a completada
+	 */
+	public void verificarQuedadasCompletadas();
 
 }

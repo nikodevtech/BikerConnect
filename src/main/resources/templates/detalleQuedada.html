@@ -53,6 +53,7 @@
 					    <table class="table table-striped table-bordered" th:if="${not #lists.isEmpty(participantes)}">
 					        <thead class="thead-inverse">
 					            <tr>
+					                <th class="tableCustom"></th>
 					                <th class="tableCustom">Nombre</th>
 					                <th class="tableCustom">Apellidos</th>
 					                <th class="tableCustom">Teléfono</th>
@@ -60,7 +61,8 @@
 					            </tr>
 					        </thead>
 					        <tbody>
-					            <tr th:each="asistente : ${participantes}">
+					            <tr th:each="asistente, stat : ${participantes}">
+					                <td th:text="${stat.index + 1}"></td>
 					                <td th:text="${asistente.nombreUsuario}"></td>
 					                <td th:text="${asistente.apellidosUsuario}"></td>
 					                <td th:text="${asistente.tlfUsuario}"></td>
