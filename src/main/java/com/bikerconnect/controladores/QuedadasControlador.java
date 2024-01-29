@@ -20,7 +20,7 @@ import com.bikerconnect.servicios.IUsuarioServicio;
 import com.bikerconnect.servicios.IUsuarioToDto;
 
 /**
- * Clase que ejerce de controlador de la vista de quedadas
+ * Clase que ejerce de controlador de la vista de quedadas 
  */
 @Controller
 public class QuedadasControlador {
@@ -57,8 +57,8 @@ public class QuedadasControlador {
 	}
 
 	/**
-	 * Gestiona las peticion HTTP GET para la url
-	 * /privada/quedadas/planificar-quedada
+	 * Gestiona las peticion HTTP GET para la url /privada/quedadas/planificar-quedada
+	 * mostrando la vista de planificar quedada con un objeto QuedadaDTO vacio
 	 * 
 	 * @param model El modelo en el que se guardan los datos para la vista
 	 * @return Muestra la vista para planificar quedada (registroQuedada.html).
@@ -70,8 +70,8 @@ public class QuedadasControlador {
 	}
 
 	/**
-	 * Procesa la peticion HTTP POST para la url
-	 * /privada/quedadas/planificar-quedada
+	 * Procesa la peticion HTTP POST para la url /privada/quedadas/planificar-quedada
+	 * registra una nueva quedada en la base de datos con los datos del DTO
 	 * 
 	 * @param quedada La quedada a planificar
 	 * @param model   El modelo en el que se guardan los datos desde la vista
@@ -100,10 +100,10 @@ public class QuedadasControlador {
 
 	/**
 	 * Gestiona la peticion HTTP GET para la url /privada/quedadas/detalle-quedada/{id}
-	 * muestra la vista de detalle de la quedada 
+	 * muestra la vista de detalle de la quedada por el id de la URL
 	 * 
 	 * @param id id de la quedada a mostrar
-	 * @param model el modelo en el que se guardan la quedadaDTO
+	 * @param model el modelo en el que se guarda los datos
 	 * @return la vista de detalle de la quedada
 	 */
 	@GetMapping("/privada/quedadas/detalle-quedada/{id}")
@@ -130,6 +130,7 @@ public class QuedadasControlador {
 	/**
 	 * Gestiona la peticion HTTP GET para la url /privada/quedadas/detalle-quedada/unirse/{id}
 	 * con el procedimiento de unirse a la quedada por parte del usuario autenticado
+	 * 
 	 * @param id id de la quedada
 	 * @param model el modelo en el que se guardan los datos de participantes, la quedada y los mensajes al usuario
 	 * @param auth representa al usuario autenticado
@@ -139,22 +140,19 @@ public class QuedadasControlador {
 	public String unirseQuedada(@PathVariable Long id, Model model, Authentication auth) {
 	    try {
 	    	String mensaje = quedadaServicio.unirseQuedada(id, auth.getName());
-	    	
+	    	List<QuedadaDTO> quedadas = quedadaServicio.obtenerQuedadas();
+	    	model.addAttribute("quedadas", quedadas);
 	    	switch (mensaje) {
 		    	case "Usuario unido a la quedada":
-		    		model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
 		            model.addAttribute("quedadaAsistenciaExito", "Se ha unido correctamente");
 		    		break;
 		    	case "Ya estás unido a esta quedada":
-		            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
 		    		model.addAttribute("quedadaAsistenciaInfo", "Ya estás unido a esta quedada");
 		    		break;
 		    	case "La quedada está completada":
-		            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
 		    		model.addAttribute("quedadaYaCompletada", "La quedada está completada");
 		    		break;
 	    	}
-
 	        return "quedadas";
 	    } catch (Exception e) {
 	        model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
@@ -165,6 +163,7 @@ public class QuedadasControlador {
 	/**
 	 * Gestiona la peticion HTTP GET para la url /privada/quedadas/detalle-quedada/cancelar/{id}
 	 * con el procedimiento de cancelar la asistencia a la quedada por parte del usuario autenticado
+	 * 
 	 * @param id id de la quedada a cancelar
 	 * @param model el modelo en el que se guardan los datos de la quedada y los mensajes al usuario
 	 * @param auth instancia que representa al usuario autenticado
@@ -195,11 +194,18 @@ public class QuedadasControlador {
 	    }
 	}
 	
+	/**
+	 * Gestiona la peticion HTTP GET para la url /privada/quedadas/mis-quedadas
+	 * para mostrar la vista de misQuedadas con las quedadas del usuario
+	 * 
+	 * @param model el modelo en el que se guardan los datos de las quedadas
+	 * @param auth instancia que representa al usuario autenticado
+	 * @return la vista misQuedadas
+	 */
 	@GetMapping("/privada/quedadas/mis-quedadas")
 	public String misQuedadas(Model model, Authentication auth) {
 		try {
 			UsuarioDTO usuario = usuarioServicio.buscarPorEmail(auth.getName());
-			System.out.println("Usuario quedadas: " + usuario.getMisQuedadas());
 			if (usuario != null) {
 				model.addAttribute("misQuedadas", usuario.getMisQuedadas());
 			}		

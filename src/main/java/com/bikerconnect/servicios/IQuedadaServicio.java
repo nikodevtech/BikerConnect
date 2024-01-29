@@ -54,7 +54,8 @@ public interface IQuedadaServicio {
 	public boolean cancelarAsistenciaQuedada(Long idQuedada, String emailUsuario);
 	
 	/**
-	 * Comprueba las quedadas que ya han pasado de la fecha actual para setearla a completada
+	 * Comprueba las quedadas con estado "planificada" que han pasado sin contratiempos 
+	 * de la fecha y hora actual para actualizar su estado a "completada".
 	 */
 	public void verificarQuedadasCompletadas();
 

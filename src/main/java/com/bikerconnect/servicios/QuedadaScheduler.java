@@ -5,9 +5,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Clase que implementa la programación de tareas programadas para comprobar las
- * quedadas "Planificadas" cuya fecha y hora ya han pasado para poder cambiarla a
- * completadas.
+ * Clase que implementa la programación de tareas automatica para cambiar el estado 
+ * de las quedadas "Planificadas" a "Completadas" 
  */
 @Component
 public class QuedadaScheduler {
