@@ -15,4 +15,17 @@ public interface IMotoServicio {
 	 */
 	public boolean registrarMoto(MotoDTO motoDTO);
 
+	/**
+	 * Elimina una moto de la base de datos
+	 * @param id El ID de la moto a eliminar
+	 */
+	public void eliminarMoto(long id);
+	
+	/**
+	 * Busca una moto por su ID
+	 * @param id El ID de la moto
+	 * @return La motoDTO buscada o null si no existe
+	 */
+	public MotoDTO buscarPorId(long id);
+	
 }

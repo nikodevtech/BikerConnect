@@ -29,6 +29,9 @@ public class MotoServicioImpl implements IMotoServicio {
 	private IMotoToDao toDao;
 	
 	@Autowired
+	private IMotoToDto toDto;
+	
+	@Autowired
 	private UsuarioRepositorio usuarioRepositorio;
 
 
@@ -51,6 +54,34 @@ public class MotoServicioImpl implements IMotoServicio {
 			System.out.println("\n[ERROR MotoServicioImpl - registrarMoto()] - Al registrar nueva moto de un usuario: "+ e);
 			return false;
 		}	
+	}
+
+
+	@Override
+	public void eliminarMoto(long id) {
+		try {
+			Moto moto = motoRepositorio.findById(id).orElse(null);
+			if(moto != null) {
+				motoRepositorio.delete(moto);
+			}
+		}catch(IllegalArgumentException iae) {
+			System.out.println("[Error MotoServicioImpl - eliminarMoto()] Al eliminar una moto por su id " + iae.getMessage());
+		}
+		
+	}
+
+
+	@Override
+	public MotoDTO buscarPorId(long id) {
+		try {
+			Moto moto = motoRepositorio.findById(id).orElse(null);
+			if(moto != null) {		
+				return toDto.motoToDto(moto);
+			}
+		} catch(IllegalArgumentException iae) {
+			System.out.println("[Error MotoServicioImpl - buscarPorId()] Al buscar una moto por su id " + iae.getMessage());
+		}	
+		return null;
 	}
 
 }
