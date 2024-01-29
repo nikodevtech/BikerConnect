@@ -79,7 +79,9 @@
 			</div>
 			<div class="card-footer">
 				<a th:href="@{/privada/quedadas/detalle-quedada/unirse/} + ${quedada.id}" class="btn buttonPrincipal m-1"><i class="bi bi-plus-circle"> Asistir a la Quedada</i></a>
+				<a th:href="@{/privada/quedadas/detalle-quedada/cancelar/} + ${quedada.id}" class="btn btn-danger m-1"><i class="bi bi-calendar2-x"> Cancelar asistencia</i></a>				
 			</div>
+			
 		</div>
 	</div>
 	<div class="vg-footer bg-dark bg-gradient">

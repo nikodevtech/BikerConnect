@@ -152,6 +152,39 @@ public class QuedadasControlador {
 	        return "quedadas";
 	    }
 	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @param model
+	 * @param auth
+	 * @return
+	 */
+	@GetMapping("/privada/quedadas/detalle-quedada/cancelar/{id}")
+	public String cancelarAsistenciaQuedada(@PathVariable Long id, Model model, Authentication auth) {
+	    try {
+	    	if (!quedadaServicio.estaUsuarioUnido(id, auth.getName())) {
+	                model.addAttribute("quedadaCancelacionInfo", "No estás unido a esta quedada");
+	                model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+	        } else {
+	        	boolean canceladoCorrectamente = quedadaServicio.cancelarAsistenciaQuedada(id, auth.getName());
+
+		        if (canceladoCorrectamente) {
+		            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+		            model.addAttribute("quedadaCancelacionExito", "Se ha cancelado la asistencia correctamente");
+		        } else {
+		            model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());       
+			        model.addAttribute("quedadaCancelacionError", "No se ha podido cancelar la asistencia");
+		        }
+	        }
+	        
+	        return "quedadas";
+	    } catch (Exception e) {
+	        model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
+	        return "quedadas";
+	    }
+	}
+
 
 
 }

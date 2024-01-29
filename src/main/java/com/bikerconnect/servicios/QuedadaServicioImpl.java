@@ -100,6 +100,40 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 
 	    return (q != null && u != null && (u.getQuedadasParticipante().contains(q) || q.getUsuariosParticipantes().contains(u)));
 	}
+	
+	@Override
+	public boolean cancelarAsistenciaQuedada(Long idQuedada, String emailUsuario) {
+	    try {
+	        Quedada q = quedadaRepo.findById(idQuedada).orElse(null);
+	        Usuario u = usuarioRepo.findFirstByEmail(emailUsuario);
+
+	        if (u == null || q == null) {
+	            return false;
+	        }
+
+	        if (!u.getQuedadasParticipante().contains(q) || !q.getUsuariosParticipantes().contains(u)) {
+	            return false;  // El usuario no está unido a la quedada, no se puede cancelar
+	        }
+
+	        u.getQuedadasParticipante().remove(q);
+	        q.getUsuariosParticipantes().remove(u);
+
+	        usuarioRepo.save(u);
+	        quedadaRepo.save(q);
+
+	        return true;
+
+	    } catch (IllegalArgumentException e) {
+	        System.out.println("\n[ERROR QuedadaServicioImpl - cancelarAsistenciaQuedada()] - Error de argumento incorrecto al cancelar asistencia a una quedada: " + e);
+	        return false;
+	    } catch (PersistenceException e) {
+	        System.out.println("\n[ERROR QuedadaServicioImpl - cancelarAsistenciaQuedada()] - Error de persistencia al cancelar asistencia a una quedada: " + e);
+	        return false;
+	    }
+	}
+
+	
+	
 
 		
 

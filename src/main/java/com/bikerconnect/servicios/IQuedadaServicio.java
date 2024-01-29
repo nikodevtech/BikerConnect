@@ -45,4 +45,12 @@ public interface IQuedadaServicio {
 	 */
 	public boolean estaUsuarioUnido(Long idQuedada, String emailUsuario);
 
+	/**
+	 * Cancela la asistencia a una quedada de un usuario
+	 * @param idQuedada el id de la quedada 
+	 * @param emailUsuario el email del usuario
+	 * @return true si se pudo cancelar la asistencia o false si no
+	 */
+	public boolean cancelarAsistenciaQuedada(Long idQuedada, String emailUsuario);
+
 }

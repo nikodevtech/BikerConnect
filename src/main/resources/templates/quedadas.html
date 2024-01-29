@@ -70,8 +70,17 @@
 		  </ul>
 		</div>
     </div>
+    <script th:if="${not #strings.isEmpty(quedadaCancelacionExito)}">
+	    mostrarNotificacion("¡Asistencia cancelada!", "Su asistencia a la quedada ha sido cancelada", 'info');
+	</script>
+	<script th:if="${not #strings.isEmpty(quedadaCancelacionInfo)}">
+	    mostrarNotificacion("¡No estas unido a esta quedada!", "No puede cancelar la asistencia a la quedada si no es un participante", 'info');
+	</script>
+	<script th:if="${not #strings.isEmpty(quedadaCancelacionError)}">
+	    mostrarNotificacion("¡No se pudo cancelar la asistencia!", "Ocurrio un error al cancelar la asistencia, intentelo de nuevo", 'error');
+	</script>
 	<script th:if="${not #strings.isEmpty(quedadaAsistenciaExito)}">
-	    mostrarNotificacion("¡Tu asistencia ha sido registrada!", "Ahora quedas marcado como participante de la quedada", 'success');
+	    mostrarNotificacion("¡Su asistencia ha sido registrada!", "Ahora es un participante más de la quedada", 'success');
 	</script>
 	<script th:if="${not #strings.isEmpty(quedadaAsistenciaInfo)}">
 	    mostrarNotificacion("¡Ya estás unido a esta quedada!","Estás marcado como asistente de la misma", 'info');

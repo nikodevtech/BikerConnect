@@ -48,6 +48,9 @@
 	                            <p class="card-text">Año: <span th:text="${moto.año}"></span></p>
 	                            <p class="card-text">Color: <span th:text="${moto.color}"></span></p>
 	                            <p class="card-text">Descripción: <span th:text="${moto.descModificaciones}"></span></p>
+	                            <a class="btn btn-danger" th:attr="data-id=${moto.id}" onclick="confirmarEliminarMoto(event)">
+    								<i class="bi bi-trash"> Eliminar</i>
+    						    </a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -74,6 +77,9 @@
 	</script>
 	<script th:if="${not #strings.isEmpty(error)}">
 	    mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
+	</script>
+	<script th:if="${not #strings.isEmpty(eliminacionCorrecta)}">
+	    mostrarNotificacion("¡Moto eliminada!","La moto ha sido eliminada correctamente", 'success');
 	</script>
 </body>
 </html>

@@ -61,7 +61,7 @@ function confirmarLogout() {
 }
 function confirmar() {
     return Swal.fire({
-        title: '¿Estás seguro de que deseas eliminar este usuario?',
+        title: '¿Estás seguro de que deseas eliminar?',
         text: 'Esta acción es irreversible.',
         icon: 'warning',
         showCancelButton: true,
@@ -78,6 +78,14 @@ function confirmarEliminar(event) {
     confirmar().then(function (confirmado) {
         if (confirmado) {
             window.location.href = 'http://localhost:8080/privada/eliminar-usuario/' + idUsuario;
+        }
+    });
+}
+function confirmarEliminarMoto(event) {
+    const idMoto = event.currentTarget.getAttribute("data-id");
+    confirmar().then(function (confirmado) {
+        if (confirmado) {
+            window.location.href = 'http://localhost:8080/privada/eliminar-moto/' + idMoto;
         }
     });
 }

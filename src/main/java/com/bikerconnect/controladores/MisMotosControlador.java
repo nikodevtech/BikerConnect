@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bikerconnect.dtos.MotoDTO;
@@ -98,5 +99,27 @@ public class MisMotosControlador {
             return "misMotos";
         }
     }
+    
+    @GetMapping("/privada/eliminar-moto/{id}")
+    public String eliminarMoto(@PathVariable Long id, Model model, Authentication authentication) {
+    	try {
+    		MotoDTO moto = motoServicio.buscarPorId(id);
+    		if (moto != null) {
+				motoServicio.eliminarMoto(id);
+        	    UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
+                model.addAttribute("misMotos", usuario.getMisMotos());
+				model.addAttribute("eliminacionCorrecta", "La moto se ha eliminado correctamente");
+                return "misMotos";                
+    		}
+    		return "misMotos";
+    		
+    	} catch (Exception e) {
+            model.addAttribute("Error", "Ocurrió un error al eliminar la moto");
+            return "dashboard";
+        }
+    	
+    }
+    
+    
 
 }
