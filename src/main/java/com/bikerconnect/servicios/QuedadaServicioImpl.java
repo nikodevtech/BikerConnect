@@ -163,5 +163,29 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 							+ e);
 		}     
 	}
+	
+	@Override
+	public String cancelarQuedada(long idQuedada) {
+		try {
+			Quedada q = quedadaRepo.findById(idQuedada).orElse(null);
+			if(q != null) {
+				if(q.getEstado().equals("Completada")) {
+					return "Quedada completada";
+				} else if(q.getUsuariosParticipantes().size() > 0) {
+					return "Usuarios participantes";					
+				} else {
+					q.setEstado("Cancelada");
+					quedadaRepo.save(q);
+					return "Quedada cancelada";			}
+				
+			}
+		} catch(Exception e) {
+			System.out.println(
+					"\n[ERROR QuedadaServicioImpl - cancelarQuedada()] - Error de persistencia al verificar las quedadas completadas: "
+							+ e);
+			return "Error al cancelar la quedada";
+		}
+		return "";
+	}
 
 }

@@ -82,14 +82,17 @@
 			<div class="card-footer" th:if="${quedada.estado == 'Planificada'}">
 				<a th:href="@{/privada/quedadas/detalle-quedada/unirse/} + ${quedada.id}" 
 				   class="btn buttonPrincipal m-1">
-				   <i class="bi bi-calendar2-check"> Asistir a la Quedada</i>
+				   <i class="bi bi-calendar2-check"> Confirmar asistencia</i>
 				</a>
-				<a th:href="@{/privada/quedadas/detalle-quedada/cancelar/} + ${quedada.id}" 
+				<a th:href="@{/privada/quedadas/detalle-quedada/cancelar-asistencia/} + ${quedada.id}" 
 				   class="btn btn-danger m-1">
 				   <i class="bi bi-calendar2-x"> Cancelar asistencia</i>
+				</a>
+				<a th:href="@{/privada/quedadas/detalle-quedada/cancelar-quedada/} + ${quedada.id}" 
+				   class="btn btn-danger m-1 float-end" th:if="${quedada.usuarioOrganizador == #authentication.name}">
+				   <i class="bi bi-calendar2-x"> Cancelar quedada</i>
 				</a>				
-			</div>
-			
+			</div>		
 		</div>
 	</div>
 	<div class="vg-footer bg-dark bg-gradient">

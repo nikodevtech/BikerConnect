@@ -169,7 +169,7 @@ public class QuedadasControlador {
 	 * @param auth instancia que representa al usuario autenticado
 	 * @return la vista de las quedadas
 	 */
-	@GetMapping("/privada/quedadas/detalle-quedada/cancelar/{id}")
+	@GetMapping("/privada/quedadas/detalle-quedada/cancelar-asistencia/{id}")
 	public String cancelarAsistenciaQuedada(@PathVariable Long id, Model model, Authentication auth) {
 	    try {
 	    	if (!quedadaServicio.estaUsuarioUnido(id, auth.getName())) {
@@ -214,6 +214,33 @@ public class QuedadasControlador {
 			return "quedadas";
 		}		
 		return "misQuedadas";
+	}
+	
+	@GetMapping("/privada/quedadas/detalle-quedada/cancelar-quedada/{id}")
+	public String cancelarQuedada(@PathVariable Long id, Model model, Authentication auth) {
+		try {
+			
+			String mensaje = quedadaServicio.cancelarQuedada(id);
+	    	List<QuedadaDTO> quedadas = quedadaServicio.obtenerQuedadas();
+	    	model.addAttribute("quedadas", quedadas);
+			
+			switch (mensaje) {
+				case "Quedada cancelada":
+					model.addAttribute("quedadaCancelacionQuedadaExito", "Se ha cancelado la asistencia correctamente");
+					model.addAttribute("quedadas", quedadaServicio.obtenerQuedadas());
+					break;
+				case "Quedada completada":
+					model.addAttribute("quedadaCancelacionCompletada", "No se puede cancelar una quedada completada");
+					break;
+				case "Usuarios participantes":
+					model.addAttribute("quedadaCancelacionParticipantes", "No se puede cancelar una quedada con participantes");
+					break;
+			}
+		} catch (Exception e) {
+			model.addAttribute("error", "Error al procesar la solicitud. Por favor, reintente.");
+			return "quedadas";
+		}		
+		return "quedadas";
 	}
 
 

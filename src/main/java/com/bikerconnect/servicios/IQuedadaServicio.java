@@ -58,5 +58,12 @@ public interface IQuedadaServicio {
 	 * de la fecha y hora actual para actualizar su estado a "completada".
 	 */
 	public void verificarQuedadasCompletadas();
+	
+	/**
+	 * Cancela una quedada
+	 * @param idQuedada el id de la quedada a cancelar
+	 * @return una cadena de texto con la información sobre la cancelación
+	 */
+	public String cancelarQuedada(long idQuedada);
 
 }
