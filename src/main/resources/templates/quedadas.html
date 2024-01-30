@@ -74,6 +74,9 @@
 		  </ul>
 		</div>
     </div>
+    <script th:if="${not #strings.isEmpty(quedadaCancelacionPermiso)}">
+	    mostrarNotificacion("¡No puede cancelar la quedada!", "Solo el usuario organizador que la planificó lo puede hacer", 'error');
+	</script>
     <script th:if="${not #strings.isEmpty(quedadaCancelacionQuedadaExito)}">
 	    mostrarNotificacion("¡Quedada cancelada!", "La quedada se ha cancelado correctamente.", 'success');
 	</script>

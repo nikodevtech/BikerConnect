@@ -70,23 +70,30 @@ public class AdministracionUsuariosControlador {
             UsuarioDTO usuario = usuarioServicio.buscarPorId(id);
             List<UsuarioDTO> usuarios = usuarioServicio.obtenerTodos();
 
-            
-            if (request.isUserInRole("ROLE_ADMIN") && usuario.getRol().equals("ROLE_ADMIN")) {
-                model.addAttribute("noSePuedeEliminar", "No se puede eliminar a un admin");
-                model.addAttribute("usuarios", usuarios);
-                return "administracionUsuarios";
-            }
-            
-            if(usuario.getMisQuedadas().size() > 0) {
-				model.addAttribute("elUsuarioTieneQuedadas", "No se puede eliminar un usuario con quedadas");
-                model.addAttribute("usuarios", usuarios);
-                return "administracionUsuarios";
-            }
+            if(request.isUserInRole("ROLE_USER")) {
+                model.addAttribute("noAdmin", "No se puede eliminar a un admin");
+				model.addAttribute("usuarios", usuarios);
+				return "dashboard";
+            } else {
+            	
+            	 if (request.isUserInRole("ROLE_ADMIN") && usuario.getRol().equals("ROLE_ADMIN")) {
+                     model.addAttribute("noSePuedeEliminar", "No se puede eliminar a un admin");
+                     model.addAttribute("usuarios", usuarios);
+                     return "administracionUsuarios";
+                 }
+                 
+                 if(usuario.getMisQuedadas().size() > 0) {
+                	 model.addAttribute("elUsuarioTieneQuedadas", "No se puede eliminar un usuario con quedadas");
+                     model.addAttribute("usuarios", usuarios);
+                     return "administracionUsuarios";
+                 }
 
-            usuarioServicio.eliminar(id);
-            model.addAttribute("eliminacionCorrecta", "El usuario se ha eliminado correctamente");
-            model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
-            return "administracionUsuarios";
+                 usuarioServicio.eliminar(id);
+                 model.addAttribute("eliminacionCorrecta", "El usuario se ha eliminado correctamente");
+                 model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
+                 return "administracionUsuarios";
+            }        
+           
         } catch (Exception e) {
             model.addAttribute("Error", "Ocurrió un error al eliminar el usuario");
             return "dashboard";
@@ -102,14 +109,20 @@ public class AdministracionUsuariosControlador {
      * @return La vista de editarUsuario con el formulario de edición.
      */
     @GetMapping("/privada/editar-usuario/{id}")
-    public String mostrarFormularioEdicion(@PathVariable Long id, Model model) {
+    public String mostrarFormularioEdicion(@PathVariable Long id, Model model, HttpServletRequest request) {
         try {
-            UsuarioDTO usuarioDTO = usuarioServicio.buscarPorId(id);
-            if (usuarioDTO == null) {
-                return "administracionUsuarios";
-            }
-            model.addAttribute("usuarioDTO", usuarioDTO);
-            return "editarUsuario";
+        	if(request.isUserInRole("ROLE_USER")) {
+	        	model.addAttribute("noAdmin", "No tiene permiso para realizar esta accion");
+	        	return "dashboard";
+        	}
+        	else {
+        		 UsuarioDTO usuarioDTO = usuarioServicio.buscarPorId(id);
+                 if (usuarioDTO == null) {
+                     return "administracionUsuarios";
+                 }
+                 model.addAttribute("usuarioDTO", usuarioDTO);
+                 return "editarUsuario";
+        	}         
         } catch (Exception e) {
             model.addAttribute("Error", "Ocurrió un error al obtener el usuario para editar");
             return "dashboard";
