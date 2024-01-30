@@ -178,13 +178,9 @@ nav {
   padding: 25px 0;
   color: white;
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
-}
-body {
-    position: relative;
-    min-height: 130vh;
 }
 
 .footer-p {

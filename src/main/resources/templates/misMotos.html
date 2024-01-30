@@ -48,7 +48,7 @@
 	                            <p class="card-text">Año: <span th:text="${moto.año}"></span></p>
 	                            <p class="card-text">Color: <span th:text="${moto.color}"></span></p>
 	                            <p class="card-text">Descripción: <span th:text="${moto.descModificaciones}"></span></p>
-	                            <a class="btn btn-danger" th:attr="data-id=${moto.id}" onclick="confirmarEliminarMoto(event)">
+	                            <a class="btn btn-danger btn-sm" th:attr="data-id=${moto.id}" onclick="confirmarEliminarMoto(event)">
     								<i class="bi bi-trash"> Eliminar</i>
     						    </a>
 	                        </div>

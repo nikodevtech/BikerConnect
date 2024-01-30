@@ -88,7 +88,7 @@
 				   class="btn btn-danger m-1">
 				   <i class="bi bi-calendar2-x"> Cancelar asistencia</i>
 				</a>
-				<a th:href="@{/privada/quedadas/detalle-quedada/cancelar-quedada/} + ${quedada.id}" 
+				<a th:attr="data-id=${quedada.id}" onclick="confirmarCancelarQuedada(event)"
 				   class="btn btn-danger m-1 float-end" th:if="${quedada.usuarioOrganizador == #authentication.name}">
 				   <i class="bi bi-calendar2-x"> Cancelar quedada</i>
 				</a>				

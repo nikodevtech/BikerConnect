@@ -59,15 +59,15 @@ function confirmarLogout() {
         }
     });
 }
-function confirmar() {
+function confirmar(mensaje) {
     return Swal.fire({
-        title: '¿Estás seguro de que deseas eliminar?',
+        title: '¿Estás seguro de que deseas ' + mensaje + '?',
         text: 'Esta acción es irreversible.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Sí, eliminar.'
+        confirmButtonText: 'Sí'
     }).then((result) => {
         return result.isConfirmed;
     });
@@ -75,7 +75,7 @@ function confirmar() {
 
 function confirmarEliminar(event) {
     const idUsuario = event.currentTarget.getAttribute("data-id");
-    confirmar().then(function (confirmado) {
+    confirmar("eliminar").then(function (confirmado) {
         if (confirmado) {
             window.location.href = 'http://localhost:8080/privada/eliminar-usuario/' + idUsuario;
         }
@@ -83,9 +83,17 @@ function confirmarEliminar(event) {
 }
 function confirmarEliminarMoto(event) {
     const idMoto = event.currentTarget.getAttribute("data-id");
-    confirmar().then(function (confirmado) {
+    confirmar("eliminar").then(function (confirmado) {
         if (confirmado) {
             window.location.href = 'http://localhost:8080/privada/eliminar-moto/' + idMoto;
+        }
+    });
+}
+function confirmarCancelarQuedada(event) {
+    const idQuedada = event.currentTarget.getAttribute("data-id");
+    confirmar("cancelar").then(function (confirmado) {
+        if (confirmado) {
+            window.location.href = 'http://localhost:8080/privada/quedadas/detalle-quedada/cancelar-quedada/' + idQuedada;
         }
     });
 }

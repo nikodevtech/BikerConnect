@@ -61,7 +61,7 @@ public class Usuario {
 	private String foto;
 	
 	@OneToMany(mappedBy = "usuarioPropietario", cascade = CascadeType.ALL)
-	private List<Moto> motosPropias;
+	private List<Moto> motosPropias = new ArrayList<>();
 	
     @ManyToMany(mappedBy = "usuariosParticipantes")
     private List<Quedada> quedadasParticipante = new ArrayList<>();;

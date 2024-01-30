@@ -10,9 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- *  Aspecto para realizar un seguimiento de las acciones en la app. La programación orientada aspectos (AOP)
- *  permite modularizar el código para encapsular tareas repetitivas transversales separandolas de la 
- *  lógica de negocio. Para este caso de control del log se utilizará la librería SLF4J.
+ *  Aspecto para realizar un seguimiento de las acciones en la app en fichero log. 
+ *  La programación orientada aspectos (AOP) permite modularizar el código para 
+ *  encapsular tareas repetitivas transversales separandolas de la lógica de negocio. 
+ *  Para este caso de control del log se utilizará la librería SLF4J.
  */
 @Aspect
 @Component
@@ -32,7 +33,7 @@ public class LogAspecto {
 	}
 	
 	// Registrar en el fichero log la entrada a métodos
-    @Before("execution(* com.tu.paquete..*.*(..))")
+    @Before("execution(* com.bikerconnect..*.*(..))")
     public void logMetodoEntrada(JoinPoint joinPoint) {
         logger.info("Entrando en el método {}() de la clase {}", 
                      joinPoint.getSignature().getName(),
