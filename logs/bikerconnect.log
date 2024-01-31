@@ -3330,3 +3330,498 @@ Caused by: java.lang.Error: Unresolved compilation problem:
 2024-01-30T22:57:01.306+01:00  INFO 16880 --- [RMI TCP Connection(31)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-01-30T22:57:01.308+01:00  INFO 16880 --- [RMI TCP Connection(31)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-01-30T22:57:01.309+01:00  INFO 16880 --- [RMI TCP Connection(31)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-31T10:06:31.165+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : Starting BikerConnectJavaApplication using Java 20.0.2 with PID 8100 (C:\Users\Puesto9\Desktop\DWS Java\BikerConnectDWS\target\classes started by Puesto9 in C:\Users\Puesto9\Desktop\DWS Java\BikerConnectDWS)
+2024-01-31T10:06:31.167+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-01-31T10:06:31.215+01:00  INFO 8100 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-31T10:06:31.215+01:00  INFO 8100 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-31T10:06:31.917+01:00  INFO 8100 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-31T10:06:31.987+01:00  INFO 8100 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 3 JPA repository interfaces.
+2024-01-31T10:06:32.835+01:00  INFO 8100 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-01-31T10:06:32.850+01:00  INFO 8100 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-31T10:06:32.850+01:00  INFO 8100 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-31T10:06:32.908+01:00  INFO 8100 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-31T10:06:32.909+01:00  INFO 8100 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1693 ms
+2024-01-31T10:06:33.185+01:00  INFO 8100 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-31T10:06:33.242+01:00  INFO 8100 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-01-31T10:06:33.277+01:00  INFO 8100 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-01-31T10:06:33.507+01:00  INFO 8100 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-31T10:06:33.536+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-31T10:06:33.694+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@633251ba
+2024-01-31T10:06:33.696+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-31T10:06:33.728+01:00  WARN 8100 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-01-31T10:06:34.632+01:00  INFO 8100 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-31T10:06:34.652+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-01-31T10:06:34.652+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : no existe la relación «motos», omitiendo
+2024-01-31T10:06:34.653+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-01-31T10:06:34.653+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : la tabla «motos» no existe, omitiendo
+2024-01-31T10:06:34.653+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-01-31T10:06:34.653+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : la tabla «quedadas» no existe, omitiendo
+2024-01-31T10:06:34.654+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-01-31T10:06:34.654+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : la tabla «usuarios» no existe, omitiendo
+2024-01-31T10:06:34.655+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-01-31T10:06:34.655+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : no existe la relación «participantes», omitiendo
+2024-01-31T10:06:34.655+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-01-31T10:06:34.655+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : no existe la relación «participantes», omitiendo
+2024-01-31T10:06:34.656+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-01-31T10:06:34.657+01:00  WARN 8100 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : la tabla «participantes» no existe, omitiendo
+2024-01-31T10:06:35.544+01:00  INFO 8100 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-31T10:06:36.100+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:36.101+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:36.214+01:00  INFO 8100 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-01-31T10:06:36.557+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:36.569+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:36.595+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:36.627+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:36.662+01:00  WARN 8100 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-31T10:06:36.806+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:36.823+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-01-31T10:06:36.826+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-01-31T10:06:36.873+01:00  INFO 8100 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-01-31T10:06:37.271+01:00  INFO 8100 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2bbf0121, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@72aed1fa, org.springframework.security.web.context.SecurityContextHolderFilter@19442edf, org.springframework.security.web.header.HeaderWriterFilter@147613e, org.springframework.web.filter.CorsFilter@7d780aea, org.springframework.security.web.csrf.CsrfFilter@41ba8701, org.springframework.security.web.authentication.logout.LogoutFilter@1b5bbddf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@717fc4c9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c985989, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@521bcff5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2f4cd068, org.springframework.security.web.access.ExceptionTranslationFilter@6c7f056c, org.springframework.security.web.access.intercept.AuthorizationFilter@71e505a1]
+2024-01-31T10:06:37.272+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:37.915+01:00  INFO 8100 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-31T10:06:37.957+01:00  INFO 8100 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-01-31T10:06:37.971+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : Started BikerConnectJavaApplication in 7.155 seconds (process running for 8.026)
+2024-01-31T10:06:37.975+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:06:37.976+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:06:37.976+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy4.$Proxy133
+2024-01-31T10:06:37.981+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:06:37.981+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método existsByNombreApellidos() de la clase jdk.proxy4.$Proxy125
+2024-01-31T10:06:38.065+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy4.$Proxy133
+2024-01-31T10:06:38.065+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método existsByNombreApellidos() de la clase jdk.proxy4.$Proxy125
+2024-01-31T10:06:38.065+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:06:38.065+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:06:38.164+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método save() de la clase jdk.proxy4.$Proxy125
+2024-01-31T10:06:38.236+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método save() de la clase jdk.proxy4.$Proxy125
+2024-01-31T10:06:38.237+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:06:48.615+01:00  INFO 8100 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-31T10:06:48.629+01:00  INFO 8100 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-31T10:06:48.631+01:00  INFO 8100 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-31T10:06:48.636+01:00  INFO 8100 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-31T10:06:48.725+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : Starting BikerConnectJavaApplication using Java 20.0.2 with PID 8100 (C:\Users\Puesto9\Desktop\DWS Java\BikerConnectDWS\target\classes started by Puesto9 in C:\Users\Puesto9\Desktop\DWS Java\BikerConnectDWS)
+2024-01-31T10:06:48.726+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-01-31T10:06:48.940+01:00  INFO 8100 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-31T10:06:48.961+01:00  INFO 8100 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 3 JPA repository interfaces.
+2024-01-31T10:06:49.204+01:00  INFO 8100 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-01-31T10:06:49.205+01:00  INFO 8100 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-31T10:06:49.205+01:00  INFO 8100 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-31T10:06:49.226+01:00  INFO 8100 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-31T10:06:49.226+01:00  INFO 8100 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 498 ms
+2024-01-31T10:06:49.328+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-01-31T10:06:49.374+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@45a0f8fc
+2024-01-31T10:06:49.374+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-01-31T10:06:49.427+01:00  INFO 8100 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-31T10:06:49.430+01:00  INFO 8100 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-01-31T10:06:49.434+01:00  INFO 8100 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-31T10:06:49.442+01:00  WARN 8100 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-01-31T10:06:49.516+01:00  INFO 8100 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-31T10:06:49.603+01:00  INFO 8100 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-31T10:06:49.925+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:49.926+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:50.084+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:50.085+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:50.112+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:50.146+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:50.167+01:00  WARN 8100 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-31T10:06:50.247+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:50.250+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-01-31T10:06:50.251+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-01-31T10:06:50.273+01:00  INFO 8100 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-01-31T10:06:50.558+01:00  INFO 8100 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@278a2a61, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f9c193a, org.springframework.security.web.context.SecurityContextHolderFilter@bbb68f4, org.springframework.security.web.header.HeaderWriterFilter@3c2a07dd, org.springframework.web.filter.CorsFilter@69d6f375, org.springframework.security.web.csrf.CsrfFilter@4e2630a8, org.springframework.security.web.authentication.logout.LogoutFilter@36b8a0ad, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@54c4559c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@74e7ba5b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@aec622c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1fc83366, org.springframework.security.web.access.ExceptionTranslationFilter@5ef7358, org.springframework.security.web.access.intercept.AuthorizationFilter@16501185]
+2024-01-31T10:06:50.558+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:06:51.009+01:00  INFO 8100 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-31T10:06:51.032+01:00  INFO 8100 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-01-31T10:06:51.042+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:06:51.042+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:06:51.042+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : Started BikerConnectJavaApplication in 2.345 seconds (process running for 21.097)
+2024-01-31T10:06:51.042+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy5.$Proxy148
+2024-01-31T10:06:51.047+01:00  INFO 8100 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   DataSourceInitializationConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.jdbc.datasource.init.DatabasePopulator' (OnClassCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource'; @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.sql.init.SqlDataSourceScriptDatabaseInitializer,org.springframework.boot.autoconfigure.sql.init.SqlR2dbcScriptDatabaseInitializer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   SqlInitializationAutoConfiguration matched:
+      - @ConditionalOnProperty (spring.sql.init.enabled) matched (OnPropertyCondition)
+      - NoneNestedConditions 0 matched 1 did not; NestedCondition on SqlInitializationAutoConfiguration.SqlInitializationModeCondition.ModeIsNever @ConditionalOnProperty (spring.sql.init.mode=never) found different value in property 'mode' (SqlInitializationAutoConfiguration.SqlInitializationModeCondition)
+
+
+Negative matches:
+-----------------
+
+   R2dbcInitializationConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'io.r2dbc.spi.ConnectionFactory', 'org.springframework.r2dbc.connection.init.DatabasePopulator' (OnClassCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2024-01-31T10:06:51.048+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:06:51.048+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método existsByNombreApellidos() de la clase jdk.proxy5.$Proxy146
+2024-01-31T10:06:51.053+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método existsByNombreApellidos() de la clase jdk.proxy5.$Proxy146
+2024-01-31T10:06:51.053+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:06:51.072+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy5.$Proxy148
+2024-01-31T10:06:51.072+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:06:51.072+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:06:59.648+01:00  INFO 8100 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-31T10:06:59.658+01:00  INFO 8100 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-31T10:06:59.658+01:00  INFO 8100 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-01-31T10:06:59.663+01:00  INFO 8100 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-01-31T10:06:59.742+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : Starting BikerConnectJavaApplication using Java 20.0.2 with PID 8100 (C:\Users\Puesto9\Desktop\DWS Java\BikerConnectDWS\target\classes started by Puesto9 in C:\Users\Puesto9\Desktop\DWS Java\BikerConnectDWS)
+2024-01-31T10:06:59.742+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-01-31T10:06:59.925+01:00  INFO 8100 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-31T10:06:59.943+01:00  INFO 8100 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 3 JPA repository interfaces.
+2024-01-31T10:07:00.162+01:00  INFO 8100 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-01-31T10:07:00.163+01:00  INFO 8100 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-31T10:07:00.164+01:00  INFO 8100 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-31T10:07:00.184+01:00  INFO 8100 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-31T10:07:00.184+01:00  INFO 8100 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 439 ms
+2024-01-31T10:07:00.300+01:00  INFO 8100 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-31T10:07:00.304+01:00  INFO 8100 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-01-31T10:07:00.308+01:00  INFO 8100 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-31T10:07:00.309+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-01-31T10:07:00.350+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@10100c41
+2024-01-31T10:07:00.351+01:00  INFO 8100 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-01-31T10:07:00.358+01:00  WARN 8100 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-01-31T10:07:00.417+01:00  INFO 8100 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-31T10:07:00.474+01:00  INFO 8100 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-31T10:07:00.804+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:07:00.804+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:07:00.950+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:07:00.963+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:07:00.982+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:07:01.008+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:07:01.024+01:00  WARN 8100 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-31T10:07:01.091+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:07:01.094+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-01-31T10:07:01.095+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-01-31T10:07:01.120+01:00  INFO 8100 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-01-31T10:07:01.414+01:00  INFO 8100 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4395b783, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@271e4ca0, org.springframework.security.web.context.SecurityContextHolderFilter@2ec3d34e, org.springframework.security.web.header.HeaderWriterFilter@923985, org.springframework.web.filter.CorsFilter@2c912cf0, org.springframework.security.web.csrf.CsrfFilter@649d8eeb, org.springframework.security.web.authentication.logout.LogoutFilter@22903606, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@60169d81, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26a1faab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3368156, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@78bf5676, org.springframework.security.web.access.ExceptionTranslationFilter@6e596d64, org.springframework.security.web.access.intercept.AuthorizationFilter@3cc6e843]
+2024-01-31T10:07:01.414+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-01-31T10:07:01.848+01:00  INFO 8100 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-31T10:07:01.867+01:00  INFO 8100 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-01-31T10:07:01.879+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:07:01.879+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:07:01.879+01:00  INFO 8100 --- [restartedMain] c.b.BikerConnectJavaApplication          : Started BikerConnectJavaApplication in 2.161 seconds (process running for 31.935)
+2024-01-31T10:07:01.880+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:07:01.882+01:00  INFO 8100 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+    None
+
+
+Negative matches:
+-----------------
+
+   SqlInitializationAutoConfiguration:
+      Did not match:
+         - NoneNestedConditions 1 matched 0 did not; NestedCondition on SqlInitializationAutoConfiguration.SqlInitializationModeCondition.ModeIsNever @ConditionalOnProperty (spring.sql.init.mode=never) matched (SqlInitializationAutoConfiguration.SqlInitializationModeCondition)
+      Matched:
+         - @ConditionalOnProperty (spring.sql.init.enabled) matched (OnPropertyCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2024-01-31T10:07:01.883+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:07:01.884+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método existsByNombreApellidos() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:07:01.887+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método existsByNombreApellidos() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:07:01.887+01:00  INFO 8100 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:07:01.912+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:07:01.912+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:07:01.912+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:07:07.801+01:00  INFO 8100 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-31T10:07:07.801+01:00  INFO 8100 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-31T10:07:07.803+01:00  INFO 8100 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-01-31T10:07:07.847+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:07:07.847+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:08:01.881+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:08:01.881+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:08:01.881+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:08:01.884+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:08:01.884+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:08:01.884+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:08:29.325+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:08:29.325+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:08:49.933+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:08:49.933+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:09:01.884+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:09:01.884+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:09:01.884+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:09:01.887+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:09:01.887+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:09:01.887+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:09:11.866+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:09:11.867+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:09:23.750+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:09:23.750+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:09:36.257+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:09:36.257+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:09:51.647+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:09:51.647+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:10:01.884+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:10:01.885+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:10:01.885+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:10:01.888+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:10:01.888+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:10:01.888+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:10:12.454+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:10:12.454+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:10:37.558+01:00  INFO 8100 --- [http-nio-8080-exec-9] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:10:37.559+01:00  INFO 8100 --- [http-nio-8080-exec-9] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método bienvenida() de la clase com.bikerconnect.controladores.BienvenidaControlador
+2024-01-31T10:10:47.565+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método login() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:10:47.565+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método login() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:10:49.071+01:00  INFO 8100 --- [http-nio-8080-exec-3] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método registrarGet() de la clase com.bikerconnect.controladores.RegistroControlador
+2024-01-31T10:10:49.072+01:00  INFO 8100 --- [http-nio-8080-exec-3] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método registrarGet() de la clase com.bikerconnect.controladores.RegistroControlador
+2024-01-31T10:10:51.812+01:00  INFO 8100 --- [http-nio-8080-exec-9] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método login() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:10:51.812+01:00  INFO 8100 --- [http-nio-8080-exec-9] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método login() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:10:56.096+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método loadUserByUsername() de la clase com.bikerconnect.configuracion.UserDetailsServiceImpl
+2024-01-31T10:10:56.098+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:10:56.107+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:10:56.108+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método loadUserByUsername() de la clase com.bikerconnect.configuracion.UserDetailsServiceImpl
+2024-01-31T10:10:56.206+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método loginCorrecto() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:10:56.206+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método estaLaCuentaConfirmada() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:10:56.206+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:10:56.210+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:10:56.210+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método estaLaCuentaConfirmada() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:10:56.211+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método loginCorrecto() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:10:57.163+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listadoUsuarios() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:10:57.164+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:10:57.168+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:10:57.185+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:10:57.185+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:10:57.202+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.202+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.205+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.205+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.209+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.209+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.212+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.213+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.215+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.215+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.217+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.217+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.218+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.219+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.220+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.221+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.222+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.222+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:10:57.244+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:10:57.244+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:10:57.249+01:00  INFO 8100 --- [http-nio-8080-exec-10] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listadoUsuarios() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:00.991+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método mostrarFormularioEdicion() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:00.992+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método buscarPorId() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:00.998+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findById() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:01.007+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findById() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:01.007+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método usuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:01.009+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método usuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:01.009+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método buscarPorId() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:01.010+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método mostrarFormularioEdicion() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:01.878+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:11:01.878+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:11:01.878+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:11:01.881+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findByEstadoAndFechaHoraEncuentroBefore() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:11:01.881+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:11:01.881+01:00  INFO 8100 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-01-31T10:11:08.482+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método procesarFormularioEdicion() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:08.483+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método actualizarUsuario() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:08.483+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findById() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:08.485+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findById() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:08.486+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método save() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:08.490+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método save() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:08.490+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método actualizarUsuario() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:08.502+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:08.502+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:08.508+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:08.508+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:08.511+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.511+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.512+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.513+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.514+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.514+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.515+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.516+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.517+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.517+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.518+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.518+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.523+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.523+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.525+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.525+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.527+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.527+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:08.548+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:08.548+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:08.552+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método procesarFormularioEdicion() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:15.123+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método registrarGet() de la clase com.bikerconnect.controladores.RegistroControlador
+2024-01-31T10:11:15.124+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método registrarGet() de la clase com.bikerconnect.controladores.RegistroControlador
+2024-01-31T10:11:17.235+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listadoUsuarios() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:17.236+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:17.236+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:17.242+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:17.243+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:17.244+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.244+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.246+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.246+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.247+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.247+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.248+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.248+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.249+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.249+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.250+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.250+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.252+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.252+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.253+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.254+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.255+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.255+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:17.275+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:17.275+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:17.278+01:00  INFO 8100 --- [http-nio-8080-exec-6] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listadoUsuarios() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:22.405+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método eliminarUsuario() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:22.406+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método buscarPorId() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:22.407+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findById() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.409+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findById() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.409+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método usuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:22.410+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método usuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:22.410+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método buscarPorId() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:22.412+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:22.412+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.421+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.421+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:22.423+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.423+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.425+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.425+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.427+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.427+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.428+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.428+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.429+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.429+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.430+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.430+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.432+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.432+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.434+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.434+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.436+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.436+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.459+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:22.459+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:22.469+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método eliminar() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:22.470+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findById() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.471+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findById() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.472+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método delete() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.475+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método delete() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.475+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método eliminar() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:22.487+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:22.487+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findAll() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.490+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaUsuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:22.491+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método obtenerTodos() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:22.493+01:00  INFO 8100 --- [http-nio-8080-exec-5] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método eliminarUsuario() de la clase com.bikerconnect.controladores.AdministracionUsuariosControlador
+2024-01-31T10:11:24.489+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método loginCorrecto() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:11:24.490+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método estaLaCuentaConfirmada() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:24.491+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:24.494+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:24.494+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método estaLaCuentaConfirmada() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:24.496+01:00  INFO 8100 --- [http-nio-8080-exec-8] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método loginCorrecto() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:11:25.749+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método mostrarMisMotos() de la clase com.bikerconnect.controladores.MisMotosControlador
+2024-01-31T10:11:25.750+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método buscarPorEmail() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:25.750+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:25.753+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:25.753+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:25.753+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaMotosToDto() de la clase com.bikerconnect.servicios.MotoToDtoImpl
+2024-01-31T10:11:25.753+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método usuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:25.754+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método usuarioToDto() de la clase com.bikerconnect.servicios.UsuarioToDtoImpl
+2024-01-31T10:11:25.754+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método buscarPorEmail() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:25.755+01:00  INFO 8100 --- [http-nio-8080-exec-4] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método mostrarMisMotos() de la clase com.bikerconnect.controladores.MisMotosControlador
+2024-01-31T10:11:28.081+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método loginCorrecto() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:11:28.084+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método estaLaCuentaConfirmada() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:28.084+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:28.088+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:28.088+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método estaLaCuentaConfirmada() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:28.088+01:00  INFO 8100 --- [http-nio-8080-exec-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método loginCorrecto() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:11:31.715+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método quedadas() de la clase com.bikerconnect.controladores.QuedadasControlador
+2024-01-31T10:11:31.715+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método obtenerQuedadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:11:31.717+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findAll() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:11:31.720+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findAll() de la clase jdk.proxy6.$Proxy155
+2024-01-31T10:11:31.721+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método listaQuedadToDto() de la clase com.bikerconnect.servicios.QuedadaToDtoImpl
+2024-01-31T10:11:31.721+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método listaQuedadToDto() de la clase com.bikerconnect.servicios.QuedadaToDtoImpl
+2024-01-31T10:11:31.721+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método obtenerQuedadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-01-31T10:11:31.721+01:00  INFO 8100 --- [http-nio-8080-exec-2] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método quedadas() de la clase com.bikerconnect.controladores.QuedadasControlador
+2024-01-31T10:11:35.016+01:00  INFO 8100 --- [http-nio-8080-exec-7] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método loginCorrecto() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:11:35.017+01:00  INFO 8100 --- [http-nio-8080-exec-7] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método estaLaCuentaConfirmada() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:35.017+01:00  INFO 8100 --- [http-nio-8080-exec-7] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:35.022+01:00  INFO 8100 --- [http-nio-8080-exec-7] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findFirstByEmail() de la clase jdk.proxy6.$Proxy153
+2024-01-31T10:11:35.022+01:00  INFO 8100 --- [http-nio-8080-exec-7] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método estaLaCuentaConfirmada() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-01-31T10:11:35.022+01:00  INFO 8100 --- [http-nio-8080-exec-7] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método loginCorrecto() de la clase com.bikerconnect.controladores.LoginControlador
+2024-01-31T10:11:39.273+01:00  INFO 8100 --- [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-01-31T10:11:39.282+01:00  INFO 8100 --- [RMI TCP Connection(11)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-31T10:11:39.282+01:00  INFO 8100 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-01-31T10:11:39.288+01:00  INFO 8100 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
