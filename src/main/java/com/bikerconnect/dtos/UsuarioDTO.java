@@ -27,6 +27,7 @@ public class UsuarioDTO {
 	private String rol;
 	private List<MotoDTO> misMotos = new ArrayList<>();
 	private List<QuedadaDTO> misQuedadas = new ArrayList<>();
+	private String mensajeError = "aaaaaa";
 
 	// CONSTRUCTORES
 	public UsuarioDTO() {
@@ -161,13 +162,21 @@ public class UsuarioDTO {
 		this.misQuedadas = misQuedadas;
 	}
 
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(apellidosUsuario, claveUsuario, cuentaConfirmada, emailUsuario, expiracionToken,
-				fechaRegistro, id, misMotos, misQuedadas, nombreUsuario, password, password2, rol, tlfUsuario, token);
+				fechaRegistro, id, mensajeError, misMotos, misQuedadas, nombreUsuario, password, password2, rol,
+				tlfUsuario, token);
 	}
-
-	// METODOS
 
 	@Override
 	public boolean equals(Object obj) {
@@ -183,10 +192,11 @@ public class UsuarioDTO {
 				&& Objects.equals(emailUsuario, other.emailUsuario)
 				&& Objects.equals(expiracionToken, other.expiracionToken)
 				&& Objects.equals(fechaRegistro, other.fechaRegistro) && id == other.id
-				&& Objects.equals(misMotos, other.misMotos) && Objects.equals(misQuedadas, other.misQuedadas)
-				&& Objects.equals(nombreUsuario, other.nombreUsuario) && Objects.equals(password, other.password)
-				&& Objects.equals(password2, other.password2) && Objects.equals(rol, other.rol)
-				&& Objects.equals(tlfUsuario, other.tlfUsuario) && Objects.equals(token, other.token);
+				&& Objects.equals(mensajeError, other.mensajeError) && Objects.equals(misMotos, other.misMotos)
+				&& Objects.equals(misQuedadas, other.misQuedadas) && Objects.equals(nombreUsuario, other.nombreUsuario)
+				&& Objects.equals(password, other.password) && Objects.equals(password2, other.password2)
+				&& Objects.equals(rol, other.rol) && Objects.equals(tlfUsuario, other.tlfUsuario)
+				&& Objects.equals(token, other.token);
 	}
 
 	@Override

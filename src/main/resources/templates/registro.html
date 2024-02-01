@@ -144,6 +144,9 @@
 	  </script>
 	  <script th:if="${not #strings.isEmpty(error)}">
 	  		mostrarNotificacion("¡Error!","Ocurrio un error no esperado, intentelo de nuevo", 'error');
+	  </script>
+	  <script th:if="${not #strings.isEmpty(usuarioRegistradoPeroNoConfirmado)}">
+	    	mostrarNotificacion("¡Debe confirmar su cuenta!", "Tiene un email de confirmación pendiente en la bandeja de entrada", 'info');
 	  </script>  
 </body>
 </html>

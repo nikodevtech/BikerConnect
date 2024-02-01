@@ -53,9 +53,14 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			// Comprueba si ya existe un usuario con el email que quiere registrar
 			Usuario usuarioDaoByEmail = repositorio.findFirstByEmail(userDto.getEmailUsuario());
 
-			if (usuarioDaoByEmail != null) { // El email se encuentra registrado
+			if (usuarioDaoByEmail != null && usuarioDaoByEmail.isCuentaConfirmada()) {
+				userDto.setMensajeError("Usuario ya registrado y confirmado");
+				return userDto;
+			}
+			if (usuarioDaoByEmail != null ) { // El email se encuentra registrado sin confirmar
 				return null;
 			}
+		
 
 			// Si continua la ejecución es que el email no se encuentra ya registrado
 			userDto.setClaveUsuario(passwordEncoder.encode(userDto.getClaveUsuario()));

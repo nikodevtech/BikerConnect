@@ -51,7 +51,14 @@ public class RegistroControlador {
         try {
             UsuarioDTO nuevoUsuario = usuarioServicio.registrarUsuario(usuarioDTO);
 
-            if (nuevoUsuario != null && !nuevoUsuario.isCuentaConfirmada()) {
+            if (nuevoUsuario == null) {
+				model.addAttribute("usuarioRegistradoPeroNoConfirmado", "Ya existe un usuario con ese email sin confirmar");
+				return "registro";
+			} else if(nuevoUsuario.getMensajeError().equals("Usuario ya registrado y confirmado")) {
+                // De lo contrario, es que ya existe un usuario con el dicho email
+                model.addAttribute("emailYaRegistrado", "Ya existe un usuario con ese email");
+                return "registro";
+            } else if (nuevoUsuario != null && !nuevoUsuario.isCuentaConfirmada()) {
                 // Si entra a este if es que el registro se completó correctamente
                 model.addAttribute("mensajeRegistroExitoso", "Registro del nuevo usuario OK");
                 return "login";
@@ -59,15 +66,12 @@ public class RegistroControlador {
                 model.addAttribute("mensajeRegistroExitoso", "Registro del nuevo usuario OK");
                 model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
                 return "administracionUsuarios";
-            } else {
-                // De lo contrario, es que ya existe un usuario con el dicho email
-                model.addAttribute("emailYaRegistrado", "Ya existe un usuario con ese email");
-                return "registro";
-            }
+            } 
         } catch (Exception e) {
             model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
             return "registro";
         }
+        return "registro";
     }
 
 }
