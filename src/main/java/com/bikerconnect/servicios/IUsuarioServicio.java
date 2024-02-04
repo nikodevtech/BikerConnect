@@ -87,6 +87,13 @@ public interface IUsuarioServicio {
 	 */
 	public UsuarioDTO buscarPorEmail(String email);
 	
+	/**
+	 * Cuenta el numero de usuarios que coinciden con el rol dado por parametro
+	 * @param rol El rol del usuario
+	 * @return el numero de usuarios que coinciden con el rol
+	 */
+	public int contarUsuariosPorRol(String rol);
+	
 
 
 

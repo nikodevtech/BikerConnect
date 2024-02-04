@@ -308,6 +308,10 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		}	
 		return null;
 	}
+	
+    public int contarUsuariosPorRol(String rol) {
+        return repositorio.countByRol(rol);
+    }
 
 
 

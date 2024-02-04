@@ -1,6 +1,8 @@
 package com.bikerconnect.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.bikerconnect.entidades.Usuario;
 
@@ -32,6 +34,14 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 	 * @return true si existe un usuario con el nombre de usuario especificado, false en caso contrario.
 	 */
 	public boolean existsByNombreApellidos(String nombreApellidos);
+	
+	/**
+	 * Cuenta el numero de usuarios que coinciden con el rol dado por parametro
+	 * @param rol El rol del usuario
+	 * @return el numero de usuarios que coinciden con el rol
+	 */
+	@Query("SELECT COUNT(u) FROM Usuario u WHERE u.rol = :rol")
+    int countByRol(@Param("rol") String rol);
 	
 
 
