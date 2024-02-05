@@ -67,8 +67,6 @@ public class QuedadasControlador {
 	@GetMapping("/privada/quedadas/planificar-quedada")
 	public String planificarQuedada(Model model) {
 		model.addAttribute("quedadaDTO", new QuedadaDTO());
-        LocalDate fechaDeMañana = LocalDate.now().plusDays(1);
-        model.addAttribute("fechaDeMañana", fechaDeMañana);
 		return "registroQuedada";
 	}
 
