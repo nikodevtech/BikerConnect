@@ -97,3 +97,10 @@ function confirmarCancelarQuedada(event) {
         }
     });
 }
+function establecerFechaMinima() {
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var formattedTomorrow = tomorrow.toISOString().slice(0, 10);
+
+    document.getElementById("fechaHora").min = formattedTomorrow + "T00:00";
+}
