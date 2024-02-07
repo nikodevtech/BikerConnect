@@ -1,5 +1,6 @@
 package com.bikerconnect.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.servicios.IUsuarioServicio;
@@ -39,9 +41,23 @@ public class AdministracionUsuariosControlador {
 	 *         admin.
 	 */
 	@GetMapping("/privada/administracion-usuarios")
-	public String listadoUsuarios(Model model, HttpServletRequest request, Authentication authentication) {
+	public String listadoUsuarios(@RequestParam(value = "busquedaUser", required = false) String busquedaUser,
+			Model model, HttpServletRequest request, Authentication authentication) {
 		try {
-			List<UsuarioDTO> usuarios = usuarioServicio.obtenerTodos();
+			List<UsuarioDTO> usuarios = new ArrayList<>();
+
+			if (busquedaUser != null && !busquedaUser.isEmpty()) {
+				UsuarioDTO usuario = usuarioServicio.buscarPorEmail(busquedaUser);
+				if (usuario != null) {
+					usuarios.add(usuario);
+				} else {
+					model.addAttribute("usuarioNoEncontrado", "No se encontró el usuario con el email proporcionado");
+					usuarios = usuarioServicio.obtenerTodos();
+				}
+			} else {
+				usuarios = usuarioServicio.obtenerTodos();
+			}
+
 			model.addAttribute("usuarios", usuarios);
 
 			if (request.isUserInRole("ROLE_ADMIN")) {
@@ -73,37 +89,36 @@ public class AdministracionUsuariosControlador {
 		try {
 			UsuarioDTO usuario = usuarioServicio.buscarPorId(id);
 			List<UsuarioDTO> usuarios = usuarioServicio.obtenerTodos();
-			
-	        String emailUsuarioActual = request.getUserPrincipal().getName();
 
+			String emailUsuarioActual = request.getUserPrincipal().getName();
 
-	        if (request.isUserInRole("ROLE_USER")) {
-	            model.addAttribute("noAdmin", "No tiene los permisos suficientes para acceder al recurso");
-	            model.addAttribute("usuarios", usuarios);
-	            return "dashboard";
-	        } else if (emailUsuarioActual.equals(usuario.getEmailUsuario())) {
-	            model.addAttribute("noTePuedesEliminar", "No puedes eliminarte a ti mismo como administrador");
-	            model.addAttribute("usuarios", usuarios);
-	            return "administracionUsuarios";
-	        } else {
-	            int adminsRestantes = usuarioServicio.contarUsuariosPorRol("ROLE_ADMIN");
-	            if (usuario.getRol().equals("ROLE_ADMIN") && adminsRestantes == 1) {
-	                model.addAttribute("noSePuedeEliminar", "No se puede eliminar al último admin");
-	                model.addAttribute("usuarios", usuarios);
-	                return "administracionUsuarios";
-	            }
+			if (request.isUserInRole("ROLE_USER")) {
+				model.addAttribute("noAdmin", "No tiene los permisos suficientes para acceder al recurso");
+				model.addAttribute("usuarios", usuarios);
+				return "dashboard";
+			} else if (emailUsuarioActual.equals(usuario.getEmailUsuario())) {
+				model.addAttribute("noTePuedesEliminar", "No puedes eliminarte a ti mismo como administrador");
+				model.addAttribute("usuarios", usuarios);
+				return "administracionUsuarios";
+			} else {
+				int adminsRestantes = usuarioServicio.contarUsuariosPorRol("ROLE_ADMIN");
+				if (usuario.getRol().equals("ROLE_ADMIN") && adminsRestantes == 1) {
+					model.addAttribute("noSePuedeEliminar", "No se puede eliminar al último admin");
+					model.addAttribute("usuarios", usuarios);
+					return "administracionUsuarios";
+				}
 
-	            if (usuario.getMisQuedadas().size() > 0) {
-	                model.addAttribute("elUsuarioTieneQuedadas", "No se puede eliminar un usuario con quedadas");
-	                model.addAttribute("usuarios", usuarios);
-	                return "administracionUsuarios";
-	            }
+				if (usuario.getMisQuedadas().size() > 0) {
+					model.addAttribute("elUsuarioTieneQuedadas", "No se puede eliminar un usuario con quedadas");
+					model.addAttribute("usuarios", usuarios);
+					return "administracionUsuarios";
+				}
 
-	            usuarioServicio.eliminar(id);
-	            model.addAttribute("eliminacionCorrecta", "El usuario se ha eliminado correctamente");
-	            model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
-	            return "administracionUsuarios";
-	        }
+				usuarioServicio.eliminar(id);
+				model.addAttribute("eliminacionCorrecta", "El usuario se ha eliminado correctamente");
+				model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
+				return "administracionUsuarios";
+			}
 
 		} catch (Exception e) {
 			model.addAttribute("Error", "Ocurrió un error al eliminar el usuario");
