@@ -23,6 +23,9 @@ public class UsuarioToDtoImpl implements IUsuarioToDto {
 	@Autowired
 	private IQuedadaToDto quedadaToDto;
 	
+	@Autowired
+	private IFotoServicio fotoServicio;
+	
 	@Override
     public UsuarioDTO usuarioToDto(Usuario u) {
         try {
@@ -49,6 +52,10 @@ public class UsuarioToDtoImpl implements IUsuarioToDto {
 				dto.setFechaRegistro(u.getFechaRegistro());
 				dto.setCuentaConfirmada(u.isCuentaConfirmada());
 				dto.setRol(u.getRol());
+				
+				if(u.getFoto() != null) {
+					dto.setFoto(fotoServicio.convertirAbase64(u.getFoto()));
+				}
 				
 				if(u.getMotosPropias().size() > 0) {
 					dto.setMisMotos(motoToDto.listaMotosToDto(u.getMotosPropias()));

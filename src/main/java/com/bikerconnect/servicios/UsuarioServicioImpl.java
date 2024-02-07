@@ -45,6 +45,9 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 	
 	@Autowired
 	private IMotoToDto toMotoDto;
+	
+	@Autowired
+	private IFotoServicio fotoServicio;
 
 	@Override
 	public UsuarioDTO registrarUsuario(UsuarioDTO userDto) {
@@ -61,12 +64,14 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 				return null;
 			}
 		
-
 			// Si continua la ejecución es que el email no se encuentra ya registrado
+			
 			userDto.setClaveUsuario(passwordEncoder.encode(userDto.getClaveUsuario()));
 			Usuario usuarioDao = toDao.usuarioToDao(userDto);
 			usuarioDao.setFechaRegistro(Calendar.getInstance());
 			usuarioDao.setRol("ROLE_USER");
+	        byte[] fotoPredeterminada = fotoServicio.cargarFotoPredeterminada();
+	        usuarioDao.setFoto(fotoPredeterminada);
 			if (userDto.isCuentaConfirmada()) {
 				usuarioDao.setCuentaConfirmada(true);
 				repositorio.save(usuarioDao);
@@ -281,6 +286,7 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 			usuarioActual.setNombreApellidos(usuarioModificado.getNombreUsuario() + " " + usuarioModificado.getApellidosUsuario());
 			usuarioActual.setTelefono(usuarioModificado.getTlfUsuario());
 			usuarioActual.setRol(usuarioModificado.getRol());
+			usuarioActual.setFoto(fotoServicio.convertirAarrayBytes(usuarioModificado.getFoto()));
 
 			repositorio.save(usuarioActual);
 		} catch (PersistenceException pe) {

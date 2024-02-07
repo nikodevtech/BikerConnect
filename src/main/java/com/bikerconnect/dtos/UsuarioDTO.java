@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * Clase DTO (Data Transfer Object) para pasar información entre capas para la
  * gestión de usuarios
@@ -28,6 +30,7 @@ public class UsuarioDTO {
 	private List<MotoDTO> misMotos = new ArrayList<>();
 	private List<QuedadaDTO> misQuedadas = new ArrayList<>();
 	private String mensajeError = "aaaaaa";
+	private String foto;
 
 	// CONSTRUCTORES
 	public UsuarioDTO() {
@@ -170,12 +173,19 @@ public class UsuarioDTO {
 		this.mensajeError = mensajeError;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
 
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(apellidosUsuario, claveUsuario, cuentaConfirmada, emailUsuario, expiracionToken,
 				fechaRegistro, id, mensajeError, misMotos, misQuedadas, nombreUsuario, password, password2, rol,
-				tlfUsuario, token);
+				tlfUsuario, token, foto);
 	}
 
 	@Override
@@ -196,7 +206,7 @@ public class UsuarioDTO {
 				&& Objects.equals(misQuedadas, other.misQuedadas) && Objects.equals(nombreUsuario, other.nombreUsuario)
 				&& Objects.equals(password, other.password) && Objects.equals(password2, other.password2)
 				&& Objects.equals(rol, other.rol) && Objects.equals(tlfUsuario, other.tlfUsuario)
-				&& Objects.equals(token, other.token);
+				&& Objects.equals(token, other.token) && Objects.equals(foto, other.foto);
 	}
 
 	@Override
@@ -205,7 +215,8 @@ public class UsuarioDTO {
 				+ ", tlfUsuario=" + tlfUsuario + ", emailUsuario=" + emailUsuario + ", claveUsuario=" + claveUsuario
 				+ ", token=" + token + ", password=" + password + ", password2=" + password2 + ", expiracionToken="
 				+ expiracionToken + ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada
-				+ ", rol=" + rol + ", misMotos=" + misMotos + ", misQuedadas=" + misQuedadas + "]";
+				+ ", rol=" + rol + ", misMotos=" + misMotos + ", misQuedadas=" + misQuedadas + ", mensajeError="
+				+ mensajeError + ", foto=" + foto + "]";
 	}
 
 

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bikerconnect.dtos.UsuarioDTO;
+import com.bikerconnect.servicios.IFotoServicio;
 import com.bikerconnect.servicios.IUsuarioServicio;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +29,9 @@ public class AdministracionUsuariosControlador {
 
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
+
+	@Autowired
+	private IFotoServicio fotoServicio;
 
 	/**
 	 * Gestiona la solicitud HTTP GET para la url /privada/administracion-usuarios y
@@ -166,8 +171,26 @@ public class AdministracionUsuariosControlador {
 	 *         edición.
 	 */
 	@PostMapping("/privada/procesar-editar")
-	public String procesarFormularioEdicion(@ModelAttribute("usuarioDTO") UsuarioDTO usuarioDTO, Model model) {
+	public String procesarFormularioEdicion(@RequestParam("id") Long id, @RequestParam("nombre") String nombre, @RequestParam("apellidos") String apellidos,
+			@RequestParam("telefono") String telefono, @RequestParam("rol") String rol,
+			@RequestParam("foto") MultipartFile archivo, Model model) {
 		try {
+			UsuarioDTO usuarioDTO = new UsuarioDTO();
+			usuarioDTO.setId(id);
+			usuarioDTO.setNombreUsuario(nombre);
+			usuarioDTO.setApellidosUsuario(apellidos);
+			usuarioDTO.setTlfUsuario(telefono);
+			if (rol.equals("Administrador")) {
+				usuarioDTO.setRol("ROLE_ADMIN");
+			}else {
+				usuarioDTO.setRol(rol);
+			}
+
+			if (!archivo.isEmpty()) {
+				String fotoUsuario = fotoServicio.convertirAbase64(archivo.getBytes());
+				usuarioDTO.setFoto(fotoUsuario);
+			}
+
 			usuarioServicio.actualizarUsuario(usuarioDTO);
 			model.addAttribute("edicionCorrecta", "El Usuario se ha editado correctamente");
 			model.addAttribute("usuarios", usuarioServicio.obtenerTodos());

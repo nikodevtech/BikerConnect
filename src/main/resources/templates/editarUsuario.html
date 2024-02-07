@@ -45,21 +45,23 @@
         class="custom-form cardPrincipal"
         th:action="@{/privada/procesar-editar}"
         enctype="multipart/form-data"
-        method="post"
-        th:object="${usuarioDTO}"
+        method="post"      
       >
-        <h2 class="text-center mb-5">
+        <h2 class="text-center mb-3">
           <i class="bi bi-person-fill-gear" style="color: #1f3c85">Editar usuario</i>
         </h2>
-        <input type="hidden" th:field="*{id}" />
+		<div class="d-flex justify-content-center">
+		    <img th:src="'data:image/jpeg;base64,' + ${usuarioDTO.foto}" class="rounded-circle img-fluid mx-auto" alt="Imagen de usuario" style="max-width: 200px; max-height: 200px;">
+		</div>
+        <input type="hidden" name="id" th:value="${usuarioDTO.id}" />
         <div class="mb-3">
           <label for="email" class="form-label textoPrincipal">Correo Electrónico</label>
           <input
-            th:field="*{emailUsuario}"
             type="email"
             id="email"
             name="email"
             class="form-control"
+            th:value="${usuarioDTO.emailUsuario}"
             readonly
             disabled
           />
@@ -67,10 +69,10 @@
         <div class="mb-3">
           <label for="nombre" class="form-label textoPrincipal">Nombre</label>
           <input
-            th:field="*{nombreUsuario}"
             type="text"
             id="nombre"
             name="nombre"
+            th:value="${usuarioDTO.nombreUsuario}"
             class="form-control"
             required
           />
@@ -78,10 +80,10 @@
         <div class="mb-3">
           <label for="apellidos" class="form-label textoPrincipal">Apellidos</label>
           <input
-            th:field="*{apellidosUsuario}"
             type="text"
             id="apellidos"
             name="apellidos"
+			th:value="${usuarioDTO.apellidosUsuario}"
             class="form-control"
             required
           />
@@ -89,23 +91,23 @@
         <div class="mb-3">
           <label for="telefono" class="form-label textoPrincipal">Teléfono</label>
           <input
-            th:field="*{tlfUsuario}"
             type="tel"
             id="telefono"
-            name="telefono"
+            name="telefono"         
+			th:value="${usuarioDTO.tlfUsuario}"
             class="form-control"
             required
           />
-         <div class="mb-3 mt-3" th:if="${usuarioDTO.rol == 'ROLE_USER'}">
-		    <label for="rol" class="form-label textoPrincipal">Rol del usuario (Solamente se permite escalar privilegios)</label>
-		    <select th:field="*{rol}" id="rol" name="rol" class="form-select" required>
-		        <option value="ROLE_USER">Usuario</option>
-		        <option value="ROLE_ADMIN">Administrador</option>
-		    </select>
-		  </div>
+	      <div class="mb-3 mt-3" th:if="${usuarioDTO.rol == 'ROLE_USER'}">
+	          <label for="rol" class="form-label textoPrincipal">Rol del usuario (Solamente se permite escalar privilegios)</label>
+	          <select id="rol" name="rol" class="form-select" required>
+	              <option value="ROLE_USER" th:selected="${usuarioDTO.rol == 'ROLE_USER'}">Usuario</option>
+	              <option value="ROLE_ADMIN" th:selected="${usuarioDTO.rol == 'ROLE_ADMIN'}">Administrador</option>
+	          </select>
+	        </div>
 		  <div class="mb-3 mt-3" th:if="${usuarioDTO.rol == 'ROLE_ADMIN'}">
 			   <label for="rol" class="form-label textoPrincipal">Rol del usuario (Solamente se permite escalar privilegios)</label>
-			   <input type="text" class="form-control" value="Administrador" readonly>
+			   <input type="text" name="rol" value="Administrador" class="form-control" readonly>
 		  </div>	  
           <div class="mb-3">
             <label for="foto" class="form-label textoPrincipal">Foto de Perfil</label>

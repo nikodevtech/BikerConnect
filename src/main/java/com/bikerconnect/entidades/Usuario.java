@@ -1,6 +1,7 @@
 package com.bikerconnect.entidades;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -57,8 +58,8 @@ public class Usuario {
 	@Column(nullable = true, length = 20)
 	private String rol;
 	
-	@Column(nullable = true, length = 100)
-	private String foto;
+	@Column(nullable = true)
+	private byte[] foto;
 	
 	@OneToMany(mappedBy = "usuarioPropietario", cascade = CascadeType.ALL)
 	private List<Moto> motosPropias = new ArrayList<>();
@@ -154,11 +155,11 @@ public class Usuario {
 		this.rol = rol;
 	}
 
-	public String getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(String foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
 	
@@ -182,14 +183,16 @@ public class Usuario {
 		this.quedadasParticipante = quedadasParticipante;
 	}
 
-
 	//METODOS
 	@Override
 	public int hashCode() {
-		return Objects.hash(cuentaConfirmada, email, expiracionToken, fechaRegistro, foto, id, motosPropias,
-				nombreApellidos, password, quedadasParticipante, rol, telefono, token);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(foto);
+		result = prime * result + Objects.hash(cuentaConfirmada, email, expiracionToken, fechaRegistro, id,
+				motosPropias, nombreApellidos, password, quedadasParticipante, rol, telefono, token);
+		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -202,19 +205,20 @@ public class Usuario {
 		Usuario other = (Usuario) obj;
 		return cuentaConfirmada == other.cuentaConfirmada && Objects.equals(email, other.email)
 				&& Objects.equals(expiracionToken, other.expiracionToken)
-				&& Objects.equals(fechaRegistro, other.fechaRegistro) && Objects.equals(foto, other.foto)
+				&& Objects.equals(fechaRegistro, other.fechaRegistro) && Arrays.equals(foto, other.foto)
 				&& id == other.id && Objects.equals(motosPropias, other.motosPropias)
 				&& Objects.equals(nombreApellidos, other.nombreApellidos) && Objects.equals(password, other.password)
 				&& Objects.equals(quedadasParticipante, other.quedadasParticipante) && Objects.equals(rol, other.rol)
 				&& Objects.equals(telefono, other.telefono) && Objects.equals(token, other.token);
-	}	
+	}
 
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombreApellidos=" + nombreApellidos + ", email=" + email + ", password="
 				+ password + ", telefono=" + telefono + ", token=" + token + ", expiracionToken=" + expiracionToken
 				+ ", fechaRegistro=" + fechaRegistro + ", cuentaConfirmada=" + cuentaConfirmada + ", rol=" + rol
-				+ ", foto=" + foto +"]";
+				+ ", foto=" + Arrays.toString(foto) + ", motosPropias=" + motosPropias + ", quedadasParticipante="
+				+ quedadasParticipante + "]";
 	}
 
 

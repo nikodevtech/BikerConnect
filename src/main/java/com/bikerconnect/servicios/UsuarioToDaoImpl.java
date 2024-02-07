@@ -3,6 +3,7 @@ package com.bikerconnect.servicios;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bikerconnect.dtos.UsuarioDTO;
@@ -16,6 +17,9 @@ import com.bikerconnect.entidades.Usuario;
 @Service
 public class UsuarioToDaoImpl implements IUsuarioToDao {
 
+	@Autowired
+	private IFotoServicio fotoServicio;
+	
 	@Override
 	public Usuario usuarioToDao(UsuarioDTO usuarioDTO) {
 
@@ -27,6 +31,9 @@ public class UsuarioToDaoImpl implements IUsuarioToDao {
 			usuarioDao.setEmail(usuarioDTO.getEmailUsuario());
 			usuarioDao.setPassword(usuarioDTO.getClaveUsuario());
 			usuarioDao.setTelefono(usuarioDTO.getTlfUsuario());
+			if(usuarioDTO.getFoto() != null) {
+				usuarioDao.setFoto(fotoServicio.convertirAarrayBytes(usuarioDTO.getFoto()));
+			}
 			
 			return usuarioDao;
 

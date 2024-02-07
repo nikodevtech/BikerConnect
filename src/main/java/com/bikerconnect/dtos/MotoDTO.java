@@ -16,7 +16,6 @@ public class MotoDTO {
 	private int año;
 	private String descModificaciones;
 	private long idPropietario;
-
 	
 	//Constructor
 	public MotoDTO() {
@@ -78,6 +77,7 @@ public class MotoDTO {
 	public void setIdPropietario(long idPropietario) {
 		this.idPropietario = idPropietario;
 	}
+	
 
 	//Metodos
 	@Override
@@ -105,7 +105,5 @@ public class MotoDTO {
 		return "MotoDTO [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", año=" + año
 				+ ", descModificaciones=" + descModificaciones + ", idPropietario=" + idPropietario + "]";
 	}
-
-
 
 }
