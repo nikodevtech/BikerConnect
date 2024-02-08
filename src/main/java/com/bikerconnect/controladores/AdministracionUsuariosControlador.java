@@ -184,14 +184,13 @@ public class AdministracionUsuariosControlador {
 			}else {
 				usuarioDTO.setRol(rol);
 			}
-
-	        UsuarioDTO usuarioActualDTO = usuarioServicio.buscarPorId(id);
-	        String fotoActual = usuarioActualDTO.getFoto();
-			
+		
 			if (!archivo.isEmpty()) {
 				String fotoUsuario = fotoServicio.convertirAbase64(archivo.getBytes());
 				usuarioDTO.setFoto(fotoUsuario);
 			} else {
+		        UsuarioDTO usuarioActualDTO = usuarioServicio.buscarPorId(id);
+		        String fotoActual = usuarioActualDTO.getFoto();
 				usuarioDTO.setFoto(fotoActual);
 			}
 

@@ -5104,3 +5104,146 @@ Unconditional classes:
 2024-02-08T13:41:44.798+01:00  INFO 3444 --- [RMI TCP Connection(36)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-02-08T13:41:44.800+01:00  INFO 3444 --- [RMI TCP Connection(36)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
 2024-02-08T13:41:44.800+01:00  INFO 3444 --- [RMI TCP Connection(36)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2024-02-08T16:35:59.572+01:00  INFO 2040 --- [restartedMain] c.b.BikerConnectJavaApplication          : Starting BikerConnectJavaApplication using Java 21 with PID 2040 (D:\Descargas\BikerConnectDWS\target\classes started by niko_ in D:\Descargas\BikerConnectDWS)
+2024-02-08T16:35:59.573+01:00  INFO 2040 --- [restartedMain] c.b.BikerConnectJavaApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-02-08T16:35:59.598+01:00  INFO 2040 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-02-08T16:35:59.598+01:00  INFO 2040 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-02-08T16:35:59.960+01:00  INFO 2040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08T16:36:00.004+01:00  INFO 2040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 3 JPA repository interfaces.
+2024-02-08T16:36:00.540+01:00  INFO 2040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-02-08T16:36:00.549+01:00  INFO 2040 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-08T16:36:00.549+01:00  INFO 2040 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-02-08T16:36:00.581+01:00  INFO 2040 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-08T16:36:00.582+01:00  INFO 2040 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 983 ms
+2024-02-08T16:36:00.725+01:00  INFO 2040 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08T16:36:00.769+01:00  INFO 2040 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-08T16:36:00.791+01:00  INFO 2040 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-02-08T16:36:00.950+01:00  INFO 2040 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08T16:36:00.966+01:00  INFO 2040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-02-08T16:36:01.078+01:00  INFO 2040 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1c123127
+2024-02-08T16:36:01.079+01:00  INFO 2040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-02-08T16:36:01.105+01:00  WARN 2040 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-02-08T16:36:01.671+01:00  INFO 2040 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08T16:36:01.752+01:00  INFO 2040 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08T16:36:02.096+01:00  INFO 2040 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-08T16:36:02.359+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:02.359+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:02.484+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:02.491+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:02.504+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:02.522+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:02.537+01:00  WARN 2040 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-08T16:36:02.615+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:02.620+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-02-08T16:36:02.620+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-02-08T16:36:02.640+01:00  INFO 2040 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-02-08T16:36:02.883+01:00  INFO 2040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5be85071, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29248960, org.springframework.security.web.context.SecurityContextHolderFilter@643b70cb, org.springframework.security.web.header.HeaderWriterFilter@2a0c1322, org.springframework.web.filter.CorsFilter@48fbd902, org.springframework.security.web.csrf.CsrfFilter@66a8c589, org.springframework.security.web.authentication.logout.LogoutFilter@631902c9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5927032d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18bdd7c9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e3699b5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4c7817da, org.springframework.security.web.access.ExceptionTranslationFilter@2ce4be62, org.springframework.security.web.access.intercept.AuthorizationFilter@1de6c00]
+2024-02-08T16:36:02.883+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:03.243+01:00  INFO 2040 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-02-08T16:36:03.268+01:00  INFO 2040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-02-08T16:36:03.274+01:00  INFO 2040 --- [restartedMain] c.b.BikerConnectJavaApplication          : Started BikerConnectJavaApplication in 3.907 seconds (process running for 4.299)
+2024-02-08T16:36:03.276+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadasYcanceladas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-02-08T16:36:03.276+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-02-08T16:36:03.276+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findQuedadasPendientesConParticipantes() de la clase jdk.proxy4.$Proxy133
+2024-02-08T16:36:03.280+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-02-08T16:36:03.280+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método existsByNombreApellidos() de la clase jdk.proxy4.$Proxy127
+2024-02-08T16:36:03.324+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método existsByNombreApellidos() de la clase jdk.proxy4.$Proxy127
+2024-02-08T16:36:03.328+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findQuedadasPendientesConParticipantes() de la clase jdk.proxy4.$Proxy133
+2024-02-08T16:36:03.328+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-02-08T16:36:03.328+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadasYcanceladas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-02-08T16:36:03.391+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método save() de la clase jdk.proxy4.$Proxy127
+2024-02-08T16:36:03.414+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método save() de la clase jdk.proxy4.$Proxy127
+2024-02-08T16:36:03.414+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-02-08T16:36:12.849+01:00  INFO 2040 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-02-08T16:36:12.855+01:00  INFO 2040 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08T16:36:12.857+01:00  INFO 2040 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-02-08T16:36:12.858+01:00  INFO 2040 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-02-08T16:36:12.918+01:00  INFO 2040 --- [restartedMain] c.b.BikerConnectJavaApplication          : Starting BikerConnectJavaApplication using Java 21 with PID 2040 (D:\Descargas\BikerConnectDWS\target\classes started by niko_ in D:\Descargas\BikerConnectDWS)
+2024-02-08T16:36:12.919+01:00  INFO 2040 --- [restartedMain] c.b.BikerConnectJavaApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-02-08T16:36:13.028+01:00  INFO 2040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-08T16:36:13.040+01:00  INFO 2040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 3 JPA repository interfaces.
+2024-02-08T16:36:13.173+01:00  INFO 2040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-02-08T16:36:13.173+01:00  INFO 2040 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-08T16:36:13.173+01:00  INFO 2040 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-02-08T16:36:13.189+01:00  INFO 2040 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-08T16:36:13.189+01:00  INFO 2040 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 270 ms
+2024-02-08T16:36:13.240+01:00  INFO 2040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-02-08T16:36:13.270+01:00  INFO 2040 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@5d59eacf
+2024-02-08T16:36:13.270+01:00  INFO 2040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-02-08T16:36:13.302+01:00  INFO 2040 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-08T16:36:13.304+01:00  INFO 2040 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-02-08T16:36:13.306+01:00  INFO 2040 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-08T16:36:13.310+01:00  WARN 2040 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-02-08T16:36:13.349+01:00  INFO 2040 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-08T16:36:13.390+01:00  INFO 2040 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08T16:36:13.576+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:13.576+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método passwordEncoder() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:13.653+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:13.653+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationProvider() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:13.664+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:13.674+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método authenticationManager() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:13.682+01:00  WARN 2040 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-08T16:36:13.722+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:13.723+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-02-08T16:36:13.724+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método addFormatters() de la clase com.bikerconnect.configuracion.Configuracion$$SpringCGLIB$$0
+2024-02-08T16:36:13.735+01:00  INFO 2040 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-02-08T16:36:13.902+01:00  INFO 2040 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7591c0a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@184ec45e, org.springframework.security.web.context.SecurityContextHolderFilter@24cc3cc7, org.springframework.security.web.header.HeaderWriterFilter@37ef9bcc, org.springframework.web.filter.CorsFilter@44d6d889, org.springframework.security.web.csrf.CsrfFilter@617a98b9, org.springframework.security.web.authentication.logout.LogoutFilter@6597b015, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5f1618e5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1146c7b7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b824d9e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2be831c6, org.springframework.security.web.access.ExceptionTranslationFilter@24f1e27, org.springframework.security.web.access.intercept.AuthorizationFilter@3b5cf305]
+2024-02-08T16:36:13.902+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método filterChain() de la clase com.bikerconnect.configuracion.SeguridadConfig$$SpringCGLIB$$0
+2024-02-08T16:36:14.162+01:00  INFO 2040 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-02-08T16:36:14.171+01:00  INFO 2040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-02-08T16:36:14.173+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadasCompletadasYcanceladas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-02-08T16:36:14.173+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método verificarQuedadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-02-08T16:36:14.173+01:00  INFO 2040 --- [restartedMain] c.b.BikerConnectJavaApplication          : Started BikerConnectJavaApplication in 1.269 seconds (process running for 15.198)
+2024-02-08T16:36:14.173+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método findQuedadasPendientesConParticipantes() de la clase jdk.proxy5.$Proxy148
+2024-02-08T16:36:14.176+01:00  INFO 2040 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   DataSourceInitializationConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.jdbc.datasource.init.DatabasePopulator' (OnClassCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource'; @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.sql.init.SqlDataSourceScriptDatabaseInitializer,org.springframework.boot.autoconfigure.sql.init.SqlR2dbcScriptDatabaseInitializer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   SqlInitializationAutoConfiguration matched:
+      - @ConditionalOnProperty (spring.sql.init.enabled) matched (OnPropertyCondition)
+      - NoneNestedConditions 0 matched 1 did not; NestedCondition on SqlInitializationAutoConfiguration.SqlInitializationModeCondition.ModeIsNever @ConditionalOnProperty (spring.sql.init.mode=never) found different value in property 'mode' (SqlInitializationAutoConfiguration.SqlInitializationModeCondition)
+
+
+Negative matches:
+-----------------
+
+   R2dbcInitializationConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'io.r2dbc.spi.ConnectionFactory', 'org.springframework.r2dbc.connection.init.DatabasePopulator' (OnClassCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2024-02-08T16:36:14.177+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-02-08T16:36:14.177+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Entrando en el método existsByNombreApellidos() de la clase jdk.proxy5.$Proxy146
+2024-02-08T16:36:14.179+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método existsByNombreApellidos() de la clase jdk.proxy5.$Proxy146
+2024-02-08T16:36:14.179+01:00  INFO 2040 --- [restartedMain] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método onApplicationReady() de la clase com.bikerconnect.servicios.UsuarioServicioImpl
+2024-02-08T16:36:14.193+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método findQuedadasPendientesConParticipantes() de la clase jdk.proxy5.$Proxy148
+2024-02-08T16:36:14.194+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadas() de la clase com.bikerconnect.servicios.QuedadaServicioImpl
+2024-02-08T16:36:14.194+01:00  INFO 2040 --- [scheduling-1] com.bikerconnect.aspectos.LogAspecto     : Saliendo del método verificarQuedadasCompletadasYcanceladas() de la clase com.bikerconnect.servicios.QuedadaScheduler
+2024-02-08T16:36:16.997+01:00  INFO 2040 --- [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-02-08T16:36:17.002+01:00  INFO 2040 --- [RMI TCP Connection(7)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-08T16:36:17.002+01:00  INFO 2040 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-02-08T16:36:17.003+01:00  INFO 2040 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
