@@ -1,5 +1,7 @@
 package com.bikerconnect.repositorios;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -41,7 +43,16 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 	 * @return el numero de usuarios que coinciden con el rol
 	 */
 	@Query("SELECT COUNT(u) FROM Usuario u WHERE u.rol = :rol")
-    int countByRol(@Param("rol") String rol);
+    public int countByRol(@Param("rol") String rol);
+	
+	/**
+	 * Busca los usuarios si su email contiene la palabra pasada por parametro 
+	 * @param palabraClave la palabra que debe contener el email
+	 * @return la lista de usuarios con la coincidencia
+	 */
+	public List<Usuario> findByEmailContainsIgnoreCase(String palabraClave);
+	
+	
 	
 
 

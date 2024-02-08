@@ -42,7 +42,10 @@
 		<div class="col">
 		 	<h3 class="text-center mt-5 subtituloSecundario3">Dashboard</h3>
 			<hr class="border border-primary border-2 opacity-55 mb-5 mt-4">
-			<h4 class="text-light text-center subtituloSecundario">Bienvenido <span sec:authentication="principal.username"></span></h4>
+			<h4 class="text-light text-center subtituloSecundario">Bienvenid@ <span sec:authentication="principal.username"></span></h4>
+			<div class="text-center mt-4" th:if="${usuarioDTO.foto != null}">
+                <img th:src="'data:image/jpeg;base64,' + ${usuarioDTO.foto}" class="rounded-circle img-fluid mx-auto" alt="Imagen de usuario" style="max-width: 100px; max-height: 100px;">
+            </div>
 		</div>
     </div>
    

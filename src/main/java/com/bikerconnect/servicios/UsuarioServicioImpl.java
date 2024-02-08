@@ -315,9 +315,23 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		return null;
 	}
 	
+	@Override
     public int contarUsuariosPorRol(String rol) {
         return repositorio.countByRol(rol);
     }
+
+	@Override
+	public List<UsuarioDTO> buscarPorCoincidenciaEnEmail(String palabra){
+		try {
+			List<Usuario> usuarios = repositorio.findByEmailContainsIgnoreCase(palabra);
+			if (usuarios != null) {
+				return toDto.listaUsuarioToDto(usuarios);
+			}
+		} catch (Exception e) {
+			System.out.println("[Error UsuarioServicioImpl - buscarPorCoincidenciaEnEmail()] Al buscar el usuario por su email " + e.getMessage());
+		}
+		return null;
+	}
 
 
 

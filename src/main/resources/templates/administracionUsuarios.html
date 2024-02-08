@@ -44,7 +44,7 @@
 				     <div class="col-md-6 text-end mt-2">
 				         <form method="get" th:action="@{/privada/administracion-usuarios}">
 				             <div class="input-group">
-				                 <input type="text" class="form-control" name="busquedaUser" placeholder="Buscar el email del usuario">
+				                 <input type="text" class="form-control" name="busquedaUser" placeholder="Buscar por el email del usuario">
 				                 <button class="btn buttonPrincipal" type="submit">Buscar</button>
 				             </div>
 				         </form>
@@ -104,7 +104,7 @@
 		</div>
     </div>
     <script th:if="${not #strings.isEmpty(usuarioNoEncontrado)}">
-        mostrarNotificacion("¡No se encontró al usuario!", "No hay ningún usuario registrado con el email introducido", 'info');
+        mostrarNotificacion("¡No se encontraron usuarios!", "No hay ninguna coincidencia con la busqueda introducida", 'info');
 	</script>
     <script th:if="${not #strings.isEmpty(noTePuedesEliminar)}">
 	    mostrarNotificacion("¡No puede eliminarse a sí mismo!","Debe ser otro administrador el que realice esta acción", 'info');

@@ -5,8 +5,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.web.multipart.MultipartFile;
-
 /**
  * Clase DTO (Data Transfer Object) para pasar información entre capas para la
  * gestión de usuarios

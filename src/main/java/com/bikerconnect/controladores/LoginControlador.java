@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.servicios.IUsuarioServicio;
 
 /**
@@ -46,7 +47,8 @@ public class LoginControlador {
             boolean cuentaConfirmada = usuarioServicio.estaLaCuentaConfirmada(authentication.getName());
 
             if (cuentaConfirmada) {
-                model.addAttribute("nombreUsuario", authentication.getName());
+            	UsuarioDTO usuarioDTO = usuarioServicio.buscarPorEmail(authentication.getName()); 
+                model.addAttribute("usuarioDTO", usuarioDTO);
                 return "dashboard";
             } else {
                 model.addAttribute("cuentaNoVerificada", "Error al confirmar su email");

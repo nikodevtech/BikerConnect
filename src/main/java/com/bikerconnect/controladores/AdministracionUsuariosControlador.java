@@ -8,7 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,21 +48,21 @@ public class AdministracionUsuariosControlador {
 	public String listadoUsuarios(@RequestParam(value = "busquedaUser", required = false) String busquedaUser,
 			Model model, HttpServletRequest request, Authentication authentication) {
 		try {
+
 			List<UsuarioDTO> usuarios = new ArrayList<>();
-
+			
 			if (busquedaUser != null && !busquedaUser.isEmpty()) {
-				UsuarioDTO usuario = usuarioServicio.buscarPorEmail(busquedaUser);
-				if (usuario != null) {
-					usuarios.add(usuario);
-				} else {
-					model.addAttribute("usuarioNoEncontrado", "No se encontró el usuario con el email proporcionado");
-					usuarios = usuarioServicio.obtenerTodos();
+				usuarios = usuarioServicio.buscarPorCoincidenciaEnEmail(busquedaUser);
+				if (usuarios.size() > 0) {
+					model.addAttribute("usuarios", usuarios);
+				} else  {
+					model.addAttribute("usuarioNoEncontrado", "No se encontró usuarios con la busqueda introducida");
+					model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
 				}
-			} else {
-				usuarios = usuarioServicio.obtenerTodos();
+			} 
+			else {
+				model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
 			}
-
-			model.addAttribute("usuarios", usuarios);
 
 			if (request.isUserInRole("ROLE_ADMIN")) {
 				return "administracionUsuarios";
@@ -172,23 +171,28 @@ public class AdministracionUsuariosControlador {
 	 */
 	@PostMapping("/privada/procesar-editar")
 	public String procesarFormularioEdicion(@RequestParam("id") Long id, @RequestParam("nombre") String nombre, @RequestParam("apellidos") String apellidos,
-			@RequestParam("telefono") String telefono, @RequestParam("rol") String rol,
-			@RequestParam("foto") MultipartFile archivo, Model model) {
+			@RequestParam("telefono") String telefono, @RequestParam("rol") String rol, @RequestParam("foto") MultipartFile archivo, Model model) {
 		try {
 			UsuarioDTO usuarioDTO = new UsuarioDTO();
 			usuarioDTO.setId(id);
 			usuarioDTO.setNombreUsuario(nombre);
 			usuarioDTO.setApellidosUsuario(apellidos);
 			usuarioDTO.setTlfUsuario(telefono);
+			
 			if (rol.equals("Administrador")) {
 				usuarioDTO.setRol("ROLE_ADMIN");
 			}else {
 				usuarioDTO.setRol(rol);
 			}
 
+	        UsuarioDTO usuarioActualDTO = usuarioServicio.buscarPorId(id);
+	        String fotoActual = usuarioActualDTO.getFoto();
+			
 			if (!archivo.isEmpty()) {
 				String fotoUsuario = fotoServicio.convertirAbase64(archivo.getBytes());
 				usuarioDTO.setFoto(fotoUsuario);
+			} else {
+				usuarioDTO.setFoto(fotoActual);
 			}
 
 			usuarioServicio.actualizarUsuario(usuarioDTO);

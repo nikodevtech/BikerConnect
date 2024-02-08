@@ -50,8 +50,9 @@
         <h2 class="text-center mb-3">
           <i class="bi bi-person-fill-gear" style="color: #1f3c85">Editar usuario</i>
         </h2>
-		<div class="d-flex justify-content-center">
-		    <img th:src="'data:image/jpeg;base64,' + ${usuarioDTO.foto}" class="rounded-circle img-fluid mx-auto" alt="Imagen de usuario" style="max-width: 200px; max-height: 200px;">
+		<div class="d-flex justify-content-center mt-4 mb-4">
+		    <img th:if="${usuarioDTO.foto != null}" th:src="'data:image/jpeg;base64,' + ${usuarioDTO.foto}" class="rounded-circle img-fluid mx-auto" alt="Imagen de usuario" style="max-width: 200px; max-height: 200px;">
+		    <span class="badge bg-dark" th:if="${usuarioDTO.foto == null}">El usuario no tiene foto de perfil</span>
 		</div>
         <input type="hidden" name="id" th:value="${usuarioDTO.id}" />
         <div class="mb-3">

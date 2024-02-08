@@ -29,7 +29,7 @@ public class LogAspecto {
 		logger.error("Error en el método {}() de la clase {}: {}", 
 				joinPoint.getSignature().getName(),
 				joinPoint.getTarget().getClass().getName(),
-				ex.getMessage());
+				ex.getMessage() + "\n" + ex.getStackTrace());
 	}
 	
 	// Registrar en el fichero log la entrada a métodos

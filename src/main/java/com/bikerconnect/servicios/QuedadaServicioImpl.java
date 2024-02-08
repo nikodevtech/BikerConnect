@@ -139,28 +139,28 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 							+ e);
 			return false;
 		} catch (PersistenceException e) {
-			System.out.println(
-					"\n[ERROR QuedadaServicioImpl - cancelarAsistenciaQuedada()] - Error de persistencia al cancelar asistencia a una quedada: "
-							+ e);
+			System.out.println("\n[ERROR QuedadaServicioImpl - cancelarAsistenciaQuedada()] - Error de persistencia al cancelar asistencia a una quedada: "+ e);
 			return false;
 		}
 	}
 
 	@Override
-	public void verificarQuedadasCompletadas() {
+	public void verificarQuedadas() {
 		try {
 			Calendar fechaActual = new GregorianCalendar();
 
-			List<Quedada> quedadasPendientes = quedadaRepo.findByEstadoAndFechaHoraEncuentroBefore("Planificada", fechaActual);
+			List<Quedada> quedadasPendientes = quedadaRepo.findQuedadasPendientesConParticipantes("Planificada", fechaActual);
 
 			for (Quedada quedada : quedadasPendientes) {
-				quedada.setEstado("Completada");
+				if(quedada.getUsuariosParticipantes().size() > 1) {
+					quedada.setEstado("Completada");
+				} else {
+					quedada.setEstado("Cancelada");
+				}
 				quedadaRepo.save(quedada);
 			}
 		} catch (PersistenceException e) {
-			System.out.println(
-					"\n[ERROR QuedadaServicioImpl - verificarQuedadasCompletadas()] - Error de persistencia al verificar las quedadas completadas: "
-							+ e);
+			System.out.println("\n[ERROR QuedadaServicioImpl - verificarQuedadasCompletadas()] - Error de persistencia al verificar las quedadas completadas: "+ e);
 		}     
 	}
 	
@@ -179,10 +179,8 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 					return "Quedada cancelada";			}
 				
 			}
-		} catch(Exception e) {
-			System.out.println(
-					"\n[ERROR QuedadaServicioImpl - cancelarQuedada()] - Error de persistencia al verificar las quedadas completadas: "
-							+ e);
+		} catch(IllegalArgumentException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - cancelarQuedada()] - Error de persistencia al verificar las quedadas completadas: "+ e);
 			return "Error al cancelar la quedada";
 		}
 		return "";

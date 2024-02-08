@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.bikerconnect.dtos.QuedadaDTO;
 
+import jakarta.persistence.PersistenceException;
+
 /**
  * Interface donde se declaran los metodos necesarios para la gestión de las quedadas.
  */
@@ -55,15 +57,16 @@ public interface IQuedadaServicio {
 	
 	/**
 	 * Comprueba las quedadas con estado "planificada" que han pasado sin contratiempos 
-	 * de la fecha y hora actual para actualizar su estado a "completada".
+	 * de la fecha y hora actual para actualizar su estado a "completada" o "cancelada".
 	 */
-	public void verificarQuedadasCompletadas();
+	public void verificarQuedadas() throws PersistenceException;
 	
 	/**
 	 * Cancela una quedada
 	 * @param idQuedada el id de la quedada a cancelar
 	 * @return una cadena de texto con la información sobre la cancelación
+	 * @throws IllegalArgumentException
 	 */
-	public String cancelarQuedada(long idQuedada);
+	public String cancelarQuedada(long idQuedada) throws IllegalArgumentException;
 
 }
