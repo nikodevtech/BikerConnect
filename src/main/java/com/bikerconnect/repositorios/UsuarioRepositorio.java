@@ -46,7 +46,7 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
     public int countByRol(@Param("rol") String rol);
 	
 	/**
-	 * Busca los usuarios si su email contiene la palabra pasada por parametro 
+	 * Busca los usuarios que su email contenga la palabra pasada por parametro 
 	 * @param palabraClave la palabra que debe contener el email
 	 * @return la lista de usuarios con la coincidencia
 	 */

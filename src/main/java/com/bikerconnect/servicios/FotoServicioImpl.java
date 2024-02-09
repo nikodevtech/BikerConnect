@@ -8,6 +8,11 @@ import java.util.Base64;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Servicio que implementa los metodos de la interface {@link IFotoServicio}
+ * y en esta clase es donde se entra al detalle de la logica de dichos métodos
+ * para el tratamiento de las imagenes.
+ */
 @Service
 public class FotoServicioImpl implements IFotoServicio {
 

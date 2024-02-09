@@ -41,7 +41,7 @@ public class RegistroControlador {
 	}
 
 	/**
-	 * Procesa la solicitud HTTP POST para registro de un nuevo usuario.
+	 * Procesa la solicitud HTTP POST de la url /auth/crear-cuenta para registro de un nuevo usuario.
 	 *
 	 * @param usuarioDTO El objeto UsuarioDTO que recibe en el modelo y contiene los
 	 *                   datos del nuevo usuario.

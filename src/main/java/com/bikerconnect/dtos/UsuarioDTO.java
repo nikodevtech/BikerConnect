@@ -34,15 +34,6 @@ public class UsuarioDTO {
 	public UsuarioDTO() {
 	}
 
-	public UsuarioDTO(String nombreUsuario, String apellidosUsuario, String tlfUsuario, String emailUsuario,
-			String claveUsuario) {
-		this.nombreUsuario = nombreUsuario;
-		this.apellidosUsuario = apellidosUsuario;
-		this.tlfUsuario = tlfUsuario;
-		this.emailUsuario = emailUsuario;
-		this.claveUsuario = claveUsuario;
-	}
-
 	// GETTERS Y SETTERS
 	public long getId() {
 		return id;

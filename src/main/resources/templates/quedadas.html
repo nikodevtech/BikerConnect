@@ -104,6 +104,9 @@
 	<script th:if="${not #strings.isEmpty(quedadaYaCompletada)}">
 	    mostrarNotificacion("¡La quedada ya finalizó!","No puedes asistir a una quedada completada", 'info');
 	</script>
+	<script th:if="${not #strings.isEmpty(quedadaPasada)}">
+	    mostrarNotificacion("¡No puede unirse a una quedada ya pasada!","La fecha de la quedada ya ha pasado", 'info');
+	</script>
 	<script th:if="${not #strings.isEmpty(quedadaCreadaExito)}">
 	    mostrarNotificacion("¡Quedada planificada!", "La quedada ha sido registrada con exito", 'success');
 	</script>

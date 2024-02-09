@@ -152,6 +152,9 @@ public class QuedadasControlador {
 		    	case "La quedada está completada":
 		    		model.addAttribute("quedadaYaCompletada", "La quedada está completada");
 		    		break;
+		    	case "La quedada ya ha pasado":
+		    		model.addAttribute("quedadaPasada", "La fecha de la quedada ya ha pasado");
+		    		break;
 	    	}
 	        return "quedadas";
 	    } catch (Exception e) {
@@ -216,6 +219,15 @@ public class QuedadasControlador {
 		return "misQuedadas";
 	}
 	
+	/**
+	 * Gestiona la peticion HTTP GET para la url /privada/quedadas/detalle-quedada/cancelar-quedada/{id}
+	 * con el procedimiento de cancelar la quedada por parte del usuario organizador.
+	 * 
+	 * @param id El id de la quedada a cancelar
+	 * @param model El modelo en el que se guardan los datos de la quedada y los mensajes al usuario
+	 * @param auth La instancia que representa al usuario autenticado
+	 * @return La vista de las quedadas
+	 */
 	@GetMapping("/privada/quedadas/detalle-quedada/cancelar-quedada/{id}")
 	public String cancelarQuedada(@PathVariable Long id, Model model, Authentication auth) {
 		try {

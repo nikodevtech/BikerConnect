@@ -18,12 +18,12 @@ public interface QuedadaRepositorio extends JpaRepository<Quedada, Long> {
 	
 	/**
 	 * Obtiene todas las quedadas "Planificadas" cuya fecha y hora ya han pasado 
-	 * para poder cambiarla a completada o cancelada
+	 * de la actual para poder cambiarla a completada o cancelada
 	 * @param estado el estado de la quedada "Planificada"
 	 * @param fecha la fecha actual
 	 * @return la lista de quedadas (con sus participantes) cuya fecha y hora ya pasaron de la actual
 	 */
 	@Query("SELECT q FROM Quedada q LEFT JOIN FETCH q.usuariosParticipantes WHERE q.estado = :estado AND q.fechaHoraEncuentro < :fechaActual")
-    List<Quedada> findQuedadasPendientesConParticipantes(@Param("estado") String estado, @Param("fechaActual") Calendar fechaActual);
+    List<Quedada> buscarTodasQuedadasPendientesConParticipantes(@Param("estado") String estado, @Param("fechaActual") Calendar fechaActual);
 
 }

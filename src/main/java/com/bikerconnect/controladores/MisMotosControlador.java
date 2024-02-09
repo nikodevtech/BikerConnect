@@ -100,6 +100,15 @@ public class MisMotosControlador {
         }
     }
     
+    /**
+     * Gestiona la solicitud HTTP GET para la url /privada/eliminar-moto/{id} para
+     * la eliminación de una motocicleta.
+     * 
+     * @param id El ID de la motocicleta a eliminar.
+     * @param model modelos que se utiliza para enviar el listado de motocicletas y mensajes
+     * @param authentication Objeto Authentication que contiene datos sobre el usuario de la sesión.
+     * @return La vista de misMotos.html con el listado de motocicletas actualizado
+     */
     @GetMapping("/privada/eliminar-moto/{id}")
     public String eliminarMoto(@PathVariable Long id, Model model, Authentication authentication) {
     	try {

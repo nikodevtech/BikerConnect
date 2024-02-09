@@ -35,7 +35,8 @@ public class AdministracionUsuariosControlador {
 	/**
 	 * Gestiona la solicitud HTTP GET para la url /privada/administracion-usuarios y
 	 * muestra la página de administración de usuarios con el listado de usuarios.
-	 *
+	 * 
+	 * @param busquedaUser	 Parametro de busqueda para filtrar el listado de usuarios.
 	 * @param model          Modelo que se utiliza para enviar el listado de
 	 *                       usuarios a la vista.
 	 * @param request        HttpServletRequest para comprobar el rol del usuario.

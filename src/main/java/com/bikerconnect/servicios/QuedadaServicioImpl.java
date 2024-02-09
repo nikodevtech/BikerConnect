@@ -14,6 +14,7 @@ import com.bikerconnect.repositorios.QuedadaRepositorio;
 import com.bikerconnect.repositorios.UsuarioRepositorio;
 
 import jakarta.persistence.PersistenceException;
+import jakarta.transaction.Transactional;
 
 /**
  * Servicio que implementa los metodos de la interface {@link IQuedadaServicio}
@@ -21,6 +22,7 @@ import jakarta.persistence.PersistenceException;
  * para la gestión de las quedadas.
  */
 @Service
+@Transactional
 public class QuedadaServicioImpl implements IQuedadaServicio {
 
 	@Autowired
@@ -74,6 +76,10 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 				return "Usuario o quedada no encontrados";
 			}
 
+			if(q.getFechaHoraEncuentro().before(Calendar.getInstance())) {
+				return "La quedada ya ha pasado";
+			}
+			
 			if(q.getEstado().equals("Completada")) {
 				return "La quedada está completada";
 			}
@@ -149,7 +155,7 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 		try {
 			Calendar fechaActual = new GregorianCalendar();
 
-			List<Quedada> quedadasPendientes = quedadaRepo.findQuedadasPendientesConParticipantes("Planificada", fechaActual);
+			List<Quedada> quedadasPendientes = quedadaRepo.buscarTodasQuedadasPendientesConParticipantes("Planificada", fechaActual);
 
 			for (Quedada quedada : quedadasPendientes) {
 				if(quedada.getUsuariosParticipantes().size() > 1) {

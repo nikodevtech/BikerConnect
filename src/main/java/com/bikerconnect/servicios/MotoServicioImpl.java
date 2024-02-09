@@ -13,6 +13,7 @@ import com.bikerconnect.repositorios.MotoRepositorio;
 import com.bikerconnect.repositorios.UsuarioRepositorio;
 
 import jakarta.persistence.PersistenceException;
+import jakarta.transaction.Transactional;
 
 /**
  * Servicio que implementa los metodos de la interface {@link IMotoServicio} 
@@ -20,6 +21,7 @@ import jakarta.persistence.PersistenceException;
  * para la gestión de las motos de los usuarios.
  */
 @Service
+@Transactional
 public class MotoServicioImpl implements IMotoServicio {
 
 	@Autowired
