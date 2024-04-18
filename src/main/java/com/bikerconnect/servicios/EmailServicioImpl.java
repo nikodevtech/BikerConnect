@@ -28,7 +28,7 @@ public class EmailServicioImpl implements IEmailServicio {
 	            MimeMessage mensaje = javaMailSender.createMimeMessage();
 	            MimeMessageHelper helper = new MimeMessageHelper(mensaje, true, "UTF-8");
 
-	            helper.setFrom("nikoalvarezzapata@gmail.com");
+	            helper.setFrom("bikerconnectinfo@gmail.com");
 	            helper.setTo(emailDestino);
 	            helper.setSubject("Recuperación de contraseña BikerConnect");
 
@@ -63,7 +63,7 @@ public class EmailServicioImpl implements IEmailServicio {
             MimeMessage mensaje = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mensaje, true, "UTF-8");
 
-            helper.setFrom("nikoalvarezzapata@gmail.com");
+            helper.setFrom("bikerconnectinfo@gmail.com");
             helper.setTo(emailDestino);
             helper.setSubject("Confirmación de cuenta BikerConnect");
 

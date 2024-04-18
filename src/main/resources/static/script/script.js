@@ -75,17 +75,67 @@ function confirmar(mensaje) {
 
 function confirmarEliminar(event) {
     const idUsuario = event.currentTarget.getAttribute("data-id");
-    confirmar("eliminar").then(function (confirmado) {
-        if (confirmado) {
+    
+    Swal.fire({
+        title: "¡Esta acción es irreversible!",
+        text: "Si está seguro de que desea eliminar este usuario",
+        input: "text",
+        inputLabel: "Introduce 'eliminar' para confirmar la acción",
+        inputPlaceholder: "Introduce aquí",
+        showCancelButton: true,
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar",
+        preConfirm: (inputValue) => {
+            if (inputValue.trim().toLowerCase() !== "eliminar") {
+                Swal.showValidationMessage('La palabra introducida no es correcta');
+            }
+            return inputValue;
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const inputValue = result.value;
+            if (inputValue.trim().toLowerCase() === "eliminar") {
             window.location.href = 'http://localhost:8080/privada/eliminar-usuario/' + idUsuario;
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "La palabra introducida no es correcta"
+                });
+            }
         }
     });
 }
 function confirmarEliminarMoto(event) {
     const idMoto = event.currentTarget.getAttribute("data-id");
-    confirmar("eliminar").then(function (confirmado) {
-        if (confirmado) {
-            window.location.href = 'http://localhost:8080/privada/eliminar-moto/' + idMoto;
+    
+    Swal.fire({
+        title: "¡Esta acción es irreversible!",
+        text: "Si está seguro de que desea eliminar esta moto",
+        input: "text",
+        inputLabel: "Introduce 'eliminar' para confirmar la acción",
+        inputPlaceholder: "Introduce aquí",
+        showCancelButton: true,
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar",
+        preConfirm: (inputValue) => {
+            if (inputValue.trim().toLowerCase() !== "eliminar") {
+                Swal.showValidationMessage('La palabra introducida no es correcta');
+            }
+            return inputValue;
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const inputValue = result.value;
+            if (inputValue.trim().toLowerCase() === "eliminar") {
+                window.location.href = 'http://localhost:8080/privada/eliminar-moto/' + idMoto;
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "La palabra introducida no es correcta"
+                });
+            }
         }
     });
 }

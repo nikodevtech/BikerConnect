@@ -118,6 +118,12 @@ public class AdministracionUsuariosControlador {
 					model.addAttribute("usuarios", usuarios);
 					return "administracionUsuarios";
 				}
+				
+				if(usuario.getMisMotos().size() > 0) {
+					model.addAttribute("elUsuarioTieneMotos", "No se puede eliminar un usuario con motos");
+					model.addAttribute("usuarios", usuarios);
+					return "administracionUsuarios";
+				}
 
 				usuarioServicio.eliminar(id);
 				model.addAttribute("eliminacionCorrecta", "El usuario se ha eliminado correctamente");
