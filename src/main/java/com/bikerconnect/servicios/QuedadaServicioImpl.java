@@ -151,23 +151,21 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 	}
 
 	@Override
-	public void verificarQuedadas() {
-		try {
-			Calendar fechaActual = new GregorianCalendar();
-
-			List<Quedada> quedadasPendientes = quedadaRepo.buscarTodasQuedadasPendientesConParticipantes("Planificada", fechaActual);
-
-			for (Quedada quedada : quedadasPendientes) {
-				if(quedada.getUsuariosParticipantes().size() > 1) {
-					quedada.setEstado("Completada");
+	public boolean verificarParticipantesQuedada(long idQuedada) {
+		try {			
+			Quedada q = quedadaRepo.findById(idQuedada).orElse(null);
+			if(q != null) {
+				if(q.getUsuariosParticipantes().size() > 1) {
+					return true;
 				} else {
-					quedada.setEstado("Cancelada");
+					return false;
 				}
-				quedadaRepo.save(quedada);
 			}
-		} catch (PersistenceException e) {
-			System.out.println("\n[ERROR QuedadaServicioImpl - verificarQuedadasCompletadas()] - Error de persistencia al verificar las quedadas completadas: "+ e);
-		}     
+
+		} catch (IllegalArgumentException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - verificarParticipantesQuedada()] - Error, no se pudo al verificar los participantes de una quedada: "+ e);
+		}
+		return false;     
 	}
 	
 	@Override
@@ -190,6 +188,20 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 			return "Error al cancelar la quedada";
 		}
 		return "";
+	}
+
+	@Override
+	public void actualizarQuedada(long idQuedada) {
+		try {
+			Quedada q = quedadaRepo.findById(idQuedada).orElse(null);
+			if(q != null) {
+				q.setEstado("Completada");	
+				quedadaRepo.save(q);
+			}
+		} catch (PersistenceException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - actualizarQuedada()] - Error de persistencia al marcar como completada una quedada: "+ e);
+		}
+		
 	}
 
 }

@@ -97,6 +97,14 @@ function confirmarCancelarQuedada(event) {
         }
     });
 }
+function confirmarCompletarQuedada(event) {
+    const idQuedada = event.currentTarget.getAttribute("data-id");
+    confirmar("marcar como completada").then(function (confirmado) {
+        if (confirmado) {
+            window.location.href = 'http://localhost:8080/privada/quedadas/detalle-quedada/completar-quedada/' + idQuedada;
+        }
+    });
+}
 function establecerFechaMinima() {
     var tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);

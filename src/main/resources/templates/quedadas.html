@@ -74,6 +74,15 @@
 		  </ul>
 		</div>
     </div>
+    <script th:if="${not #strings.isEmpty(quedadaNoParticipantes)}">
+        mostrarNotificacion("¡No se puede marcar como completada!", "No hay participantes suficientes en la quedada. ¡En este caso solo puede marcarla como cancelada!", 'info');
+	</script>
+    <script th:if="${not #strings.isEmpty(quedadaNoCompletada)}">
+        mostrarNotificacion("¡No se puede marcar como completada!", "No ha pasado aún la fecha de la quedada", 'info');
+	</script>
+    <script th:if="${not #strings.isEmpty(quedadaCompletada)}">
+        mostrarNotificacion("¡Quedada completada!", "Se ha marcado la quedada como completada", 'success');
+	</script>
     <script th:if="${not #strings.isEmpty(quedadaCancelacionPermiso)}">
 	    mostrarNotificacion("¡No puede cancelar la quedada!", "Solo el usuario organizador que la planificó lo puede hacer", 'error');
 	</script>

@@ -91,6 +91,10 @@
 				<a th:attr="data-id=${quedada.id}" onclick="confirmarCancelarQuedada(event)"
 				   class="btn btn-danger m-1 float-end" th:if="${quedada.usuarioOrganizador == #authentication.name}">
 				   <i class="bi bi-calendar2-x"> Cancelar quedada</i>
+				</a>
+				<a th:attr="data-id=${quedada.id}" onclick="confirmarCompletarQuedada(event)"
+				   class="btn buttonPrincipal m-1 float-end" th:if="${quedada.usuarioOrganizador == #authentication.name}">
+				   <i class="bi bi-check2-circle"> Marcar como completada</i>
 				</a>				
 			</div>		
 		</div>

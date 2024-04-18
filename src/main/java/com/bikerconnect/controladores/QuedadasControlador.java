@@ -1,5 +1,6 @@
 package com.bikerconnect.controladores;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -263,6 +264,42 @@ public class QuedadasControlador {
 		}		
 		return "quedadas";
 	}
+	
+	/**
+	 * Gestiona la peticion HTTP GET para la url /privada/quedadas/detalle-quedada/completar-quedada/{id}
+	 * con el procedimiento de marcar como completada la quedada por parte del usuario organizador.
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/privada/quedadas/detalle-quedada/completar-quedada/{id}")
+    public String marcarQuedadaComoCompletada(@PathVariable long id, Model model) {
+        try {
+            QuedadaDTO quedada = quedadaServicio.obtenerQuedadaPorId(id); 
+            boolean hayParticipantes = quedadaServicio.verificarParticipantesQuedada(id);
+
+            if (quedada != null) {
+            	if(!quedada.getFechaHora().before(Calendar.getInstance())) {
+					model.addAttribute("quedadaNoCompletada", "Quedada no marcada como completada");           		
+                }else if (!hayParticipantes) {
+					model.addAttribute("quedadaNoParticipantes", "No hay participantes para la quedada");        	
+                } else {
+                    quedadaServicio.actualizarQuedada(quedada.getId());
+                    model.addAttribute("quedadaCompletada", "Quedada marcada como completada");
+                } 
+
+                List<QuedadaDTO> quedadas = quedadaServicio.obtenerQuedadas();
+                model.addAttribute("quedadas", quedadas);
+
+                return "quedadas";
+            } else {
+                return "redirect:/quedadas";
+            }
+        } catch (Exception ex) {
+            model.addAttribute("error", "Error al procesar la solicitud. Por favor, reintente.");
+            return "quedadas";
+        }
+    }
 
 
 

@@ -55,11 +55,13 @@ public interface IQuedadaServicio {
 	 */
 	public boolean cancelarAsistenciaQuedada(Long idQuedada, String emailUsuario);
 	
-	/**
-	 * Comprueba las quedadas con estado "planificada" que han pasado sin contratiempos 
-	 * de la fecha y hora actual para actualizar su estado a "completada" o "cancelada".
-	 */
-	public void verificarQuedadas() throws PersistenceException;
+    /**
+     * 
+	 * Comprueba los participantes de la quedada".
+     * @param idQuedada el id de la quedada
+     * @return true si hay participantes o false si no
+     */
+	public boolean verificarParticipantesQuedada(long idQuedada);
 	
 	/**
 	 * Cancela una quedada
@@ -68,5 +70,12 @@ public interface IQuedadaServicio {
 	 * @throws IllegalArgumentException
 	 */
 	public String cancelarQuedada(long idQuedada) throws IllegalArgumentException;
+	
+	/**
+	 * Actualiza el estado de una quedada a completada.
+	 * @param idQuedada el id de la quedada
+	 */
+	public void actualizarQuedada(long idQuedada);
+
 
 }

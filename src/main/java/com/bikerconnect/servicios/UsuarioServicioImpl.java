@@ -211,41 +211,41 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		return false;
 	}
 
-//	/**
-//	 * Metodo que ejecuta la creacion de un usuario administrador con su rol de
-//	 * administrador
-//	 */
-//	private void inicializarUsuarioAdmin() {
-//		try {
-//			// Valida si ya se creó un usuario admin
-//			if (!repositorio.existsByNombreApellidos("admin")) {
-//				// Si no existe, crea un nuevo usuario con rol de administrador
-//				Usuario admin = new Usuario();
-//				admin.setNombreApellidos("admin");
-//				admin.setPassword(passwordEncoder.encode("admin"));
-//				admin.setCuentaConfirmada(true);
-//				admin.setEmail("admin@bikerconnect.com");
-//				admin.setTelefono("-");
-//				admin.setRol("ROLE_ADMIN");
-//				Calendar calendar = Calendar.getInstance();
-//				admin.setFechaRegistro(calendar);
-//
-//				repositorio.save(admin);
-//			}
-//		} catch (PersistenceException e) {
-//			System.out.println("[Error UsuarioServicioImpl - inicializarUsuarioAdmin()] Error de persistencia al inicializar el usuario administrador" + e.getMessage());
-//		}
-//		
-//	}
-//
-//	/**
-//	 * Metodo que automatiza la creacion de un usuario administrador que se ejecuta
-//	 * la primera vez que se despliega la aplicacion
-//	 */
-//	@EventListener(ApplicationReadyEvent.class)
-//	public void onApplicationReady() {
-//		inicializarUsuarioAdmin();
-//	}
+	/**
+	 * Metodo que ejecuta la creacion de un usuario administrador con su rol de
+	 * administrador
+	 */
+	private void inicializarUsuarioAdmin() {
+		try {
+			// Valida si ya se creó un usuario admin
+			if (!repositorio.existsByNombreApellidos("admin")) {
+				// Si no existe, crea un nuevo usuario con rol de administrador
+				Usuario admin = new Usuario();
+				admin.setNombreApellidos("admin");
+				admin.setPassword(passwordEncoder.encode("admin"));
+				admin.setCuentaConfirmada(true);
+				admin.setEmail("admin@bikerconnect.com");
+				admin.setTelefono("-");
+				admin.setRol("ROLE_ADMIN");
+				Calendar calendar = Calendar.getInstance();
+				admin.setFechaRegistro(calendar);
+
+				repositorio.save(admin);
+			}
+		} catch (PersistenceException e) {
+			System.out.println("[Error UsuarioServicioImpl - inicializarUsuarioAdmin()] Error de persistencia al inicializar el usuario administrador" + e.getMessage());
+		}
+		
+	}
+
+	/**
+	 * Metodo que automatiza la creacion de un usuario administrador que se ejecuta
+	 * la primera vez que se despliega la aplicacion
+	 */
+	@EventListener(ApplicationReadyEvent.class)
+	public void onApplicationReady() {
+		inicializarUsuarioAdmin();
+	}
 
 	@Override
 	public List<UsuarioDTO> obtenerTodos() {
