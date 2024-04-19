@@ -52,6 +52,13 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 	 */
 	public List<Usuario> findByEmailContainsIgnoreCase(String palabraClave);
 	
+	/**
+	 * Busca los usuarios que su nombre o apellidos contengan la palabra pasada por parametro
+	 * @param palabraClave la palabra que debe contener el nombre o apellidos
+	 * @return la lista de usuarios con la coincidencia
+	 */
+	public List<Usuario> findByNombreApellidosContainsIgnoreCase(String palabraClave);
+	
 	
 	
 

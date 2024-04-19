@@ -333,6 +333,19 @@ public class UsuarioServicioImpl implements IUsuarioServicio {
 		return null;
 	}
 
+	@Override
+	public List<UsuarioDTO> buscarPorCoincidenciaEnNombre(String palabra) {		
+		try {
+			List<Usuario> usuarios = repositorio.findByNombreApellidosContainsIgnoreCase(palabra);
+			if (usuarios != null) {
+				return toDto.listaUsuarioToDto(usuarios);
+			}
+		} catch (Exception e) {
+			System.out.println("[Error UsuarioServicioImpl - buscarPorCoincidenciaEnNombre()] Al buscar el usuario por su nombre " + e.getMessage());
+		}
+		return null;
+	}
+
 
 
 }

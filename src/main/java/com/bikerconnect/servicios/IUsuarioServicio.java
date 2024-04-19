@@ -101,6 +101,13 @@ public interface IUsuarioServicio {
 	 */
 	public List<UsuarioDTO> buscarPorCoincidenciaEnEmail(String palabra);
 	
+	/**
+	 * Busca a los usuarios que su nombre contenga la palabra de coincidencia pasada por parametro
+	 * @param palabra la palabra de coincidencia
+	 * @return la lista de usuarios
+	 */
+	public List<UsuarioDTO> buscarPorCoincidenciaEnNombre(String palabra);
+	
 
 
 

@@ -39,6 +39,7 @@ public class AdministracionUsuariosControlador {
 	 * @param busquedaUser	 Parametro de busqueda para filtrar el listado de usuarios.
 	 * @param model          Modelo que se utiliza para enviar el listado de
 	 *                       usuarios a la vista.
+	 * @param filtro         Parametro de filtro para filtrar usuarios por email o nombre.
 	 * @param request        HttpServletRequest para comprobar el rol del usuario.
 	 * @param authentication Objeto Authentication que contiene el username/email.
 	 * @return La vista de administración de usuarios (administracionUsuarios.html)
@@ -47,17 +48,22 @@ public class AdministracionUsuariosControlador {
 	 */
 	@GetMapping("/privada/administracion-usuarios")
 	public String listadoUsuarios(@RequestParam(value = "busquedaUser", required = false) String busquedaUser,
-			Model model, HttpServletRequest request, Authentication authentication) {
+			 					  @RequestParam(value = "filtro", required = false) String filtro, 
+			 					  Model model, HttpServletRequest request, Authentication authentication) {
 		try {
 
 			List<UsuarioDTO> usuarios = new ArrayList<>();
 			
 			if (busquedaUser != null && !busquedaUser.isEmpty()) {
-				usuarios = usuarioServicio.buscarPorCoincidenciaEnEmail(busquedaUser);
+				if (filtro.equals("email")) {
+	                usuarios = usuarioServicio.buscarPorCoincidenciaEnEmail(busquedaUser);
+	            } else {
+	                usuarios = usuarioServicio.buscarPorCoincidenciaEnNombre(busquedaUser);            
+	            }
 				if (usuarios.size() > 0) {
 					model.addAttribute("usuarios", usuarios);
 				} else  {
-					model.addAttribute("usuarioNoEncontrado", "No se encontró usuarios con la busqueda introducida");
+					model.addAttribute("usuarioNoEncontrado", "No se encontraron usuarios por la busqueda introducida");
 					model.addAttribute("usuarios", usuarioServicio.obtenerTodos());
 				}
 			} 
