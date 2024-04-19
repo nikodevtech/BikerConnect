@@ -172,3 +172,18 @@ function cambiarPlaceholder() {
 		input.placeholder = "Buscar por nombre y apellidos";
 	}
 }
+function generarPDF() {
+    const element = document.querySelector('.card-body');
+    const options = {
+        margin: 10,
+        filename: 'Mis_quedada_bikerconnect.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().from(element).set(options).save().then(() => {
+        console.log('PDF generado correctamente');
+    }).catch((error) => {
+        console.error('Error al generar el PDF:', error);
+    });
+}
