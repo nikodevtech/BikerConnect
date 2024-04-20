@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bikerconnect.dtos.MotoDTO;
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.servicios.IMotoServicio;
 import com.bikerconnect.servicios.IUsuarioServicio;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Clase que ejerce de controlador de la vista de mis motos
@@ -128,6 +132,61 @@ public class MisMotosControlador {
         }
     	
     }
+    
+	/**
+	 * Gestiona la solicitud HTTP GET para la url /privada/editar-moto/{id} y
+	 * muestra el formulario de edición de la moto con el ID proporcionado.
+	 *
+	 * @param id    ID de la moto a editar.
+	 * @param model Modelo que se utiliza para enviar el dto a editar a la
+	 *              vista.
+	 * @return La vista de editarMoto con el formulario de edición.
+	 */
+	@GetMapping("/privada/editar-moto/{id}")
+	public String mostrarFormularioEdicion(@PathVariable Long id, Model model, HttpServletRequest request) {
+		try {			
+			MotoDTO motoDTO = motoServicio.buscarPorId(id);
+			if (motoDTO == null) {
+				return "misMotos";
+			}
+			model.addAttribute("motoDTO", motoDTO);
+			return "editarMoto";
+			
+		} catch (Exception e) {
+			model.addAttribute("Error", "Ocurrió un error al obtener la moto para editar");
+			return "dashboard";
+		}
+	}
+	
+	/**
+	 * Gestiona la solicitud HTTP POST para la url /privada/procesar-editar-moto y
+	 * procesa el formulario de edición de la moto.
+	 *
+	 * @param motoDTO MotoDTO con los datos editados.
+	 * @param model      Modelo que se utiliza para enviar mensajes y el listado
+	 *                   actualizado a la vista.
+	 * @return La vista de misMotos con el resultado de la
+	 *         edición.
+	 */
+	@PostMapping("/privada/procesar-editar-moto")
+	public String procesarFormularioEdicion(@ModelAttribute("motoDTO") MotoDTO motoDTO , Model model, Authentication authentication) {
+		try {
+			boolean motoEditadaConExito = motoServicio.actualizarMoto(motoDTO);
+			UsuarioDTO usuario = usuarioServicio.buscarPorEmail(authentication.getName());
+            model.addAttribute("misMotos", usuario.getMisMotos());
+			if (motoEditadaConExito) {
+				model.addAttribute("updateMotoExito", "Moto editada en el sistema con exito");
+				return "misMotos";
+			} else {
+				model.addAttribute("updateMotoError", "No se pudo editar la moto");
+				return "misMotos";
+			}
+		} catch (Exception e) {
+			model.addAttribute("error", "Ocurrió un error al procesar la solicitud de edición de la moto"); 
+			return "misMotos";
+		}
+		
+	}
     
     
 

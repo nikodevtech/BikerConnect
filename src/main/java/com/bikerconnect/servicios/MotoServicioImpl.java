@@ -86,4 +86,28 @@ public class MotoServicioImpl implements IMotoServicio {
 		return null;
 	}
 
+
+	@Override
+	public boolean actualizarMoto(MotoDTO motoModificada) {
+		try {
+			Moto motoActual = motoRepositorio.findById(motoModificada.getId()).orElse(null);
+			
+			if(motoActual != null) {
+				motoActual.setMarca(motoModificada.getMarca());
+				motoActual.setModelo(motoModificada.getModelo());
+				motoActual.setAño(motoModificada.getAño());
+				motoActual.setColor(motoModificada.getColor());
+				motoActual.setDescModificaciones(motoModificada.getDescModificaciones());
+				
+				motoRepositorio.save(motoActual);
+				return true;
+			}
+			return false;
+
+		} catch (PersistenceException pe) {
+			System.out.println("[Error MotoServicioImpl - actualizarMoto()] Al actualizar la moto " + pe.getMessage());		
+		}
+		return false;
+	}
+
 }

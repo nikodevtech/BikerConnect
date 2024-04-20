@@ -47,7 +47,10 @@
 	                            <p class="card-text">Año: <span th:text="${moto.año}"></span></p>
 	                            <p class="card-text">Color: <span th:text="${moto.color}"></span></p>
 	                            <p class="card-text">Descripción: <span th:text="${moto.descModificaciones}"></span></p>
-	                            <a class="btn btn-danger btn-sm" th:attr="data-id=${moto.id}" onclick="confirmarEliminarMoto(event)">
+    						    <a class="btn buttonPrincipal btn-sm" th:href="@{/privada/editar-moto/} + ${moto.id}">
+									<i class="bi bi-pencil-square"> Editar</i>
+								</a>
+	                            <a class="btn btn-danger btn-sm float-end" th:attr="data-moto=${moto.id + '|' + moto.marca}" onclick="confirmarEliminarMoto(event)">
     								<i class="bi bi-trash"> Eliminar</i>
     						    </a>
 	                        </div>
@@ -68,6 +71,12 @@
 		  </ul>
 		</div>
     </div>
+   	<script th:if="${not #strings.isEmpty(updateMotoExito)}">
+	    mostrarNotificacion("¡Moto actualizada!", "Los datos de la moto han sido modificados", 'info');
+	</script>
+	<script th:if="${not #strings.isEmpty(updateMotoError)}">
+	    mostrarNotificacion("¡Error al modificar la moto!", "Ocurrió un error al actualizar la moto, intentelo de nuevo más tarde.", 'info');
+	</script>
 	<script th:if="${not #strings.isEmpty(altaMotoExito)}">
 	    mostrarNotificacion("¡Moto registrada en el sistema!", "Se ha dado de alta su nueva moto correctamente", 'success');
 	</script>

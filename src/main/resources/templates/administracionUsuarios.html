@@ -86,7 +86,7 @@
 								</a>
 							</td>
 							<td sec:authorize="hasRole('ROLE_ADMIN')">
-    							<a class="btn btn-danger" th:attr="data-id=${usuario.id}" onclick="confirmarEliminar(event)">
+    							<a class="btn btn-danger" th:attr="data-usuario=${usuario.id + '|' + usuario.emailUsuario}" onclick="confirmarEliminar(event)">
     								<i class="bi bi-trash"> Eliminar</i>
     						    </a>
 							</td>
@@ -107,6 +107,9 @@
 		  </ul>
 		</div>
     </div>
+    <script th:if="${not #strings.isEmpty(elUsuarioTieneMotos)}">
+        mostrarNotificacion("¡No se puede eliminar al usuario!", "Dicho usuario tiene motos asociadas registradas en el sistema.", 'info');
+	</script>
     <script th:if="${not #strings.isEmpty(usuarioNoEncontrado)}">
         mostrarNotificacion("¡No se encontraron usuarios!", "No hay ninguna coincidencia con la busqueda introducida", 'info');
 	</script>
@@ -117,7 +120,7 @@
 	    mostrarNotificacion("¡Error!","No se puede eliminar último usuario con permisos de administrador", 'error');
 	</script>
 	<script th:if="${not #strings.isEmpty(elUsuarioTieneQuedadas)}">
-	    mostrarNotificacion("¡No se puede eliminar!","El usuario tiene quedadas pendientes en las que participa y para poder eliminarlo antes debe salir de todas ellas", 'info');
+	    mostrarNotificacion("¡No se puede eliminar al usuario!","Dicho usuario participa o ha participado en quedadas y está asociado a ellas.", 'info');
 	</script>
 	<script th:if="${not #strings.isEmpty(eliminacionCorrecta)}">
 	    mostrarNotificacion("¡Usuario eliminado!","El usuario ha sido eliminado correctamente", 'success');

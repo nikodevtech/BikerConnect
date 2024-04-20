@@ -28,4 +28,11 @@ public interface IMotoServicio {
 	 */
 	public MotoDTO buscarPorId(long id);
 	
+	/**
+	 * Metodo para actualizar una moto en la base de datos
+	 * @param motoDTO La moto a actualizar
+	 * @return true si se ha podido actualizar, false en caso contrario
+	 */
+	public boolean actualizarMoto(MotoDTO motoDTO);
+	
 }
