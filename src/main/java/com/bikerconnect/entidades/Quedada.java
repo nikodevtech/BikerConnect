@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -48,6 +50,9 @@ public class Quedada {
 			   joinColumns = @JoinColumn(name = "id_quedada"), 
 			   inverseJoinColumns = @JoinColumn(name = "id_usuario"))
 	private List<Usuario> usuariosParticipantes = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "quedada")
+	private List<Comentario> comentarios = new ArrayList<>();
 	
 	//Getters y Setters
 	public Long getIdQuedada() {
@@ -105,11 +110,19 @@ public class Quedada {
 	public void setUsuariosParticipantes(List<Usuario> usuariosParticipantes) {
 		this.usuariosParticipantes = usuariosParticipantes;
 	}
-
+	
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	
 	//Metodos
 	@Override
 	public int hashCode() {
-		return Objects.hash(descripcion, estado, fechaHoraEncuentro, idQuedada, lugar, usuarioOrganizador,
+		return Objects.hash(comentarios, descripcion, estado, fechaHoraEncuentro, idQuedada, lugar, usuarioOrganizador,
 				usuariosParticipantes);
 	}
 
@@ -122,8 +135,8 @@ public class Quedada {
 		if (getClass() != obj.getClass())
 			return false;
 		Quedada other = (Quedada) obj;
-		return Objects.equals(descripcion, other.descripcion) && Objects.equals(estado, other.estado)
-				&& Objects.equals(fechaHoraEncuentro, other.fechaHoraEncuentro)
+		return Objects.equals(comentarios, other.comentarios) && Objects.equals(descripcion, other.descripcion)
+				&& Objects.equals(estado, other.estado) && Objects.equals(fechaHoraEncuentro, other.fechaHoraEncuentro)
 				&& Objects.equals(idQuedada, other.idQuedada) && Objects.equals(lugar, other.lugar)
 				&& Objects.equals(usuarioOrganizador, other.usuarioOrganizador)
 				&& Objects.equals(usuariosParticipantes, other.usuariosParticipantes);
@@ -133,8 +146,11 @@ public class Quedada {
 	public String toString() {
 		return "Quedada [idQuedada=" + idQuedada + ", descripcion=" + descripcion + ", fechaHoraEncuentro="
 				+ fechaHoraEncuentro + ", lugar=" + lugar + ", estado=" + estado + ", usuarioOrganizador="
-				+ usuarioOrganizador + ", usuariosParticipantes=" + usuariosParticipantes + "]";
+				+ usuarioOrganizador + ", usuariosParticipantes=" + usuariosParticipantes + ", comentarios="
+				+ comentarios + "]";
 	}
+
+
 
 	
 }

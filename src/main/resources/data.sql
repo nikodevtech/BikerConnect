@@ -58,7 +58,7 @@ VALUES
 
 INSERT INTO gestion_logicanegocio.quedadas (desc_quedada, fch_hora_encuentro, lugar, estado, usuario_organizador)
 VALUES
-('Conocer personas cerca de San Sebastián', '2024-03-10 13:00:00', 'San Sebastián, aparcamientos playa Ondarreta', 'Planificada', 'juan.perez@example.com');
+('Conocer personas cerca de San Sebastián', '2024-06-16 13:00:00', 'San Sebastián, aparcamientos playa Ondarreta', 'Planificada', 'juan.perez@example.com');
 
 INSERT INTO gestion_logicanegocio.participantes (id_quedada, id_usuario)
 VALUES

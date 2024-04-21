@@ -36,7 +36,7 @@
 	    <div class="card bg-light cardPrincipal">
 			<div class="card-header border-bottom border-3 d-flex">
 			    <h3 class="subtituloSecundario flex-grow-1">Mis Quedadas</h3>
-			    <button class="btn btn-danger" onclick="generarPDF()"><i class="bi bi-file-pdf fs-5"> Descargar PDF</i></button>
+			    <button class="btn btn-danger" onclick="generarPDF()" th:if="${not #lists.isEmpty(misQuedadas)}"><i class="bi bi-file-pdf fs-5"> Descargar PDF</i></button>
 			</div>
 	        <div class="card-body">
 	            <h5 class="card-title text-center text-danger" th:if="${#lists.isEmpty(misQuedadas)}">No hay registro de ninguna quedada</h5>

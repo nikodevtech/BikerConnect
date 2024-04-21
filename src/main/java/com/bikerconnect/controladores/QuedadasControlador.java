@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bikerconnect.dtos.ComentarioDTO;
 import com.bikerconnect.dtos.QuedadaDTO;
 import com.bikerconnect.dtos.UsuarioDTO;
+import com.bikerconnect.entidades.Comentario;
 import com.bikerconnect.entidades.Quedada;
+import com.bikerconnect.repositorios.ComentarioRepositorio;
 import com.bikerconnect.repositorios.QuedadaRepositorio;
+import com.bikerconnect.servicios.IComentarioToDto;
 import com.bikerconnect.servicios.IQuedadaServicio;
 import com.bikerconnect.servicios.IUsuarioServicio;
 import com.bikerconnect.servicios.IUsuarioToDto;
@@ -37,6 +42,12 @@ public class QuedadasControlador {
 	
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
+	
+	@Autowired
+	private IComentarioToDto toDtoComentario;
+	
+	@Autowired
+	private ComentarioRepositorio comentarioRepo;
 	
 
 	/**
@@ -115,8 +126,11 @@ public class QuedadasControlador {
 			if (quedada != null) {
 				Quedada quedadaDao = quedadaRepo.findById(id).get();
 				List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedadaDao.getUsuariosParticipantes());
+				List<Comentario> comentarios = comentarioRepo.findByQuedadaIdQuedada(id);
+				List<ComentarioDTO> comentariosDTO = toDtoComentario.listaComentarioToDto(comentarios);
 				model.addAttribute("quedada", quedada);
 				model.addAttribute("participantes", participantes);
+				model.addAttribute("comentarios", comentariosDTO);
 				return "detalleQuedada"; 
 			} else {
 				return "redirect:/privada/quedadas"; 
@@ -300,6 +314,30 @@ public class QuedadasControlador {
             return "quedadas";
         }
     }
+	
+	/**
+	 * Procesa la peticion HTTP POST para la url /privada/quedadas/detalle-quedada/comentar 
+	 * con el procedimiento de agregar un nuevo comentario a la quedada
+	 * @param idQuedada el id de la quedada
+	 * @param contenido el contenido del comentario
+	 * @param model el modelo que se utiliza para enviar los datos a la vista
+	 * @param auth la instancia que representa al usuario autenticado
+	 * @return
+	 */
+	@PostMapping("/privada/quedadas/detalle-quedada/comentar")
+	public String comentarQuedada(@RequestParam("idQuedada") Long idQuedada, @RequestParam("contenido") String contenido, Model model, Authentication auth) {
+	    try {
+	    	String autor = auth.getName();
+	        
+	        quedadaServicio.agregarComentario(idQuedada, contenido, autor);
+	        	        
+	        return "redirect:/privada/quedadas/detalle-quedada/" + idQuedada;
+	    } catch (Exception e) {
+	        model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
+	        return "quedadas"; 
+	    }
+	}
+
 
 
 

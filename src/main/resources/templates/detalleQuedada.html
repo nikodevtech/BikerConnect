@@ -31,7 +31,7 @@
             </div>
         </div>
     </nav>
-    <div class="container py-4">
+    <div class="container py-4"  style="min-height: calc(100vh - 150px); margin-bottom: 150px;">
 		<div class="card bg-light cardPrincipal cardAdminUser">
 			<div class="card-header border-bottom border-3"><h3 class="subtituloSecundario">Detalles de la Quedada</h3></div>
 			<div class="card-body" >
@@ -98,6 +98,39 @@
 				</a>				
 			</div>		
 		</div>
+		 <!-- Card de Comentarios -->
+	    <div class="row">
+	        <div class="col-md-6 offset-md-3">
+	        	<div class="card">
+	                <div class="card-header">
+	                    Añade un comentario...
+	                </div>
+	                <div class="card-body">
+	                    <form th:action="@{/privada/quedadas/detalle-quedada/comentar}" method="post">
+	                        <input type="hidden" name="idQuedada" th:value="${quedada.id}" />	                 
+	                        <div class="mb-3">
+	                            <textarea class="form-control" id="contenido" name="contenido" rows="2" required></textarea>
+	                        </div>
+	                        <button type="submit" class="btn buttonPrincipal"><i class="bi bi-chat-left-text"> Comentar</i></button>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="card mt-2">
+	                <div class="card-header">
+    					<strong><span th:text="${#lists.size(comentarios)} + ' Comentarios'"></span></strong>
+	                </div>
+	                <div class="card-body">
+	                    <ul class="list-group">
+					        <li class="list-group-item" th:each="comentario : ${comentarios}">
+					            <p class="mb-1"><strong th:text="${comentario.usuarioAutor}"></strong> <small class="text-muted" th:text="${#dates.format(comentario.fechaComentario, 'dd-MM-yyyy HH:mm')}"></small></p>
+					            <p th:text="${comentario.contenido}"></p>
+					            <i class="bi bi-hand-thumbs-up"></i>
+					        </li>
+					    </ul>
+	                </div>
+	            </div>	            
+	        </div>
+	    </div>
 	</div>
 	<div class="vg-footer bg-dark bg-gradient">
 		<div class="container d-flex justify-content-between align-items-center">

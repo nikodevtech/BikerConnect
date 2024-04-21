@@ -1,15 +1,16 @@
 package com.bikerconnect.servicios;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bikerconnect.dtos.QuedadaDTO;
+import com.bikerconnect.entidades.Comentario;
 import com.bikerconnect.entidades.Quedada;
 import com.bikerconnect.entidades.Usuario;
+import com.bikerconnect.repositorios.ComentarioRepositorio;
 import com.bikerconnect.repositorios.QuedadaRepositorio;
 import com.bikerconnect.repositorios.UsuarioRepositorio;
 
@@ -36,6 +37,9 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 
 	@Autowired
 	private UsuarioRepositorio usuarioRepo;
+	
+	@Autowired
+	private ComentarioRepositorio comentarioRepo;
 
 	@Override
 	public List<QuedadaDTO> obtenerQuedadas() {
@@ -202,6 +206,23 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 			System.out.println("\n[ERROR QuedadaServicioImpl - actualizarQuedada()] - Error de persistencia al marcar como completada una quedada: "+ e);
 		}
 		
+	}
+
+	@Override
+	public void agregarComentario(Long idQuedada, String contenido, String emailUsuario) {
+		try {
+			Quedada q = quedadaRepo.findById(idQuedada).orElse(null);
+			if(q != null) {
+				Comentario c = new Comentario();
+				c.setContenido(contenido);
+				c.setQuedada(q);
+				c.setFechaComentario(Calendar.getInstance());
+				c.setUsuarioAutor(emailUsuario);
+				comentarioRepo.save(c);
+			}	
+		} catch (PersistenceException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - agregarComentario()] - Error de persistencia al comentar una quedada: "+ e);
+		}
 	}
 
 }
