@@ -1,10 +1,11 @@
 package com.bikerconnect.repositorios;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.bikerconnect.entidades.Comentario;
 import com.bikerconnect.entidades.Like;
 
 /**
@@ -21,5 +22,12 @@ public interface LikeRepositorio extends JpaRepository<Like, Long> {
 	 */
 	@Query("SELECT COUNT(l) FROM Like l WHERE l.comentario.idComentario = :idComentario")
 	long contarLikesPorComentario(@Param("idComentario") Long idComentario);
+	
+	/**
+	 * Devuelve todos los likes de un comentario
+	 * @param idComentario el id del comentario 
+	 * @return la lista de likes
+	 */
+	List<Like> findByComentarioIdComentario(Long idComentario);
 	
 }

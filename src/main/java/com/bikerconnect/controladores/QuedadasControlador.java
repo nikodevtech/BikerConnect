@@ -18,6 +18,7 @@ import com.bikerconnect.dtos.ComentarioDTO;
 import com.bikerconnect.dtos.QuedadaDTO;
 import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.entidades.Comentario;
+import com.bikerconnect.entidades.Like;
 import com.bikerconnect.entidades.Quedada;
 import com.bikerconnect.repositorios.ComentarioRepositorio;
 import com.bikerconnect.repositorios.LikeRepositorio;
@@ -363,6 +364,13 @@ public class QuedadasControlador {
 	public String darLike(@PathVariable("idQuedada") long idQuedada, @PathVariable("idComentario") long idComentario, Model model, Authentication auth) {
 	    try {
 	        String usuarioAutor = auth.getName();
+	        List<Like> likes = likeRepositorio.findByComentarioIdComentario(idComentario);
+	        for (Like like : likes) {
+	            if (like.getUsuarioAutor().equals(usuarioAutor)) {
+	            	likeRepositorio.delete(like);
+	                return "redirect:/privada/quedadas/detalle-quedada/" + idQuedada;
+	            }
+	        }
 	        quedadaServicio.darLike(idComentario, usuarioAutor);
 	        return "redirect:/privada/quedadas/detalle-quedada/" + idQuedada;
 	    } catch (Exception e) {
