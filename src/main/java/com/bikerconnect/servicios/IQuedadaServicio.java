@@ -81,9 +81,16 @@ public interface IQuedadaServicio {
 	 * Agrega un comentario a una quedada
 	 * @param idQuedada el id de la quedada
 	 * @param contenido el contenido del comentario
-	 * @param emailUsuario el email del usuario
+	 * @param emailUsuario el email del usuario que ha escrito el comentario
 	 */
 	public void agregarComentario(Long idQuedada, String contenido, String emailUsuario);
+	
+	/**
+	 * Agrega un like a un comentario
+	 * @param idComentario el id del comentario
+	 * @param usuarioAutor el email del usuario que ha dado like
+	 */
+	public void darLike(long idComentario, String usuarioAutor);
 
 
 }

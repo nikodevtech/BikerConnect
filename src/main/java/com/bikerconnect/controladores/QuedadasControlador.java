@@ -1,5 +1,6 @@
 package com.bikerconnect.controladores;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import com.bikerconnect.dtos.UsuarioDTO;
 import com.bikerconnect.entidades.Comentario;
 import com.bikerconnect.entidades.Quedada;
 import com.bikerconnect.repositorios.ComentarioRepositorio;
+import com.bikerconnect.repositorios.LikeRepositorio;
 import com.bikerconnect.repositorios.QuedadaRepositorio;
 import com.bikerconnect.servicios.IComentarioToDto;
 import com.bikerconnect.servicios.IQuedadaServicio;
@@ -48,6 +50,9 @@ public class QuedadasControlador {
 	
 	@Autowired
 	private ComentarioRepositorio comentarioRepo;
+	
+	@Autowired
+	private LikeRepositorio likeRepositorio;
 	
 
 	/**
@@ -128,9 +133,17 @@ public class QuedadasControlador {
 				List<UsuarioDTO> participantes = toDto.listaUsuarioToDto(quedadaDao.getUsuariosParticipantes());
 				List<Comentario> comentarios = comentarioRepo.findByQuedadaIdQuedada(id);
 				List<ComentarioDTO> comentariosDTO = toDtoComentario.listaComentarioToDto(comentarios);
+				
+				List<Long> likesPorComentario = new ArrayList<>();
+				for (Comentario comentario : comentarios) {
+				    long idComentario = comentario.getIdComentario();
+				    long numeroLikes = likeRepositorio.contarLikesPorComentario(idComentario);
+				    likesPorComentario.add(numeroLikes);
+				}				
 				model.addAttribute("quedada", quedada);
 				model.addAttribute("participantes", participantes);
 				model.addAttribute("comentarios", comentariosDTO);
+			    model.addAttribute("likesPorComentario", likesPorComentario);
 				return "detalleQuedada"; 
 			} else {
 				return "redirect:/privada/quedadas"; 
@@ -331,6 +344,26 @@ public class QuedadasControlador {
 	        
 	        quedadaServicio.agregarComentario(idQuedada, contenido, autor);
 	        	        
+	        return "redirect:/privada/quedadas/detalle-quedada/" + idQuedada;
+	    } catch (Exception e) {
+	        model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
+	        return "quedadas"; 
+	    }
+	}
+
+	/**
+	 * Procesa la peticion HTTP GET para la url /privada/quedadas/detalle-quedada/dar-like/{idQuedada}/{idComentario}
+	 * @param idQuedada id de la quedada en la que se encuentra el comentario que se va a dar like
+	 * @param idComentario id del comentario que se va a dar like
+	 * @param model el modelo que se utiliza para enviar los datos a la vista
+	 * @param auth la instancia que representa al usuario autenticado
+	 * @return la url de la vista
+	 */
+	@GetMapping("/privada/quedadas/detalle-quedada/dar-like/{idQuedada}/{idComentario}")
+	public String darLike(@PathVariable("idQuedada") long idQuedada, @PathVariable("idComentario") long idComentario, Model model, Authentication auth) {
+	    try {
+	        String usuarioAutor = auth.getName();
+	        quedadaServicio.darLike(idComentario, usuarioAutor);
 	        return "redirect:/privada/quedadas/detalle-quedada/" + idQuedada;
 	    } catch (Exception e) {
 	        model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");

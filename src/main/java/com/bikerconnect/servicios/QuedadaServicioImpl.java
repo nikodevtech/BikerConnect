@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.bikerconnect.dtos.QuedadaDTO;
 import com.bikerconnect.entidades.Comentario;
+import com.bikerconnect.entidades.Like;
 import com.bikerconnect.entidades.Quedada;
 import com.bikerconnect.entidades.Usuario;
 import com.bikerconnect.repositorios.ComentarioRepositorio;
+import com.bikerconnect.repositorios.LikeRepositorio;
 import com.bikerconnect.repositorios.QuedadaRepositorio;
 import com.bikerconnect.repositorios.UsuarioRepositorio;
 
@@ -40,6 +42,9 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 	
 	@Autowired
 	private ComentarioRepositorio comentarioRepo;
+	
+	@Autowired
+	private LikeRepositorio likeRepositorio;
 
 	@Override
 	public List<QuedadaDTO> obtenerQuedadas() {
@@ -223,6 +228,24 @@ public class QuedadaServicioImpl implements IQuedadaServicio {
 		} catch (PersistenceException e) {
 			System.out.println("\n[ERROR QuedadaServicioImpl - agregarComentario()] - Error de persistencia al comentar una quedada: "+ e);
 		}
+	}
+
+	@Override
+	public void darLike(long idComentario, String usuarioAutor) {
+		try {
+			Like like = new Like();
+			Comentario comentario = comentarioRepo.findById(idComentario).orElse(null);
+			like.setComentario(comentario);
+			like.setFechaHoraLike(Calendar.getInstance());
+			like.setUsuarioAutor(usuarioAutor);
+			likeRepositorio.save(like);
+		} catch (IllegalArgumentException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - darLike()] - Error de argumento incorrecto al dar like: "+ e);
+		} catch (PersistenceException e) {
+			System.out.println("\n[ERROR QuedadaServicioImpl - darLike()] - Error de persistencia al dar like: "+ e);
+		}
+		
+		
 	}
 
 }

@@ -121,11 +121,14 @@
 	                </div>
 	                <div class="card-body">
 	                    <ul class="list-group">
-					        <li class="list-group-item" th:each="comentario : ${comentarios}">
+					        <li class="list-group-item" th:each="comentario, idx : ${comentarios}">
 					            <p class="mb-1"><strong th:text="${comentario.usuarioAutor}"></strong> <small class="text-muted" th:text="${#dates.format(comentario.fechaComentario, 'dd-MM-yyyy HH:mm')}"></small></p>
 					            <p th:text="${comentario.contenido}"></p>
-					            <i class="bi bi-hand-thumbs-up"></i>
-					        </li>
+								<a th:href="@{/privada/quedadas/detalle-quedada/dar-like/{idQuedada}/{idComentario}(idQuedada=${quedada.id}, idComentario=${comentario.idComentario})}" class="text-decoration-none">
+								    <i class="bi bi-hand-thumbs-up"></i> 
+								</a>
+								<span th:text="${likesPorComentario[idx.index]}"></span>
+							</li>
 					    </ul>
 	                </div>
 	            </div>	            

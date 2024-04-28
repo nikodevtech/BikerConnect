@@ -1,6 +1,8 @@
 package com.bikerconnect.entidades;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -10,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -39,6 +42,9 @@ public class Comentario {
 	@ManyToOne
 	@JoinColumn(name = "id_quedada")
 	private Quedada quedada;
+	
+	@OneToMany(mappedBy = "comentario")
+	private List<Like> likes = new ArrayList<>();
 	
 	
 	//CONSTRUCTORES
@@ -95,11 +101,19 @@ public class Comentario {
 	public void setQuedada(Quedada quedada) {
 		this.quedada = quedada;
 	}
+	
+	public List<Like> getLikes() {
+		return likes;
+	}
+	
+	public void setLikes(List<Like> likes) {
+		this.likes = likes;
+	}
 
-	//Metodos
+	// METODOS
 	@Override
 	public int hashCode() {
-		return Objects.hash(contenido, fechaComentario, idComentario, quedada, usuarioAutor);
+		return Objects.hash(contenido, fechaComentario, idComentario, likes, quedada, usuarioAutor);
 	}
 
 	@Override
@@ -112,15 +126,18 @@ public class Comentario {
 			return false;
 		Comentario other = (Comentario) obj;
 		return Objects.equals(contenido, other.contenido) && Objects.equals(fechaComentario, other.fechaComentario)
-				&& Objects.equals(idComentario, other.idComentario) && Objects.equals(quedada, other.quedada)
-				&& Objects.equals(usuarioAutor, other.usuarioAutor);
+				&& Objects.equals(idComentario, other.idComentario) && Objects.equals(likes, other.likes)
+				&& Objects.equals(quedada, other.quedada) && Objects.equals(usuarioAutor, other.usuarioAutor);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Comentario [idComentario=" + idComentario + ", usuarioAutor=" + usuarioAutor + ", contenido="
-				+ contenido + ", fechaComentario=" + fechaComentario + ", quedada=" + quedada + "]";
+				+ contenido + ", fechaComentario=" + fechaComentario + ", quedada=" + quedada + ", likes=" + likes
+				+ "]";
 	}
+
+
 	
 	
 
