@@ -125,7 +125,7 @@
 					            <p class="mb-1"><strong th:text="${comentario.usuarioAutor}"></strong> <small class="text-muted" th:text="${#dates.format(comentario.fechaComentario, 'dd-MM-yyyy HH:mm')}"></small></p>
 					            <p th:text="${comentario.contenido}"></p>
 								<a th:href="@{/privada/quedadas/detalle-quedada/dar-like/{idQuedada}/{idComentario}(idQuedada=${quedada.id}, idComentario=${comentario.idComentario})}" class="text-decoration-none">
-								    <i class="bi bi-hand-thumbs-up"></i> 
+								    <i class="bi bi-hand-thumbs-up fs-4"></i> 
 								</a>
 								<span th:text="${likesPorComentario[idx.index]}"></span>
 							</li>

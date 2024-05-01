@@ -341,11 +341,13 @@ public class QuedadasControlador {
 	@PostMapping("/privada/quedadas/detalle-quedada/comentar")
 	public String comentarQuedada(@RequestParam("idQuedada") Long idQuedada, @RequestParam("contenido") String contenido, Model model, Authentication auth) {
 	    try {
-	    	String autor = auth.getName();
+	    	
+	    	if(!contenido.trim().isEmpty()) {
+		    	String autor = auth.getName();
+	    		quedadaServicio.agregarComentario(idQuedada, contenido, autor);        
+	    	}
+		    return "redirect:/privada/quedadas/detalle-quedada/" + idQuedada;	          
 	        
-	        quedadaServicio.agregarComentario(idQuedada, contenido, autor);
-	        	        
-	        return "redirect:/privada/quedadas/detalle-quedada/" + idQuedada;
 	    } catch (Exception e) {
 	        model.addAttribute("error", "Error al procesar la solicitud. Por favor, inténtelo de nuevo.");
 	        return "quedadas"; 
